@@ -1,0 +1,209 @@
+FlowPlayer 2.0.1 116kb 3/10/08
+http://flowplayer.org/
+
+Jeroen Wijering
+JW FLV Media Player 3.15 35kb
+
+Wimpy Rave 93kb 3/10/08
+Wimpy Wasp 34kb
+Wimpy MP3 Button 14kb
+Wimpy 48kb
+http://www.wimpyplayer.com/
+
+Flash-Ajax Video Component
+FAVideo 14kb
+http://labs.adobe.com/wiki/index.php/Flash-Ajax_Video_Component
+
+
+
+videoMaru 3.1 22kb
+videoMaru 3.5beta 27kb
+http://videomaru.com/
+
+Tempo 0.9 34kb
+Tempo Lite 23kb
+
+novideoClip : Any missing video clips are replaced by this clip. Typically this is 
+used to provide a message like, "The video you requested is not available". 
+noVideoClip: { url: 'sorry.jpg', duration: 10 } 
+
+streamingServerURL
+streamingServer fms, red5, lighttpd
+rtmpConfigURL
+rtmpConfigParam
+
+Here is a list of events that gets sent to Google Analytics:
+
+start, playback started 
+finish, playback completed 
+stop, playback stopped 
+pause 
+resume 
+fullscreen, fullscreen mode initiated 
+reduce, fullscreen closed 
+
+Tempo
+
+TODO: Analytics
+	GoogleAnalytics
+	Omniture
+	HBX
+	ClickTracks
+	StuffedTracker
+	AWStats
+	Shink file size
+	Create demo pages
+	
+Bugs:
+	When adding and removing a single item, update the shuffled playlist
+	
+Features:
+	Change default playlist to XSPF
+	JavaScript Mediator - Half Done
+	
+Future:
+	iTunes like playlists
+		Artist list
+		Album list
+		Song list
+		etc
+	Limit Play Time
+	Add a watermark
+	Add a FullScreenMediator
+		Accepts a ui alignment and a margin in order to position ui
+		Accepts playerFullScreen movieclip for a seperate ui when in fullscreen.
+	Maybe add a "fadeTray", a ui that fades in/out based on mouse movement
+	Maybe add download progress percent textfield
+	Let loading and play progress bars be movieclips as well
+	
+
+Versions
+	Mini - Single Audio
+	Standard - Audio
+	Extended - Audio/Video
+
+Supported PlayLists
+-------------------
+ASX
+XSPF
+M3U
+PLS
+B4S
+RSS?
+
+Supported Files
+----------------
+.flv
+.mp4
+.m4v
+.m4a
+.3gp
+.mov
+.f4v
+.f4p
+.f4a
+.f4b
+.mp3
+
+PlayList Object
+---------------
+file
+image
+id
+link
+type
+captions
+audio
+title
+author
+ 
+FlashVar List
+-------------
+// General
+skin:String
+buffer:Number
+volume:Number
+autoStart:String - True, False, Random
+autoStartTrack:String - If set to True, play this specific song
+repeat:String - Track, List, None
+shuffle:Bool
+limitPlayTime:Number - Seconds
+startupLogo:String - URL to logo to show when loading
+playerId:Number - Unique id if multiple players are present
+onLoad:String
+onTrackLoad:String
+onTrackPlay:String
+onTrackFinish:String
+enablejs (true,false): Set this to true to enable javascript interaction. This'll only work online! Javascript interaction includes playback control, asynchroneous loading of media files and return of track information. More info at this demo page.
+config (url): If you have lots of flashvars and you don't want the list to mess up your HTML pages, you can also aggregate your flashvars in a single XML file like this one.
+recommendations (url): Set this to an XML with items you want to recommend. The thumbs will show up when the current movie stops playing, just like YouTube. Here's an example setup and example XML.
+
+// Audio
+defaultImage:String (AUDIO) For default cover art
+
+// Image
+rotatetime (number): Sets the number of seconds an image is played back. The default is 10 for the mediaplayer and 5 for the rotator.
+transition (fade, bgfade, blocks, bubbles, circles, flash, fluids, lines, random, slowfade): Only for the rotator. Sets the transition to use between images. random will show all transitions randomly.
+
+// Video
+mediaScale:String - (VIDEO) True, False, Fit, None
+logo:String - (VIDEO) Set this to an image that can be put as a watermark logo in the top right corner of the display.
+
+// Initial Item (basically playlist object settings)
+file (url): Sets the location of the file to play. The player can play a single MP3, FLV, SWF, JPG, GIF, PNG, H264 file or a playlist. The rotator only plays playlists.
+image (url): If you play a sound or movie, set this to the url of a preview image. When using a playlist, you can set an image for every entry.
+captions (url): Only for the player. Assigns closed captions. Captions should be in TimedText format (example). When using a playlist, you can assign captions for every entry.
+type (mp3,flv,rtmp,jpg,png,gif,swf): The player determines the type of file to play based upon the last three characters of the file flashvar. This doesn't work with database id's or mod_rewrite, so you can set this flashvar to the correct filetype. By default, the player assumes a playlist is loaded.
+
+// Playlist
+autoscroll (true,false): Set this to true to automatically scroll through the playlist on rollover, instead of using a scrollbar.
+displayheight (number): Set this smaller as the height to show a playlist below the display (example). If you set it the same as the height, the controlbar will auto-hide on top of the video (example).
+displaywidth (number): Set this smaller as the width to show a playlist to the right of the display (example).
+thumbsinplaylist (true,false): If you have preview images in your playlist, set this to true to show them.
+
+
+JavaScript API
+--------------
+-Methods
+play
+playpause
+pause
+stop
+next
+prev
+playItem[, index]
+loadFile(obj:PlayListObject) : {file:url, image:url/image, captions:url/xml}, file, image, id, link, type, captions, audio, title, author
+addItem(obj:PlayListObject, idx:Number) : Add item to end of playlist if idx isn't there
+removeItem(idx:number) : Remove item, last item removed if idx isn't there
+clearItems()
+mute()
+unmute()
+
+-Callbacks
+onLoad
+onTrackLoad
+onTrackPlay
+onTrackFinish
+onVolume(percent)
+onRepeat(state)
+onShuffle
+
+-Properties
+isReader():Bool
+setRepeat() : Track, List, None
+getRepeat()
+setShuffle(bool)
+getShuffle()
+setVolume[, percent]
+getVolume
+setScrubTime[, seconds]
+getScrubTime
+setScrubPercent[, percent]
+getScrubPercent
+getItemData() : Returns playlist object data
+getItemIndex()
+getLength() : Playlist Length
+getLoadPercent
+getPlayerState
+getTimeElapsed
+getTimeRemaining
