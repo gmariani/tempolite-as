@@ -1,16 +1,34 @@
 ﻿/**
-* Generic PlayList class with some extra functionality
+* TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+* Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+*
+*
+* Copyright (c) 2009 Gabriel Mariani
 * 
-* Since DataProvider is only used for the UI Components, you must add this to the compiler paths:
-* C:\Program Files\Adobe\Adobe Flash CS3\en\Configuration\Component Source\ActionScript 3.0\User Interface
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the "Software"), to deal in the Software without
+* restriction, including without limitation the rights to use,
+* copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following
+* conditions:
 * 
-* @author Gabriel Mariani
-* @version 0.1
-*/
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+**/
 
 package cv.data {
 	
-	import fl.data.DataProvider;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
@@ -26,9 +44,6 @@ package cv.data {
 	 * @see #getPrevious()
 	 * @see #getNext()
 	 * @see #index
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "change", type = "flash.events.Event")]
 	
@@ -38,9 +53,6 @@ package cv.data {
 	 * @eventType cv.data.PlayList.END_OF_LIST
 	 *
 	 * @see #nextIndex
-	 * 
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "endoflist", type = "flash.events.Event")]
 	
@@ -50,9 +62,6 @@ package cv.data {
 	 * @eventType cv.data.PlayList.START_OF_LIST
 	 * 
 	 * @see #previousIndex
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "startoflist", type = "flash.events.Event")]
 	
@@ -64,9 +73,6 @@ package cv.data {
 	 * of a list of items. This includes selecting next, previous, repeat, 
 	 * repeat all, and shuffling. Also allows for a current index, so the
 	 * selected item can be tracked.
-     *
-     * @langversion 3.0
-     * @playerversion Flash 9.0.115.0
      */
 	public dynamic class PlayList extends Array implements IEventDispatcher {
 		
@@ -74,9 +80,6 @@ package cv.data {
          * The <code>PlayList.CHANGE</code> constant defines the value of
 		 * the <code>type</code> property of the event object that is dispatched to indicate that
 		 * the playlist has changed in some way.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
 		 */
 		public static const CHANGE:String = "change";
 		
@@ -84,9 +87,6 @@ package cv.data {
          * The <code>PlayList.END_OF_LIST</code> constant defines the value of
 		 * the <code>type</code> property of the event object that is dispatched to indicate that
 		 * the playlist has reached the end of the list.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
 		 */
 		public static const END_OF_LIST:String = "endoflist";
 		
@@ -94,9 +94,6 @@ package cv.data {
          * The <code>PlayList.START_OF_LIST</code> constant defines the value of
 		 * the <code>type</code> property of the event object that is dispatched to indicate that
 		 * the playlist has reached the beginning of the list.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
 		 */
 		public static const START_OF_LIST:String = "startoflist";
 		
@@ -108,24 +105,29 @@ package cv.data {
 		
 		/**
          * @private (protected)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		protected var mimetypes:Object = new Object();
 		
-		public function PlayList(dp:DataProvider = null):void {
+		/**
+		 * Creates a new PlayList object. You can pass it a DataProvider object
+		 * into the constructor and it will populate the PlayList.
+		 * 
+		 * @param	dp The DataProvider object
+		 */
+		public function PlayList(dp:Object = null):void {
 			dispatcher = new EventDispatcher(this);
 			
-			if(dp != null) {
-				var arr:Array = dp.toArray();
-				var l:uint = arr.length;
-				for (var i:int = 0; i < l; i++) {
-					var strTitle:String = arr[i].label;
-					var objData:Object = arr[i].data;
-					var strURL:String = objData.url;
-					var nLength:int = objData.length;
-					push({ title:strTitle, url:strURL, length:nLength });
+			if (dp != null) {
+				if (dp.toArray) {
+					var arr:Array = dp.toArray();
+					var l:uint = arr.length;
+					for (var i:int = 0; i < l; i++) {
+						var strTitle:String = arr[i].label;
+						var objData:Object = arr[i].data;
+						var strURL:String = objData.url;
+						var nLength:int = objData.length;
+						push({ title:strTitle, url:strURL, length:nLength });
+					}
 				}
 			}
 			
@@ -140,57 +142,30 @@ package cv.data {
 		 * Gets or sets whether shuffle is enabled or not.
 		 *
 		 * @default false
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get shuffle():Boolean {	return _isShuffle }
 		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
+		/** @private **/
 		public function set shuffle(b:Boolean):void { _isShuffle = b }
 		
 		/** 
 		 * Gets or sets whether an item is repeated after it's finished.
 		 *
 		 * @default false
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get repeat():Boolean { return _isRepeat	}
 		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
+		/** @private **/
 		public function set repeat(b:Boolean):void { _isRepeat = b }
 		
 		/** 
 		 * Gets or sets whether the playlist repeats when it's finished.
 		 *
 		 * @default false
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get repeatAll():Boolean { return _isRepeatAll	}
 		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
+		/** @private **/
 		public function set repeatAll(b:Boolean):void { _isRepeatAll = b }
 		
 		/** 
@@ -199,19 +174,10 @@ package cv.data {
 		 * @default 0
 		 * 
 		 * @see #event:change
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get index():uint { return _currentIndex }
 		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
+		/** @private **/
 		public function set index(idx:uint):void {
 			if(idx >= 0 && idx < length) {
 				_currentIndex = idx;
@@ -223,10 +189,6 @@ package cv.data {
 		 * Gets the index of the next item in the playlist.
 		 *
 		 * @see #event:endoflist
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get nextIndex():int {
 			var idx:int = _currentIndex + 1;
@@ -249,10 +211,6 @@ package cv.data {
 		 * Gets the index of the previous item in the playlist.
 		 * 
 		 * @see #event:startoflist
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
 		public function get previousIndex():int {
 			var idx:int = _currentIndex - 1;
@@ -282,10 +240,6 @@ package cv.data {
 		 * @return <Object> The item selected at random
 		 * 
 		 * @see #getRandomIndex()
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function getRandom():Object {
 			_currentIndex = getRandomIndex();
@@ -296,10 +250,6 @@ package cv.data {
 		 * Returns the current item from the playlist
 		 * 
 		 * @return <Object> The current item
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function getCurrent():Object {
 			return this[_currentIndex];
@@ -312,10 +262,6 @@ package cv.data {
 		 * 
 		 * @see #event:change
 		 * @see #nextIndex
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function getNext():Object {
 			var nIdx:int = nextIndex;
@@ -339,10 +285,6 @@ package cv.data {
 		 * 
 		 * @see #event:change
 		 * @see #previousIndex
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function getPrevious():Object {
 			var nIdx:int = previousIndex;
@@ -364,10 +306,6 @@ package cv.data {
 		 * @return <uint> The index randomly selected
 		 * 
 		 * @see #getRandom()
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function getRandomIndex():uint {
 			return uint(Math.random() * length);
@@ -379,10 +317,6 @@ package cv.data {
 		 * @param item 	<Object> The item object to be removed
 		 * 
 		 * @return <Boolean> Whether the removal was successful or not.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function remove(item:Object):Boolean {
 			for (var i:uint = 0; i < length; i++) {
@@ -408,10 +342,6 @@ package cv.data {
 		 * @param idx <uint> The index of the item to be removed.
 		 * 
 		 * @return <Boolean> Whether the removal was successful or not.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function removeAt(idx:uint):Boolean {
 			if(idx >= 0 && idx < length) {
@@ -427,10 +357,6 @@ package cv.data {
 		 * @param item 	<Object> The item to be checked for.
 		 * 
 		 * @return <Boolean> Whether the item is in the playlist or not.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function inPlayList(item:Object):Boolean {
 			for(var i:uint = 0; i < length; i++) {
@@ -440,16 +366,12 @@ package cv.data {
 		}
 		
 		/**
-		 * Converts the PlayList to a DataProvider for use
-		 * with components.
+		 * Converts the PlayList to an array for use with
+		 * DataProvider and AS3 components.
 		 * 
-		 * @return The DataProvider equivalent of the playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
+		 * @return The array equivalent of the playlist.
 		 */
-		public function toDataProvider():DataProvider {
+		public function toDataProviderArray():Array {
 			var dp:Array = new Array();
 			for (var i:int = 0; i < length; i++) {
 				var objData:Object = new Object();
@@ -459,7 +381,7 @@ package cv.data {
 				dp.push({ label:this[i].title, data:objData });
 			}
 			
-			return new DataProvider(dp);
+			return dp;
 		}
 		
 		/**
@@ -495,9 +417,6 @@ package cv.data {
 		 *                            references to the inner function (save it in another variable) then it is not
 		 *                            garbage-collected and stays persistent.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void{
 			dispatcher.addEventListener(type, listener, useCapture, priority);
@@ -514,9 +433,6 @@ package cv.data {
 		 * @return                  <Boolean> A value of true if the event was successfully dispatched. A value of false indicates failure or that preventDefault() was called
 		 *                            on the event.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function dispatchEvent(evt:Event):Boolean{
 			return dispatcher.dispatchEvent(evt);
@@ -532,9 +448,6 @@ package cv.data {
 		 * @return                  <Boolean> A value of true if a listener of the specified type is registered;
 		 *                            false otherwise.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function hasEventListener(type:String):Boolean{
 			return dispatcher.hasEventListener(type);
@@ -551,9 +464,6 @@ package cv.data {
 		 *                            to remove both, one call with useCapture() set to true, and another
 		 *                            call with useCapture() set to false.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void{
 			dispatcher.removeEventListener(type, listener, useCapture);
@@ -568,9 +478,6 @@ package cv.data {
 		 * @param type              <String> The type of event.
 		 * @return                  <Boolean> A value of true if a listener of the specified type will be triggered; false otherwise.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function willTrigger(type:String):Boolean {
 			return dispatcher.willTrigger(type);
@@ -582,10 +489,6 @@ package cv.data {
 		
 		/**
 		 * Sets the mimetypes allowed by PlayList.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Protected
 		 */
 		protected function setMimes():void {
 			mimetypes["mp3"] = "mp3";
@@ -617,10 +520,6 @@ package cv.data {
 		 *
 		 * @param str              <String> The string to convert.
 		 * @return                  <Int> The number of seconds for the given time.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Protected
 		 */
 		protected function toSeconds(str:String):int {
 			var arr:Array = str.split(":");

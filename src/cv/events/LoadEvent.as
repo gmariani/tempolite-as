@@ -1,19 +1,45 @@
+/**
+* TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+* Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+*
+*
+* Copyright (c) 2009 Gabriel Mariani
+* 
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the "Software"), to deal in the Software without
+* restriction, including without limitation the rights to use,
+* copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following
+* conditions:
+* 
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+**/
+
 package cv.events {
 	
+	import cv.interfaces.IMediaPlayer;
 	import flash.events.Event;
 	
 	/**
-	 * The LoadEvent class defines events for TempoLite, AudioPlayer and VideoPlayer. 
+	 * The LoadEvent class defines events for TempoLite and media players. 
 	 * These events include the following:
 	 * <ul>
 	 * <li><code>LoadEvent.LOAD_START</code>: dispatched after a file has begun loading.</li>
+	 * <li><code>LoadEvent.LOAD_PROGRESS</code>: dispatched while a file is loading.</li>
+	 * <li><code>LoadEvent.LOAD_COMPLETE</code>: dispatched after a file has finished loading.</li>
 	 * </ul>
-	 *
-     * @see cv.media.AudioPlayer AudioPlayer
-     * @see cv.media.VideoPlayer VideoPlayer
-     *
-     * @langversion 3.0
-     * @playerversion Flash 9.0.28.0
 	 */
 	public class LoadEvent extends Event {
 		
@@ -46,9 +72,6 @@ package cv.events {
          *  </table>
          *
          * @eventType loadStart
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		public static const LOAD_START:String = "loadStart";
 		
@@ -57,9 +80,6 @@ package cv.events {
 		 * <code>loadProgress</code> event object. 
          *
          * @eventType loadProgress
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		public static const LOAD_PROGRESS:String = "loadProgress";
 		
@@ -68,33 +88,21 @@ package cv.events {
 		 * <code>loadComplete</code> event object. 
          *
          * @eventType loadComplete
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		public static const LOAD_COMPLETE:String = "loadComplete";
 		
 		/**
 		 * Gets the url of the item that is associated with this event.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		public var url:String;
 		
 		/**
 		 * Gets the media type of the item that is associated with this event.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		public var mediaType:String;
+		public var mediaType:IMediaPlayer;
 		
 		/**
 		 * Gets the duration of the item that is associated with this event.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		public var time:Number;
 		
@@ -113,11 +121,8 @@ package cv.events {
          * @param mediaType The type of media being loaded, either "audio" or "video".
          *
          * @param time The estimated duration of the media file.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		public function LoadEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false, url:String = "", mediaType:String = "", time:Number= 0) {
+		public function LoadEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false, url:String = "", mediaType:IMediaPlayer = null, time:Number= 0) {
 			super(type, bubbles, cancelable);
 			this.url = url;
 			this.mediaType = mediaType;
@@ -129,9 +134,6 @@ package cv.events {
 		 * the original.
 		 *
          * @return A new LoadEvent object with parameter values that match those of the original.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		override public function clone():Event {
 			return new LoadEvent(type, bubbles, cancelable, url, mediaType, time);
@@ -146,9 +148,6 @@ package cv.events {
 		 * 	mediaType=<em>value</em> time=<em>value</em></code>]</p>
 		 *
          * @return A string representation of the LoadEvent object.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		override public function toString():String {
 			return formatToString("LoadEvent", "type", "bubbles", "cancelable", "url", "mediaType", "time", "eventPhase");

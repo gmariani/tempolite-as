@@ -1,105 +1,95 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-//
-//  COURSE VECTOR
-//  Copyright 2008 Course Vector
-//  All Rights Reserved.
-//
-//  NOTICE: Course Vector permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////
-/**
- * TODO: Add SMIL Support
- * TODO: Add iTunes RSS
- * TODO: Add Media RSS
- */
+﻿/**
+* TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+* Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+*
+*
+* Copyright (c) 2009 Gabriel Mariani
+* 
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the "Software"), to deal in the Software without
+* restriction, including without limitation the rights to use,
+* copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following
+* conditions:
+* 
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+**/
 
 package cv {
 
 	import cv.data.PlayList;
-	import cv.events.CuePointEvent;
 	import cv.events.LoadEvent;
 	import cv.events.MetaDataEvent;
 	import cv.events.PlayProgressEvent;
 	import cv.interfaces.IMediaPlayer;
-	import cv.managers.PlayListManager;
-	import cv.media.SoundPlayer;
-	import cv.media.NetStreamPlayer;
-	
-	import flash.display.Sprite;
+	import cv.interfaces.IPlaylistParser;
 	import flash.events.Event;
-	import flash.media.Video;
+	import flash.events.EventDispatcher;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 	
 	//--------------------------------------
     //  Events
     //--------------------------------------
-	/**
-	 * Dispatched as ID3 metadata is receieved from an MP3
-	 *
-	 * @eventType cv.events.MetaDataEvent.AUDIO_METADATA
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
-	 */
-	[Event(name = "audioMetadata", type = "cv.events.MetaDataEvent")]
 	
 	/**
 	 * Dispatched from the PlayList when a change has occured
 	 *
-	 * @eventType cv.TempoLite.CHANGE
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType flash.events.Event.CHANGE
 	 */
 	[Event(name = "change", type = "flash.events.Event")]
 	
 	/**
 	 * Dispatched everytime a cue point is encountered
 	 *
-	 * @eventType cv.events.CuePointEvent.CUE_POINT
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType cv.events.MetaDataEvent.CUE_POINT
 	 */
-	[Event(name="cuePoint", type="cv.events.CuePointEvent")]
+	[Event(name = "cuePoint", type = "cv.events.MetaDataEvent")]
+	
+	/**
+	 * Dispatched as a media file has completed loading
+	 *
+	 * @eventType cv.events.LoadEvent.LOAD_COMPLETE
+	 */
+	[Event(name = "loadComplete", type = "cv.events.LoadEvent")]
 	
 	/**
 	 * Dispatched as a media file is loaded
 	 *
-	 * @eventType cv.TempoLite.LOAD_PROGRESS
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType cv.events.LoadEvent.LOAD_PROGRESS
 	 */
 	[Event(name = "loadProgress", type = "flash.events.ProgressEvent")]
 	
 	/**
 	 * Dispatched as a media file begins loading
 	 *
-	 * @eventType cv.TempoLite.LOAD_START
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType cv.events.LoadEvent.LOAD_START
 	 */
-	[Event(name = "loadStart", type = "cv.LoadEvent")]
+	[Event(name = "loadStart", type = "cv.events.LoadEvent")]
 	
 	/**
 	 * Dispatched after Tempo has begun loading the next item, also at the end of an item playing
 	 *
 	 * @eventType cv.TempoLite.NEXT
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "next", type = "flash.events.Event")]
 	
 	/**
 	 * Dispatched as a media file finishes playing
 	 *
-	 * @eventType cv.TempoLite.PLAY_COMPLETE
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType flash.events.ProgressEvent.PLAY_COMPLETE
 	 */
 	[Event(name = "playComplete", type = "flash.events.Event")]
 	
@@ -107,9 +97,6 @@ package cv {
 	 * Dispatched as a media file is playing
 	 *
 	 * @eventType cv.events.PlayProgressEvent.PLAY_PROGRESS
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name="playProgress", type="cv.events.PlayProgressEvent")]
 	
@@ -117,9 +104,6 @@ package cv {
 	 * Dispatched once as a media file first begins to play
 	 *
 	 * @eventType cv.TempoLite.PLAY_START
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "playStart", type = "flash.events.Event")]
 	
@@ -127,9 +111,6 @@ package cv {
 	 * Dispatched after Tempo has begun loading the previous item
 	 *
 	 * @eventType cv.TempoLite.PREVIOUS
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "previous", type = "flash.events.Event")]
 	
@@ -137,38 +118,36 @@ package cv {
 	 * Dispatched from the PlayListManager when ever an item is removed, or updated, or the entire list is updated
 	 *
 	 * @eventType cv.TempoLite.REFRESH_PLAYLIST
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
 	 */
 	[Event(name = "refreshPlaylist", type = "flash.events.Event")]
 	
 	/**
 	 * Dispatched whenever the isPlaying, isReadyToPlay or isPause properties have changed.
 	 *
-	 * @eventType cv.TempoLite.STATUS
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType cv.events.PlayProgressEvent.STATUS
 	 */
-	[Event(name = "status", type = "flash.events.Event")]
+	[Event(name = "status", type = "flash.events.PlayProgressEvent")]
 	
 	/**
-	 * Dispatched as metadata is receieved from an video stream of M4A file
+	 * Dispatched as metadata is receieved from a player
 	 *
-	 * @eventType cv.events.MetaDataEvent.VIDEO_METADATA
-	 *
-	 * @langversion 3.0
-	 * @playerversion Flash 9.0.115.0
+	 * @eventType cv.events.MetaDataEvent.METADATA
 	 */
-	[Event(name="videoMetadata", type="cv.events.MetaDataEvent")]
+	[Event(name = "metadata", type = "cv.events.MetaDataEvent")]
+	
+	/**
+	 * Dispatched whenever the volume has changed
+	 *
+	 * @eventType cv.TempoLite.VOLUME
+	 */
+	[Event(name = "volume", type = "flash.events.Event")]
 	
 	//--------------------------------------
     //  Class description
     //--------------------------------------	
     /**
-	 * <h3>Version:</h3> 2.1.1<br>
-	 * <h3>Date:</h3> 3/06/2009<br>
+	 * <h3>Version:</h3> 3.0.5<br>
+	 * <h3>Date:</h3> 5/04/2009<br>
 	 * <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
 	 * <br>
 	 * TempoLite is based off of its sister project Tempo this is a parsed down version that 
@@ -187,411 +166,294 @@ package cv {
 	 * </ul>
 	 * <hr>
 	 * <ul>
-	 * <li>2.1.1
+	 * <li>3.1.0
+	 * <ul>
+	 * 		<li>Added volume event</li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.5
+	 * <ul>
+	 * 		<li>Updated NetStreamPlayer to 3.0.5</li>
+	 * 		<li>Updated SoundPlayer to 3.0.5</li>
+	 * 		<li>Updated ImagePlayer to 1.0.4</li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.4
+	 * <ul>
+	 * 		<li>Updated NetStreamPlayer to 3.0.4</li>
+	 * 		<li>Updated SoundPlayer to 3.0.4</li>
+	 * 		<li>Updated ImagePlayer to 1.0.3</li>
+	 * 		<li>currentPercent is now a number from 0 - 1</li>
+	 * 		<li>seekPercent is now accepts a number from 0 - 1</li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.3
+	 * <ul>
+	 * 		<li>Updated NetStreamPlayer to 3.0.3</li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.2
+	 * <ul>
+	 * 		<li>Changed loadCurrent and loadTotal to uint</li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.1
+	 * <ul>
+	 * 		<li>load() and seek() are now typed to *. </li>
+	 * </ul>
+	 * </li>
+	 * <li>3.0.0
 	 * <ul>
 	 * 		<li>Changed unloadMedia() to just unload()</li>
 	 * 		<li>Changed bufferTime to just buffer</li>
 	 * </ul>
 	 * </li>
-	 * <li>2.1.0
-	 * <ul>
-	 * 		<li>Re-organized class structure. AudioManager and VideoManager are now SoundPlayer and NetStreamPlayer</li>
-	 * 		<li>Re-organized class structure. IMediaManager is now IMediaPlayer</li>
-	 * 		<li>Re-organized class structure. PlayListManager is now under the managers package</li>
-	 * 		<li>Fixed autoStart, items would load paused but think they were playing. This time with the SoundPlayer</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.7
-	 * <ul>
-	 * 		<li>Added PLAY_PROGRESS event dispatch after seek</li>
-	 * 		<li>Removed traces</li>
-	 * 		<li>Added STATUS event, dispatched whenever the isPause, isPlaying, isReadyToPlay properties change.</li>
-	 * 		<li>Fixed autoStart, items would load paused but think they were playing.</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.6
-	 * <ul>
-	 * 		<li>Added leftToLeft property</li>
-	 * 		<li>Added leftToRight property</li>
-	 * 		<li>Added rightToLeft property</li>
-	 * 		<li>Added rightToRight property</li>
-	 * 		<li>Added pan property</li>
-	 * 		<li>Changed stringToTime and timeToString into static methods</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.5
-	 * <ul>
-	 * 		<li>Fixed autoStart, pause now dispatches a Progress and Change event</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.4
-	 * <ul>
-	 * 		<li>Added CUE_POINT contstant</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.3
-	 * <ul>
-	 * 		<li>Fixed getTimeCurrent, getTimeTotal, getTimeLeft to return time as milliseconds and not a decimal number.</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.2
-	 * <ul>
-	 * 		<li>Changed how time is retrieved. Time is returned in milliseconds, must use conversion functions to get strings.</li>
-	 * 		<li>Added stringToTime()</li>
-	 * 		<li>Updated timeToString()</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.1
-	 * <ul>
-	 * 		<li>Fixed Video MetaData handler</li>
-	 * 		<li>Fixed video scaling issue on initial play</li>
-	 * 		<li>Fix playlist file type handling</li>
-	 * 		<li>Fixed null playlist handling</li>
-	 * </ul>
-	 * </li>
-	 * <li>2.0.0
-	 * <ul>
-	 * 		<li>Removed PureMVC framework</li>
-	 * 		<li>Dropped compiled size by almost 10Kb</li>
-	 * 		<li>Updated XSPF parser</li>
-	 * 		<li>Updated ASX parser</li>
-	 * 		<li>Added ATOM as a playlist type</li>
-	 * 		<li>Removed B4S as a playlist type</li>
-	 * 		<li>Removed PLS as a playlist type</li>
-	 * 		<li>Added streaming video capability</li>
-	 * </ul>
-	 * </li>
-	 * <li>1.1.0
-	 * <ul>
-	 * 		<li>Added file extension override</li>
-	 * 		<li>Fixed pause bug</li>
-	 * 		<li>Updated to PureMVC AS3 Multicore 1.0.5</li>
-	 * </ul>
-	 * </li>
-	 * <li>1.0.3
-	 * <ul>
-	 * 		<li>Updated to Tempo 1.0.3</li>
-	 * </ul>
-	 * </li>
-	 * <li>1.0.2
-	 * <ul>
-	 *		 <li>Fixed int comparison bug in removeItem, addItem, and play. Introduced in 1.0.1</li>
-	 * </ul>
-	 * </li>
-	 * <li>1.0.1
-	 * <ul>
-	 * 		<li>Fixed issue of adding/removing item from playlist at index '0'</li>
-	 * 		<li>Added events TempoLite.NEXT and TempoLite.PREVIOUS</li>
-	 * 		<li>Playlist will automatically update with metadata as it's received</li>
-	 * 		<li><code>loadMedia()</code> method allows for autoStart to be set</li>
-	 * </ul>
-	 * </li>
-	 * <li>1.0.0
-	 * <ul>
-	 * 		<li>Changed how the repeat property is handled. Instead of a boolean, it now passes a string. Accepted values are TempoLite.REPEAT_TRACK, TempoLite.REPEAT_ALL, and TempoLite.REPEAT_NONE</li>
-	 * </ul>
-	 * </li>
-	 * <li>0.9.5
-	 * <ul>
-	 * 		<li>Added TempoLite.PLAY_START event</li>
-	 * 		<li>Added <code>version</code> property</li>
-	 * </ul>
-	 * </li>
-	 * <li>0.9.4
-	 * <ul>
-	 * 		<li>Added isPause property</li>
-	 * 		<li>Added boolean as a possible arguement for <code>pause()</code></li>
-	 * </ul>
-	 * </li>
-	 * <li>0.9.3
-	 * <ul>
-	 *		 <li>New api added</li>
-	 * </ul>
-	 * </li>
-	 * <li>0.9.1
-	 * <ul>
-	 * 		<li>Upgraded to PureMVC AS3 MultiCore Beta 1.0.1</li>
-	 * 		<li>Tighter integration with Tempo</li>
-	 * 		<li>Can run concurrently with Tempo without breaking</li>
-	 * 		<li>Standardized API</li>
-	 * 		<li>Cleaned up source code</li>
-	 * </ul>
-	 * </li>
-	 * <li>0.9.0
-	 * <ul>
-	 * 		<li>Initial port of Tempo</li>
-	 * </ul>
-	 * </li>
 	 * </ul>
 	 * 
-	 * @example Show example here
+	 * @example This is the same code as in the TempoLiteDemo.fla
+	 * <br/><br/>
+	 * <listing version="3.0">
+	 * import cv.TempoLite;
+	 * import cv.media.SoundPlayer;
+	 * import cv.media.NetStreamPlayer;
+	 * import cv.media.RTMPPlayer;
+	 * import cv.media.ImagePlayer;
+	 * import flash.events.Event;
+	 * import cv.events.LoadEvent;
+	 * import cv.events.PlayProgressEvent;
+	 * import cv.events.MetaDataEvent;
+	 * import cv.formats.*;
 	 * 
-     * @langversion 3.0
-     * @playerversion Flash 9.0.115.0
+	 * var tempo:TempoLite = new TempoLite(null, [ASX, ATOM, B4S, M3U, PLS, XSPF]);
+	 * tempo.debug = true;
+	 * 
+	 * var nsP:NetStreamPlayer = new NetStreamPlayer();
+	 * nsP.video = vidScreen;
+	 * tempo.addPlayer(nsP);
+	 * nsP.debug = true;
+	 * 
+	 * var sndP:SoundPlayer = new SoundPlayer();
+	 * sndP.debug = true;
+	 * tempo.addPlayer(sndP);
+	 * 
+	 * var imgP:ImagePlayer = new ImagePlayer();
+	 * this.addChildAt(imgP, 0);
+	 * imgP.debug = true;
+	 * tempo.addPlayer(imgP);
+	 * 
+	 * var rtP:RTMPPlayer = new RTMPPlayer();
+	 * rtP.streamHost = "rtmp://cp34534.edgefcs.net/ondemand";
+	 * //rtP.video = vidScreen;
+	 * //rtP.debug = true;
+	 * //tempo.addPlayer(rtP);
+	 * 
+	 * //tempo.load("images/2_1600.jpg");
+	 * //tempo.load({url:"34548/PodcastIntro", extOverride:"flv"});
+	 * //tempo.load("music/01 Sunrise Projector.mp3");
+	 * //tempo.loadPlayList("playlists/xspf_example.xml");
+	 * //tempo.loadPlayList("playlists/pls_example.pls");
+	 * //tempo.loadPlayList("playlists/m3u_example.m3u");
+	 * //tempo.loadPlayList("playlists/b4s_example.b4s");
+	 * //tempo.loadPlayList("playlists/asx_example.xml");
+	 * tempo.loadPlayList("playlists/atom_example.xml");
+	 * </listing>
      */
 	
-    public class TempoLite extends Sprite {
+    public class TempoLite extends EventDispatcher implements IMediaPlayer {
 		
 		/**
          * The current version of TempoLite in use.
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
 		 */
-		public static const VERSION:String = "2.1.1";
+		public static const VERSION:String = "3.0.5";
 		
-        // Notification name constants
-        public static const CHANGE:String = "change";
-		public static var debug:Boolean = false;
+		/**
+		 * Enables/Disables debug traces
+		 */
+		public var debug:Boolean = false;
 		
-		// Audio/Video Proxy
-		public static const PLAY_START:String = PlayProgressEvent.PLAY_START;
-		public static const PLAY_PROGRESS:String = PlayProgressEvent.PLAY_PROGRESS;
-		public static const PLAY_COMPLETE:String = PlayProgressEvent.PLAY_COMPLETE;
-		public static const LOAD_START:String = LoadEvent.LOAD_START;
-		public static const LOAD_PROGRESS:String = LoadEvent.LOAD_PROGRESS;
-		public static const LOAD_COMPLETE:String = LoadEvent.LOAD_COMPLETE;
-		public static const AUDIO_METADATA:String = MetaDataEvent.AUDIO_METADATA;
-		public static const VIDEO_METADATA:String = MetaDataEvent.VIDEO_METADATA;
-		public static const CUE_POINT:String = CuePointEvent.CUE_POINT;
-		public static const STATUS:String = PlayProgressEvent.STATUS;
-		
-		// Playlist Proxy
+		// Events
 		public static const NEXT:String = "next";
 		public static const PREVIOUS:String = "prev";
 		public static const REFRESH_PLAYLIST:String = "refreshPlaylist";
 		public static const NEW_PLAYLIST:String = "newPlaylist";
-		
-		// PlayerEvent
 		public static const REPEAT_TRACK:String = "track";
 		public static const REPEAT_ALL:String = "all";
 		public static const REPEAT_NONE:String = "none";
-		public static const MAINTAIN_ASPECT_RATIO:String = "ratio";
-		public static const NO_SCALE:String = "scale";
-		public static const EXACT_FIT:String = "fit";
+		public static const VOLUME:String = "volume";
 		
-		// Settings
-		protected var aM:IMediaPlayer;
-		protected var cM:IMediaPlayer;
-		protected var plM:PlayListManager;
-		protected var screenHeight:Number;
-		protected var screenWidth:Number;
-		protected var screenX:Number;
-		protected var screenY:Number;
-		protected var vidScreen:Video;
-		protected var vM:IMediaPlayer;
+		// Private
+		protected var _autoStart:Boolean = true;
+		protected var _autoStartIndex:int = 0;
+		protected var _cM:IMediaPlayer;
+		protected var _ext:String; // File extension
+		protected var _list:PlayList =  new PlayList();
+		protected var _listShuffled:PlayList;
+		protected var _players:Array = new Array();
+		protected var _repeat:Boolean = false;
+		protected var _repeatAll:Boolean = false;
+		protected var _shuffle:Boolean = false;
+		protected var strRepeat:String;
+		protected var _volume:Number = 0.5;
+		protected var _muted:Boolean = false;
+		protected var _pause:Boolean = false;
+		protected var _parsers:Array = new Array();
 		
 		/**
 		 * Constructor. 
 		 * 
-		 * <P>
 		 * This creates a new TempoLite instance.
 		 * 
+		 * @param	players An array of players to use with TempoLite
 		 */
-		public function TempoLite() {
-			trace("Course Vector TempoLite: v" + VERSION);
+		public function TempoLite(players:Array = null, formats:Array = null) {
+			trace2("Course Vector TempoLite: v" + VERSION);
 			
-			aM = new SoundPlayer();
-			initMedia(aM);
-			aM.addEventListener(MetaDataEvent.AUDIO_METADATA, metaDataHandler); //MetaDataEvent
+			strRepeat = REPEAT_NONE;
 			
-			vM = new NetStreamPlayer();
-			initMedia(vM);
-			vM.addEventListener(MetaDataEvent.VIDEO_METADATA, metaDataHandler); //MetaDataEvent
-			vM.addEventListener(CuePointEvent.CUE_POINT, eventHandler);
+			var i:int = players ? players.length : 0;
+			while (i--) {
+				addPlayer(players[i]);
+			}
 			
 			// Set current media manager
-			cM = vM;
+			if(_players[0]) _cM = _players[0];
 			
-			plM = new PlayListManager();
-			plM.addEventListener(TempoLite.NEW_PLAYLIST, playlistHandler);
-			plM.addEventListener(TempoLite.REFRESH_PLAYLIST, eventHandler);
+			i = formats ? formats.length : 0;
+			while (i--) {
+				_parsers.push(new formats[i]);
+			}
+			
+			updateList();
 		}
 		
 		//--------------------------------------
-		//  Properties
+		// IMediaPlayer Properties
 		//--------------------------------------
 		
 		/** 
 		 * Whether a video will play immediately when a playlist is loaded.
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
-		public function get autoStart():Boolean { return plM.autoStart; }
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set autoStart(b:Boolean):void {
-			plM.autoStart = b;
-			if(aM) aM.autoStart = b;
-			if(vM) vM.autoStart = b;
+		public function get autoStart():Boolean { return _autoStart }
+		/** @private **/
+		public function set autoStart(v:Boolean):void {
+			_autoStart = v;
+			setPlayersProp("autoStart", v);
 		}
 		
-		/** 
-		 * If autoStart is true, the index of the item in the playlist to play first.
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public function get autoStartIndex():int { return plM.autoStartIndex }
-		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set autoStartIndex(n:int):void {
-			plM.autoStartIndex = n;
-		}
-		
-		/** 
-		 * The time in seconds to buffer a file before playing.
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		 * Retrieve the current play progress as a percent.
 		 */
-		public function get buffer():int { return cM.buffer }
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set buffer(n:int):void {
-			if(aM) aM.buffer = n;
-			if(vM) vM.buffer = n;
-		}
+		public function get currentPercent():Number { return _cM ? _cM.currentPercent : 0 }
 		
 		/** 
 		 * If TempoLite is currently paused.
+		 */
+		public function get paused():Boolean { return _cM ? _cM.paused : true }
+		
+		/** 
+		 * Current status of media
+		 */
+		public function get status():String { return _cM ? _cM.status : PlayProgressEvent.UNLOADED }
+		
+		/**
+		 * Retrieve the current bytes loaded of the current item.
+		 */
+		public function get loadCurrent():uint { return _cM ? _cM.loadCurrent : 0 }
+		
+		/**
+		 * Retrieve the total bytes to load of the current item.
+		 */
+		public function get loadTotal():uint {	return _cM ? _cM.loadTotal : 0 }
+		
+		/** 
+		 * A number from 0 to 1 determines volume.
 		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		 * @default 0.5
 		 */
-		public function get isPause():Boolean { return cM.isPause }
-		
-		public function get isPlaying():Boolean { return cM.isPlaying }
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public function get leftToLeft():Number { return cM.leftToLeft }
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		public function set leftToLeft(n:Number):void {
-			if(aM) aM.leftToLeft = n;
-			if(vM) vM.leftToLeft = n;
+		public function get volume():Number { return _volume }
+		/** @private **/
+		public function set volume(v:Number):void {
+			var n:Number = Math.max(0, Math.min(1, v));
+			_volume = n;
+			setPlayersProp("volume", _volume);
+			dispatchEvent(new Event(TempoLite.VOLUME));
 		}
 		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public function get leftToRight():Number { return cM.leftToRight }
+		public function get muted():Boolean { return _muted; }
+		/** @private **/
+		public function set muted(b:Boolean):void {
+			_muted = b;
+			setPlayersProp("muted", _muted);
+			dispatchEvent(new Event(TempoLite.VOLUME));
+		}
 		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		public function set leftToRight(n:Number):void {
-			if(aM) aM.leftToRight = n;
-			if(vM) vM.leftToRight = n;
+		 * Retrieve the metadata from the current item playing if available.
+		 */
+		public function get metaData():Object { return _cM ? _cM.metaData : { } }
+		
+		/**
+		 * Retrieve the current play time of the current item playing.
+		 * 
+		 * @return the current play time of the item playing.
+		 */
+		public function get timeCurrent():Number {
+			var n:Number = _cM.timeCurrent != 0 ? _cM.timeCurrent / 1000 : 0;
+			return int(String(n.toFixed(3)).replace(".", ""));
 		}
+		
+		/**
+		 * Retrieve the play time remaining of the current item playing.
+		 * 
+		 * @return the play time remaining of the item playing.
+		 */
+		public function get timeLeft():Number {
+			var n:Number = _cM.timeLeft != 0 ? _cM.timeLeft / 1000 : 0;
+			return -1 * int(String(n.toFixed(3)).replace(".", ""));
+		}
+		
+		/**
+		 * Retrieve the total play time of the current item playing.
+		 * 
+		 * @return the total play time of the item playing.
+		 */
+		public function get timeTotal():Number {
+			var n:Number = _cM.timeTotal != 0 ? _cM.timeTotal / 1000 : 0;
+			return int(String(n.toFixed(3)).replace(".", ""));
+		}
+		
+		//--------------------------------------
+		// TempoLite Properties
+		//--------------------------------------
+		
+		/** 
+		 * If autoStart is true, the index of the item in the playlist to play first.
+		 */
+		public function get autoStartIndex():int { return _autoStartIndex }
+		/** @private **/
+		public function set autoStartIndex(v:int):void {
+			_autoStartIndex = v;
+		}
+		
+		/**
+		 * Retrieve the current index in the playlist.
+		 */
+		public function get currentIndex():uint { return _list.index }
+		
+		/**
+		 * Retrieve the current item playing.
+		 */
+		public function get currentItem():Object { return _list.getCurrent() }
 		
 		/** 
 		 * Retrieves the number of items in the playlist.
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
-		public function get length():uint { return plM.list.length }
-		
-		/** 
-		 * The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right). 
-		 * A value of 0 represents no panning (balanced center between right and left). 
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public function get pan():Number { return cM.pan }
+		public function get length():uint { return _list.length }
 		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		public function set pan(n:Number):void {
-			if(aM) aM.pan = n;
-			if(vM) vM.pan = n;
-		}
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		 * Retrieve the current playlist in <code>PlayList</code> format (enhanced array).
 		 */
-		public function get rightToLeft():Number { return cM.rightToLeft }
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		public function set rightToLeft(n:Number):void {
-			if(aM) aM.rightToLeft = n;
-			if(vM) vM.rightToLeft = n;
-		}
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public function get rightToRight():Number { return cM.rightToRight }
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		public function set rightToRight(n:Number):void {
-			if(aM) aM.rightToRight = n;
-			if(vM) vM.rightToRight = n;
-		}
+		public function get list():PlayList { return _list }
 		
 		/** 
 		 * Sets whether repeat is enabled, or which type of repeat is enabled.
@@ -599,88 +461,121 @@ package cv {
 		 * <li>TempoLite.REPEAT_ALL</li>
 		 * <li>TempoLite.REPEAT_TRACK</li>
 		 * <li>TempoLite.REPEAT_NONE</li>
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		 * 
+		 * @default TempoLite.REPEAT_NONE
 		 */
-		public function get repeat():String {
-			if(plM) return plM.repeat;
-			return TempoLite.REPEAT_NONE;
-		}
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set repeat(str:String):void {
-			switch(str) {
-				case TempoLite.REPEAT_ALL:
-				case TempoLite.REPEAT_NONE:
-				case TempoLite.REPEAT_TRACK:
+		public function get repeat():String { return strRepeat }
+		/** @private **/
+		public function set repeat(v:String):void {
+			switch(v) {
+				case REPEAT_ALL :
+					_repeatAll = list.repeatAll = true;
+					_repeat = list.repeat = false;
+					strRepeat = v;
 					break;
+				case REPEAT_TRACK : 
+					_repeatAll = list.repeatAll = false;
+					_repeat = list.repeat = true;
+					strRepeat = v;
+					break;
+				case REPEAT_NONE :
+					_repeatAll = list.repeatAll = false;
+					_repeat = list.repeat = false;
+					strRepeat = v;
 				default:
 					return;
 			}
-			
-			plM.repeat = str;
 		}
 		
 		/** 
 		 * Whether to shuffle the playlist or not.
 		 *
 		 * @default false
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
 		 */
-		public function get shuffle():Boolean { return plM.shuffle }
+		public function get shuffle():Boolean { return _shuffle }
+		/** @private **/
+		public function set shuffle(v:Boolean):void { _shuffle = v }
+		
+		//--------------------------------------
+		//  IMediaPlayer Methods
+		//--------------------------------------
+		
+		public function isValid(ext:String, url:String):Boolean {
+			return false;
+		}
 		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set shuffle(b:Boolean):void { plM.shuffle = b; }
-		
-		/** 
-		 * The version of TempoLite in use.
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		public static function get version():String { return VERSION }
-		
-		/** 
-		 * A number from 0 to 1 determines volume.
-		 *
-		 * @default 0.5
+		 * Create a playlist of a single item and load the item.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		 * @param item The url or the item object to be played.
 		 */
-		public function get volume():Number { return cM.volume }
+		public function load(item:*):void {
+			if (item == null) throw Error("Must pass a valid url or item object to play");
+			_list = new PlayList();
+			addItem(item);
+			onNewPlaylist();
+		}
 		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		public function set volume(n:Number):void {
-			var v:Number = Math.max(0, Math.min(1, n));
-			if(aM) aM.volume = v;
-			if(vM) vM.volume = v;
+		 * Pauses the current playback.
+		 * 
+		 * @default true
+		 * @param b Value to set pause to
+		 */
+		public function pause(b:Boolean = true):void {
+			_pause = b;
+			if(_cM) _cM.pause(_pause);
+		}
+		
+		/**
+		 * Plays starting at the given position.
+		 * 
+		 * @default 0
+		 * @param pos	Position to play from
+		 */
+		public function play(pos:int = 0):void {
+			if(_cM) _cM.play(pos);
+		}
+		
+		/**
+		 * Seek to a specific time (in seconds) in the current item playing.
+		 * Pass a string of the time to seek relative to the current play time.
+		 * 
+		 * @param time Specific time to seek to, in seconds
+		 */
+		public function seek(time:*):void {
+			var n:Number = isNaN(Number(time)) ? 0 : Number(time);
+			if(_cM) {
+				if (time is String) n += _cM.timeCurrent / 1000;
+				_cM.seek(n);
+			}
+		}
+		
+		/**
+		 * Seek to a specific percent (0 - 1) in the current item playing.
+		 * 
+		 * @param percent Percentage to seek to
+		 */
+		public function seekPercent(percent:Number):void {
+			if(_cM) _cM.seekPercent(percent);
+		}
+		
+		/**
+		 * Stops the audio at the specified position. Sets the position given as the pause position.
+		 */
+		public function stop():void {
+			if(_cM) _cM.stop();
+		}
+		
+		/**
+		 * Unloads the current item playing. 
+		 */
+		public function unload():void {
+			callPlayersMethod("unload");
 		}
 		
 		//--------------------------------------
-		//  Methods
+		// TempoLite Methods
 		//--------------------------------------
 		
 		/**
@@ -690,242 +585,112 @@ package cv {
 		 * 
 		 * @default -1
 		 * @param index where the item should be added in the playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
-		public function addItem(item:Object, index:int = -1):void { 
-			plM.addItem(item, index);
+		public function addItem(item:*, index:int = -1):uint {
+			item = getItemObject(item);
+			if (index >= 0) {
+				var a:Array = _list.splice(index);
+				_list[index] = item;
+				_list = _list.concat(a) as PlayList;
+			} else {
+				index = _list.push(item);
+			}
+			
+			updateList();
+			
+			return index;
+		}
+		
+		/**
+		 * Adds a player for use by TempoLite. Which can enable TempoLite to
+		 * handle more types of media.
+		 * 
+		 * @param	player	The player to add
+		 */
+		public function addPlayer(player:IMediaPlayer):uint {
+			var f:Function = player.addEventListener;
+			f(LoadEvent.LOAD_START, 			eventHandler, false, 0, true); //LoadEvent
+			f(LoadEvent.LOAD_PROGRESS, 			eventHandler, false, 0, true); //ProgressEvent
+			f(LoadEvent.LOAD_COMPLETE, 			eventHandler, false, 0, true);
+			f(Event.CHANGE, 					eventHandler, false, 0, true);
+			f(PlayProgressEvent.PLAY_START, 	eventHandler, false, 0, true);
+			f(PlayProgressEvent.STATUS, 		eventHandler, false, 0, true);
+			f(PlayProgressEvent.PLAY_PROGRESS, 	eventHandler, false, 0, true); // PlayProgressEvent
+			f(PlayProgressEvent.PLAY_COMPLETE, 	playlistHandler, false, 0, true);
+			f(MetaDataEvent.METADATA, 			metaDataHandler, false, 0, true); //MetaDataEvent
+			f(MetaDataEvent.CUE_POINT, 			eventHandler, false, 0, true);
+			var index:uint = _players.push(player);
+			
+			if (_cM == null) _cM = _players[0];
+			return index;
 		}
 		
 		/**
 		 * Clears the current playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function clearItems():void {
-			plM.clear();
-		}
-		
-		/**
-		 * Retrieve the current index in the playlist.
-		 * 
-		 * @return the index of the playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getCurrentIndex():uint { return plM.list.index	}
-		
-		/**
-		 * Retrieve the current item playing.
-		 * 
-		 * @return the current item playing.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getCurrentItem():Object { return plM.list.getCurrent() }
-		
-		/**
-		 * Retrieve the current play progress as a percent.
-		 * 
-		 * @return the play progress in terms of percent.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getCurrentPercent():uint { return cM.currentPercent }
-		
-		/**
-		 * Retrieve the current playlist in <code>PlayList</code> format (enhanced array).
-		 * 
-		 * @return the playlist as a <code>PlayList</code> type.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getList():PlayList { return plM.list }
-		
-		/**
-		 * Retrieve the current bytes loaded of the current item.
-		 * 
-		 * @return the current bytes loaded of the item.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getLoadCurrent():Number { return cM.loadCurrent }
-		
-		/**
-		 * Retrieve the total bytes to load of the current item.
-		 * 
-		 * @return the total bytes to load of the item.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getLoadTotal():Number {	return cM.loadTotal }
-		
-		/**
-		 * Retrieve the metadata from the current item playing if available.
-		 * 
-		 * @return the metadata associated with the item playing.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getMetaData():Object { return cM.metaData }
-		
-		/**
-		 * Retrieve the current play time of the current item playing.
-		 * 
-		 * @return the current play time of the item playing.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getTimeCurrent():int {
-			var n:Number = cM.timeCurrent != 0 ? cM.timeCurrent / 1000 : 0;
-			return int(String(n.toFixed(3)).replace(".", ""));
-		}
-		
-		/**
-		 * Retrieve the play time remaining of the current item playing.
-		 * 
-		 * @return the play time remaining of the item playing.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getTimeLeft():int {
-			var n:Number = cM.timeLeft != 0 ? cM.timeLeft / 1000 : 0;
-			return -1 * int(String(n.toFixed(3)).replace(".", ""));
-		}
-		
-		/**
-		 * Retrieve the total play time of the current item playing.
-		 * 
-		 * @return the total play time of the item playing.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function getTimeTotal():int {
-			var n:Number = cM.timeTotal != 0 ? cM.timeTotal / 1000 : 0;
-			return int(String(n.toFixed(3)).replace(".", ""));
-		}
-		
-		/**
-		 * Create a playlist of a single item and load the item.
-		 * 
-		 * @param item item to be played.
-		 * 
-		 * @default true
-		 * @param autoStart Whether the file will start playing as soon as possible
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function loadMedia(item:Object, autoStart:Boolean = true):void {
-			plM.autoStart = autoStart;
-			plM.loadSingle(item);
+			_list = new PlayList();
+			onNewPlaylist();
 		}
 		
 		/**
 		 * Loads a new playlist and clears any previous playlsit.
 		 * 
-		 * @default "playlists/Tempo.m3u"
-		 * 
-		 * @param url the path to the playlist file.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
+		 * @param url The path to the playlist file.
 		 */
-		public function loadPlayList(url:String = "playlists/vip.xspf"):void {
-			if (url == null) url = "playlists/vip.xspf";
-			plM.load(url);
+		public function loadPlayList(url:String):void {
+			if (!url) throw Error("Must pass a valid url to the playlist");
+			
+			_ext = url.substr(-3).toLowerCase();
+			var loader:URLLoader = new URLLoader();
+			loader.addEventListener(Event.COMPLETE, loadedHandler);
+			loader.load(new URLRequest(url));
 		}
 		
 		/**
 		 * Plays the next item in the playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function next():void { 
-			var o:Object = plM.getNext();
-			if (o) load(o);
-		}
-		
-		/**
-		 * Pauses the current playback.
-		 * 
-		 * @default true
-		 * 
-		 * @param b Value to set pause to
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function pause(b:Boolean = true):void {
-			cM.pause(b);
+			var o:Object;
+			if (!_shuffle || _list.repeat || _list.repeatAll) {
+				o = _list.getNext();
+				_listShuffled.index = _list.index;
+			} else {
+				o = _listShuffled.getNext();
+				_list.index = o.index;
+				o = _list.getCurrent();
+			}
+			if (o) loadItem(o);
 		}
 		
 		/**
 		 * Plays the current item in the playlist, or at the 
 		 * specified index in the playlist.
 		 * 
-		 * @default -1
-		 * 
+		 * @default 0
 		 * @param index The index of the item to be played
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
-		public function play(index:int = -1):void {
-			if (index >= 0) {
-				plM.list.index = index;
-				load(plM.list.getCurrent());
-			} else {
-				if (cM.isPlaying || cM.isPause) {
-					cM.play();
-				} else if(!cM.isPlaying && !cM.isPause) {
-					if(plM.list.getCurrent()) load(plM.list.getCurrent());
-				}
-			}
+		public function playItem(index:uint = 0):void {
+			_list.index = index;
+			loadItem(_list.getCurrent());
 		}
 		
 		/**
 		 * Plays the previous item in the playlist.
 		 * 
 		 * @see #event:previous
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public function previous():void {
-			var o:Object = plM.getPrevious();
-			if (o) load(o);
+			var o:Object;
+			if(!_shuffle || _list.repeat || _list.repeatAll) {
+				o = _list.getPrevious();
+				_listShuffled.index = _list.index;
+			} else {
+				o = _listShuffled.getPrevious();
+				_list.index = o.index;
+				o = _list.getCurrent();
+			}
+			if (o) loadItem(o);
 			dispatchEvent(new Event(TempoLite.PREVIOUS));
 		}
 		
@@ -933,199 +698,48 @@ package cv {
 		 * Remove an item from the playlist from the end, or at index specified.
 		 * 
 		 * @default -1
-		 * 
 		 * @param index The index of the item to be removed
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
+		 * @see #event:refreshPlaylist
 		 */
 		public function removeItem(index:int = -1):void {
-			plM.removeItem(index);
+			if (index < 0) index = _list.length - 1; // Get last item in the list
+			_list.removeAt(index);
+			dispatchEvent(new Event(TempoLite.REFRESH_PLAYLIST));
 		}
 		
 		/**
-		 * Seek to a specific time (in seconds) in the current item playing.
+		 * Remove a player from TempoLite.
 		 * 
-		 * @param time Specific time to seek to, in seconds
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
+		 * @param	player	The player to be removed.
 		 */
-		public function seek(time:Number):void {
-			cM.seek(time * 1000);
-		}
-		
-		/**
-		 * Seek to a specific percent (0 - 1) in the current item playing.
-		 * 
-		 * @param percent Percentage to seek to
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function seekPercent(percent:Number):void {
-			cM.seekPercent(percent * 100);
-		}
-		
-		/**
-		 * Seek by the amount (in seconds) specified relative to the current play time.
-		 * 
-		 * @param time Amount to seek relative to current play time in seconds.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function seekRelative(time:Number):void {
-			cM.seek(cM.timeCurrent + (time * 1000));
-		}
-		
-		/**
-		 * Toggles mute.
-		 * 
-		 * @param b Value to set mute to
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function setMute(b:Boolean):void {
-			if(aM) aM.mute(b);
-			if(vM) vM.mute(b);
-		}
-		
-		/**
-		 * Used to specify a hosting server when streaming video
-		 * 
-		 * @param value The host url
-		 * 
-		 * @example <code>
-		 * import cv.TempoLite;<br>
-		 * <br>
-		 * var vidScreen:Video = new Video();<br>
-		 * this.addChild(vidScreen);<br>
-		 * <br>
-		 * var tempo:TempoLite = new TempoLite();<br>
-		 * tempo.setStreamHost("rtmp://cp11111.edgefcs.net/ondemand");<br>
-		 * tempo.loadMedia({url:"11111/VideoName", extOverride:"flv"});<br>
-		 * tempo.setVideoScreen(vidScreen);<br>
-		 * </code>
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function setStreamHost(value:String):void {
-			if(vM) NetStreamPlayer(vM).streamHost = value;
-		}
-		
-		/**
-		 * Determines how TempoLite will scale a video. The options are 
-		 * 
-		 * <ul>
-		 * <li>TempoLite.MAINTAIN_ASPECT_RATIO</li>
-		 * <li>TempoLite.EXACT_FIT</li>
-		 * <li>TempoLite.NO_SCALE</li>
-		 * </ul>
-		 * 
-		 * @see #MAINTAIN_ASPECT_RATIO
-		 * @see #EXACT_FIT
-		 * @see #NO_SCALE
-		 * 
-		 * @param scaleMode scale mode to use for video scaling.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function setVideoScale(scaleMode:String):void {
-			var v:Video = vidScreen;
-			if (v) {
-				switch(scaleMode) {
-					case TempoLite.MAINTAIN_ASPECT_RATIO :
-					case TempoLite.EXACT_FIT :
-					case TempoLite.NO_SCALE :
-						break;
-					default :
-						return;
-				}
-				
-				var vidW:int = v.videoWidth;
-				var vidH:int = v.videoHeight;
-				switch (scaleMode) {
-					case TempoLite.NO_SCALE :
-						v.width = vidW;
-						v.height = vidH;
-						v.x = screenX;
-						v.y = screenY;
-						break;
-					case TempoLite.EXACT_FIT :
-						v.width = screenWidth;
-						v.height = screenHeight;
-						v.x = screenX;
-						v.y = screenY;
-						break;
-					case TempoLite.MAINTAIN_ASPECT_RATIO :
-					default:
-						var newWidth:Number = (vidW * screenHeight / vidH);
-						var newHeight:Number = (vidH * screenWidth / vidW);
-						if (newHeight < screenHeight) {
-							v.width = screenWidth;
-							v.height = newHeight;
-						} else if (newWidth < screenWidth) {
-							v.width = newWidth;
-							v.height = screenHeight;
-						} else {
-							v.width = screenWidth;
-							v.height = screenHeight;
-						}
-						
-						v.x = screenX + ((screenWidth - v.width) / 2);
-						v.y = screenY + ((screenHeight - v.height) / 2);
+		public function removePlayer(player:IMediaPlayer):void {
+			var i:uint = _players.length;
+			while (i--) {
+				if (_players[i] === player) {
+					player.unload();
+					var f:Function = player.removeEventListener;
+					f(LoadEvent.LOAD_START, 			eventHandler);
+					f(LoadEvent.LOAD_PROGRESS, 			eventHandler);
+					f(LoadEvent.LOAD_COMPLETE, 			eventHandler);
+					f(Event.CHANGE, 					eventHandler);
+					f(PlayProgressEvent.PLAY_START, 	eventHandler);
+					f(PlayProgressEvent.STATUS, 		eventHandler);
+					f(PlayProgressEvent.PLAY_PROGRESS, 	eventHandler);
+					f(PlayProgressEvent.PLAY_COMPLETE, 	playlistHandler);
+					f(MetaDataEvent.METADATA, 			metaDataHandler);
+					f(MetaDataEvent.CUE_POINT, 			eventHandler);
+					_players.splice(i, 1);
+					if (_cM === player) _cM = _players[0] || null;
 				}
 			}
 		}
-		
-		/**
-		 * Assigns a video screen for TempoLite to display videos with.
-		 * 
-		 * @param video video display object to be used as a screen.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function setVideoScreen(video:Video):void {
-			vidScreen = video;
-			screenWidth = vidScreen.width;
-			screenHeight = vidScreen.height;
-			screenX = vidScreen.x;
-			screenY = vidScreen.y;
-			
-			if(vM) NetStreamPlayer(vM).video = vidScreen;
-		}
-		
-		/**
-		 * Stops the selected item in the playlist.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
-		 */
-		public function stop():void { cM.stop() }
 		
 		/**
 		 * Converts a time in 00:00:000 format and converts it back into a number.
 		 * 
 		 * @param	text The string to convert
 		 * @return The converted number
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public static function stringToTime(text:String):int {
             var arr:Array = text.split(":");
@@ -1150,10 +764,6 @@ package cv {
 		 * 
 		 * @param	n Milliseconds to convert
 		 * @return The converted string
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
 		 */
 		public static function timeToString(n:int):String {
 			var ms:int = int(n % 1000);
@@ -1164,20 +774,180 @@ package cv {
 		}
 		
 		/**
-		 * Unloads the current item playing. 
+		 * Updates a property of an Item in the playlist. This is used in 
+		 * situations where the metadata has been loaded, and the correct 
+		 * duration or title is updated for the playlist display. Dispatches 
+		 * the TempoLite.REFRESH_PLAYLIST event.
 		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0 
-		 * @category Method
+		 * @param	index 	The index of the item to be updated
+		 * @param	key		The property name (length, title, etc)
+		 * @param	value	The value to update the prop to.
 		 */
-		public function unload():void {
-			if(aM) aM.unload();
-			if(vM) vM.unload();
+		public function updateItem(index:uint, key:String, value:*):void {
+			if(_list[index]) {
+				if(key == "length") value /= 1000;
+				if(_list[index][key] != value) {
+					_list[index][key] = value;
+					dispatchEvent(new Event(TempoLite.REFRESH_PLAYLIST));
+				}
+			}
 		}
 		
 		//--------------------------------------
 		//  Private
 		//--------------------------------------
+		
+		protected function callPlayersMethod(methodName:String, methodValue:* = null):void {
+			var i:int = _players.length;
+			while (i--) {
+				if (methodValue != null) {
+					_players[i][methodName](methodValue);
+				} else {
+					_players[i][methodName]();
+				}
+			}
+		}
+		
+		protected function eventHandler(e:Event):void {
+			dispatchEvent(e.clone());
+		}
+		
+		protected function getItemObject(item:*):Object {
+			if (item is String) {
+				var url:String = item as String;
+				item = new Object();
+				item.url = url;
+			}
+			
+			if (!item.hasOwnProperty("title")) item.title = "";
+			if (!item.hasOwnProperty("length")) item.length = -1;
+			
+			return item;
+		}
+		
+		// Determines what kind of playlist is loaded and returns in PlayList format
+		protected function getType(data:String):PlayList {
+			var i:int = _parsers.length;
+			while (i--) {
+				var p:IPlaylistParser = _parsers[i];
+				if (p.isValid(_ext, data)) {
+					return p.toPlayList(data);
+					break;
+				}
+			}
+			
+			trace2("TempoLite - Warning : Unknown playlist file type; creating a new playlist.");
+			return new PlayList();
+		}
+		
+		protected function loadItem(o:Object):void {
+			unload();
+			
+			var ext:String = o.hasOwnProperty("extOverride") ? o.extOverride : o.url.substr( -3).toLowerCase();
+			var i:int = _players.length;
+			
+			while (i--) {
+				if (IMediaPlayer(_players[i]).isValid(ext, o.url)) {
+					_cM = _players[i];
+					_cM.load(o.url);
+					return;
+					break;
+				}
+			}
+			
+			trace2("TempoLite - Warning : No player loaded capable of playing '" + o.url + "'");
+		}
+		
+		protected function loadedHandler(e:Event):void {
+			var loader:URLLoader = e.target as URLLoader;
+			_list = getType(loader.data as String);
+			_list.index = 0;
+			updateList();
+			
+			onNewPlaylist();
+		}
+		
+		protected function metaDataHandler(e:MetaDataEvent):void {
+			if (e.data.hasOwnProperty("TLEN")) {
+				// MP3
+				updateItem(_list.index, "length", e.data.TLEN);
+			} else if (e.data.hasOwnProperty("duration")) {
+				// Netstream
+				updateItem(_list.index, "length", e.data.duration * 1000);
+			}
+			dispatchEvent(e.clone());
+		}
+		
+		protected function onNewPlaylist():void {
+			dispatchEvent(new Event(TempoLite.NEW_PLAYLIST));
+			if (_autoStart) _list.index = _autoStartIndex;
+			if (_list.getCurrent()) loadItem(_list.getCurrent());
+		}
+		
+		protected function playlistHandler(e:Event):void {
+			switch(e.type) {
+				case PlayProgressEvent.PLAY_COMPLETE :
+					next();
+					dispatchEvent(e.clone());
+					dispatchEvent(new Event(TempoLite.NEXT));
+					break;
+			}
+		}
+		
+		protected function setPlayersProp(propName:String, propValue:*):void {
+			var i:int = _players.length;
+			while (i--) {
+				_players[i][propName] = propValue;
+			}
+		}
+		
+		protected function shuffleList(arr:PlayList):PlayList {
+			var temp:PlayList = new PlayList();
+			var idx:int;
+			var l:int = arr.length;
+			while (l > 0) {
+				idx = int(Math.random() * l);
+				temp.push(arr[idx]);
+				arr.splice(idx, 1);
+				l = arr.length;
+			}
+			return temp;
+		}
+		
+		protected function trace2(...args):void {
+			if (debug) trace(args);
+		}
+		
+		protected function updateList():void {
+			_listShuffled = new PlayList();
+			
+			// Check for files without a title from metadata
+			// Extracts the file name from the url if there is no given title
+			var l:int = _list.length;
+			var i:int;
+			for (i = 0; i < l; i++) {
+				var item:Object = _list[i];
+				if (item.title == "") {
+					var arrURL:Array = item.url.indexOf("\\") != -1 ? item.url.split("\\") : item.url.split("/");
+					item.title = arrURL[arrURL.length - 1];
+				}
+				
+				_listShuffled.push(item);
+			}
+			
+			l = _listShuffled.length;
+			for (i = 0; i < l; i++) {
+				_listShuffled[i].index = i;
+			}
+			_listShuffled = shuffleList(_listShuffled);
+			_listShuffled.index = _list.index;
+			
+			_list.repeat = _repeat;
+			_list.repeatAll = _repeatAll;
+			_listShuffled.repeat = _repeat;
+			_listShuffled.repeatAll = _repeatAll;
+			dispatchEvent(new Event(TempoLite.REFRESH_PLAYLIST));
+		}
 		
 		protected static function zero(n:int, isMS:Boolean = false):String {
 			if(isMS) {
@@ -1186,65 +956,6 @@ package cv {
 			}
 			if (n < 10) return "0" + n;
 			return "" + n;
-		}
-		
-		protected function eventHandler(e:Event):void {
-			dispatchEvent(e.clone());
-		}
-		
-		protected function initMedia(m:IMediaPlayer):void {
-			m.addEventListener(LoadEvent.LOAD_START, eventHandler); //LoadEvent
-			m.addEventListener(TempoLite.LOAD_PROGRESS, eventHandler); //ProgressEvent
-			m.addEventListener(TempoLite.PLAY_COMPLETE, playlistHandler);
-			m.addEventListener(TempoLite.PLAY_START, eventHandler);
-			m.addEventListener(TempoLite.CHANGE, eventHandler);
-			m.addEventListener(TempoLite.STATUS, eventHandler);
-			m.addEventListener(PlayProgressEvent.PLAY_PROGRESS, eventHandler); // PlayProgressEvent
-		}
-		
-		protected function load(o:Object):void {
-			var ext:String = o.extOverride || o.url.substr( -3).toLowerCase();
-			if (aM) aM.unload();
-			if (vM) vM.unload();
-			
-			if (aM && aM.isValid(ext)) {
-				cM = aM;
-				aM.load(o.url, plM.autoStart);
-			} else if (vM.isValid(ext) && vM) {
-				cM = vM;
-				vM.load(o.url, plM.autoStart);
-			}
-		}
-		
-		protected function metaDataHandler(e:MetaDataEvent):void {
-			switch(e.type) {
-				case MetaDataEvent.AUDIO_METADATA :
-					if (e.data.TLEN) plM.updateItemLength(plM.list.index, e.data.TLEN);
-					break;
-				case MetaDataEvent.VIDEO_METADATA :
-					if (e.data.duration) plM.updateItemLength(plM.list.index, e.data.duration * 1000);
-					break;
-			}
-			dispatchEvent(e.clone());
-		}
-		
-		protected function playlistHandler(e:Event):void {
-			switch(e.type) {
-				case TempoLite.PLAY_COMPLETE :
-					next();
-					dispatchEvent(e.clone());
-					dispatchEvent(new Event(TempoLite.NEXT));
-					break;
-				case TempoLite.NEW_PLAYLIST :
-					var l:PlayList = plM.list;
-					if (plM.autoStart) l.index = plM.autoStartIndex;
-					if(l.getCurrent()) load(l.getCurrent());
-					
-					// Reset listeners
-					plM.list.removeEventListener(TempoLite.CHANGE, eventHandler);
-					plM.list.addEventListener(TempoLite.CHANGE, eventHandler);
-					break;
-			}
 		}
     }
 }

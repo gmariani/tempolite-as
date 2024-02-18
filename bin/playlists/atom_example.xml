@@ -1,0 +1,42 @@
+﻿<feed xmlns='http://www.w3.org/2005/Atom' 
+	xmlns:media='http://search.yahoo.com/mrss/'  
+	xmlns:jwplayer='http://developer.longtailvideo.com/trac/wiki/FlashFormats'>
+	<title>Example ATOM playlist</title>
+
+	<entry>
+		<title>Black 180</title>
+		<link rel="alternate" href="http://www.bigbuckbunny.org/" />
+		<summary>Black 180 drifting</summary>
+		<media:credit role="author">Unknown</media:credit>
+		<media:content url="video/Black 180.flv" type="video/x-flv" />
+	</entry>
+
+	<entry>
+		<title>Sunrise Projector</title>
+		<link rel="alternate" type="text/html" href="http://www.tychomusic.com/" />
+		<summary>Tycho song</summary>
+		<media:group>
+			<media:credit role="author">Tycho</media:credit>
+			<media:content url="music/01 Sunrise Projector.mp3" type="audio/mpeg" />
+			<!-- <media:thumbnail url="files/bunny.jpg" /> -->
+		</media:group>
+	</entry>
+
+	<entry>
+		<title>Wall Paper</title>
+		<link rel="alternate" href="http://www.bigbuckbunny.org/" />
+		<summary>Random Venture Brothers wall paper</summary>
+		<media:credit role="author">Adult Swim</media:credit>
+		<media:content url="images/2_1600.jpg" type="image/jpeg" duration="5" />
+	</entry>
+
+	<!-- <entry>
+		<title>Youtube video with start</title>
+		<link rel="alternate" href="http://www.bigbuckbunny.org/" />
+		<summary>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation.</summary>
+		<media:credit role="author">the Peach Open Movie Project</media:credit>
+		<media:content url="http://youtube.com/watch?v=IBTE-RoMsvw" type="text/html"/>
+		<jwplayer:start>10</jwplayer:start>
+	</entry> -->
+
+</feed>

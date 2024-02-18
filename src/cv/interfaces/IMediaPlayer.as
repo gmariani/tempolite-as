@@ -1,28 +1,39 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-//  COURSE VECTOR
-//  Copyright 2009 Course Vector
-//  All Rights Reserved.
-//
-//  NOTICE: Course Vector permits you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
-//
-////////////////////////////////////////////////////////////////////////////////
+/**
+* TempoLite ©2012 Gabriel Mariani.
+* Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+*
+*
+* Copyright (c) 2012 Gabriel Mariani
+* 
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the "Software"), to deal in the Software without
+* restriction, including without limitation the rights to use,
+* copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the
+* Software is furnished to do so, subject to the following
+* conditions:
+* 
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+* 
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+* OTHER DEALINGS IN THE SOFTWARE.
+**/
 
 package cv.interfaces {
 	
 	import flash.events.IEventDispatcher;
-	import flash.media.Video;
 	
 	/**
-	 *  Implement the IMediaPlayer interface to create a custom media manager. 
-	 *  A media manager handles audio or video playback.
-	 *
-	 *  @see cv.media.AudioPlayer
-	 *  @see cv.media.VideoPlayer
-     *
-     * @langversion 3.0
-     * @playerversion Flash 9.0.28.0
+	 *  Implement the IMediaPlayer interface to create a custom media player. 
+	 *  A media player handles audio or video playback.
 	 */
 	public interface IMediaPlayer extends IEventDispatcher {
 		
@@ -30,216 +41,71 @@ package cv.interfaces {
 		//  Properties
 		//--------------------------------------
 		
-		/** 
-		 * Gets or sets whether media will play automatically once loaded.
-		 * 
-		 * @default true
-		 *
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
+		/**
+		 *  Whether media will play automatically once loaded.
 		 */
 		function get autoStart():Boolean;
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.115.0
-         */
-		function set autoStart(b:Boolean):void;
-		
-		/**
-		 * Gets or sets the buffer value of a media manager. This controls
-		 * how long a file is buffered before it begins to play.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
-		 */
-		function get buffer():int;
-		
-		/**
-         *  @private
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
-		 */
-		function set buffer(n:int):void;
+		/** @private **/
+		function set autoStart(v:Boolean):void;
 		
 		/**
 		 * Gets the play progress percentage of the currently
 		 * playing media file.
-		 * 
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function get currentPercent():uint;
+		function get currentPercent():Number;
 		
 		/**
-		 *  Gets the pause status of the media manager.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
+		 *  Gets the pause status of the media player.
 		 */
-		function get isPause():Boolean;
+		function get paused():Boolean;
 		
 		/**
-		 *  Gets the playing status of the media manager.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
+		 *  Gets the loading status of the media player.
 		 */
-		function get isPlaying():Boolean;
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		function get leftToLeft():Number;
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		function set leftToLeft(n:Number):void;
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		function get leftToRight():Number;
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		function set leftToRight(n:Number):void;
+		function get status():String;
 		
 		/**
 		 *  Gets the number of bytes currently loaded.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function get loadCurrent():Number;
+		function get loadCurrent():uint;
 		
 		/**
 		 *  Gets the total number of bytes for a given file
 		 * being loaded.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function get loadTotal():Number;
-		
-		/** 
-		 * The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right). 
-		 * A value of 0 represents no panning (balanced center between right and left). 
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		function get pan():Number;
+		function get loadTotal():uint;
 		
 		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		function set pan(n:Number):void;
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		function get rightToLeft():Number;
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		function set rightToLeft(n:Number):void;
-		
-		/** 
-		 * A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.
-		 * 
-		 * @playerversion Flash 9
-		 * @langversion 3.0
-		 * @category Property
-		 */
-		function get rightToRight():Number;
-		
-		/**
-         * @private (setter)
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0
-         */
-		function set rightToRight(n:Number):void;
-		
-		/**
-		 *  Gets or sets the volume of the media manager.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
+		 *  Gets or sets the volume of the media player.
 		 */
 		function get volume():Number;
-		
-		/**
-         *  @private
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
-		 */
+		/** @private **/
 		function set volume(n:Number):void;
 		
 		/**
+		 *  Gets or sets the mute state of the media player.
+		 */
+		function get muted():Boolean;
+		/** @private **/
+		function set muted(b:Boolean):void;
+		
+		/**
 		 *  Gets the meta data object of the current file if available.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function get metaData():Object;
 		
 		/**
 		 *  Gets the elapsed play time of the current file.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function get timeCurrent():Number;
 		
 		/**
 		 *  Gets the remaining play time of the current file.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function get timeLeft():Number;
 		
 		/**
 		 *  Gets the total play time of the current file.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function get timeTotal():Number;
 		
@@ -248,16 +114,14 @@ package cv.interfaces {
 		//--------------------------------------
 		
 		/**
-		 * Validates if the given filetype is compatible to be played with media manager. 
+		 * Validates if the given filetype is compatible to be played with media player. 
 		 *
-		 * @param str The file extension to be validated
+		 * @param ext The file extension to be validated
+		 * @param url The full file url if the extension is not enough
 		 * 
          * @return Boolean of whether the extension was valid or not.
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function isValid(str:String):Boolean;
+		function isValid(ext:String, url:String):Boolean;
 		
 		/**
 		 * Loads a new file to be played.
@@ -265,23 +129,8 @@ package cv.interfaces {
 		 * @param s	The url of the file to be loaded
 		 * 
 		 * @see cv.events.LoadEvent.LOAD_START
-         *
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function load(s:String, autoStart:Boolean):void;
-		
-		/**
-		 * Controls the mute of the audio
-		 * 
-		 * @default true
-		 * 
-		 * @param b	Whether to mute or not
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
-		 */
-		function mute(b:Boolean = true):void;
+		function load(item:*):void;
 		
 		/**
 		 * Controls the pause of the audio
@@ -289,9 +138,6 @@ package cv.interfaces {
 		 * @default true
 		 * 
 		 * @param b	Whether to pause or not
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function pause(b:Boolean = true):void;
 		
@@ -301,9 +147,6 @@ package cv.interfaces {
 		 * @default 0
 		 * 
 		 * @param pos	Position to play from
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function play(pos:int = 0):void;
 		
@@ -311,39 +154,23 @@ package cv.interfaces {
 		 * Seeks to time given in the media file.
 		 * 
 		 * @param n	Seconds into the file to seek to
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function seek(n:Number):void;
+		function seek(time:*):void;
 		
 		/**
 		 * Seeks to the given percent in the media file.
 		 * 
 		 * @param n	Percent to seek to
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function seekPercent(n:Number):void;
 		
 		/**
 		 * Stops the media file at the specified position. Sets the position given as the pause position.
-		 * 
-		 * @default 0
-		 * 
-		 * @param pos	Position to stop at
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
-		function stop(pos:int = 0):void;
+		function stop():void;
 		
 		/**
 		 * Stops the media, closes out any connections, and resets the metadata.
-		 * 
-         * @langversion 3.0
-         * @playerversion Flash 9.0.28.0
 		 */
 		function unload():void;
 	}

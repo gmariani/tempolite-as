@@ -1,0 +1,3496 @@
+<asdoc>
+
+<packageRec name='cv.events.null' fullname='cv.events.null'>
+<description><![CDATA[
+TempoLite �2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='LoadEvent' fullname='cv.events:LoadEvent' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\events\LoadEvent.as' namespace='cv.events' access='public' baseclass='flash.events:Event' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The LoadEvent class defines events for TempoLite and media players. 
+  These events include the following:
+  <ul>
+  <li><code>LoadEvent.LOAD_START</code>: dispatched after a file has begun loading.</li>
+  <li><code>LoadEvent.LOAD_PROGRESS</code>: dispatched while a file is loading.</li>
+  <li><code>LoadEvent.LOAD_COMPLETE</code>: dispatched after a file has finished loading.</li>
+  </ul>
+  ]]></description>
+</classRec>
+<method name='LoadEvent' fullname='cv.events:LoadEvent/LoadEvent' isStatic='false' isFinal='false' isOverride='false'  param_names='type;bubbles;cancelable;url;mediaType;time' param_types='String;Boolean;Boolean;String;cv.interfaces:IMediaPlayer;Number' param_defaults='undefined;false;false;;null;0' result_type='*'>
+<description><![CDATA[
+   Creates a new LoadEvent object with the specified parameters. 
+   
+         ]]></description>
+<param><![CDATA[type The event type; this value identifies the action that caused the event.
+                  ]]></param>
+<param><![CDATA[bubbles Indicates whether the event can bubble up the display list hierarchy.
+                  ]]></param>
+<param><![CDATA[cancelable Indicates whether the behavior associated with the event can be
+          prevented. 
+   
+         ]]></param>
+<param><![CDATA[url The url of the item being loaded.
+                  ]]></param>
+<param><![CDATA[mediaType The type of media being loaded, either "audio" or "video".
+                  ]]></param>
+<param><![CDATA[time The estimated duration of the media file.
+   ]]></param>
+</method>
+<method name='clone' fullname='cv.events:LoadEvent/clone' isStatic='false' isFinal='false' isOverride='true'  result_type='flash.events:Event'>
+<description><![CDATA[
+   Creates a copy of the LoadEvent object and sets the value of each parameter to match
+   the original.
+            ]]></description>
+<return><![CDATA[A new LoadEvent object with parameter values that match those of the original.
+   ]]></return>
+</method>
+<method name='toString' fullname='cv.events:LoadEvent/toString' isStatic='false' isFinal='false' isOverride='true'  result_type='String'>
+<description><![CDATA[
+   Returns a string that contains all the properties of the LoadEvent object. The string
+   is in the following format:
+   
+   <p>[<code>LoadEvent type=<em>value</em> bubbles=<em>value</em>
+    cancelable=<em>value</em> url=<em>value</em>
+    mediaType=<em>value</em> time=<em>value</em></code>]</p>
+            ]]></description>
+<return><![CDATA[A string representation of the LoadEvent object.
+   ]]></return>
+</method>
+<field name='LOAD_COMPLETE' fullname='cv.events:LoadEvent/LOAD_COMPLETE' type='String' isStatic='true' isConst='true' defaultValue='loadComplete' >
+<description><![CDATA[
+         Defines the value of the <code>type</code> property of an  
+   <code>loadComplete</code> event object. 
+                  ]]></description>
+<eventType><![CDATA[loadComplete
+   ]]></eventType>
+</field>
+<field name='LOAD_PROGRESS' fullname='cv.events:LoadEvent/LOAD_PROGRESS' type='String' isStatic='true' isConst='true' defaultValue='loadProgress' >
+<description><![CDATA[
+         Defines the value of the <code>type</code> property of an  
+   <code>loadProgress</code> event object. 
+                  ]]></description>
+<eventType><![CDATA[loadProgress
+   ]]></eventType>
+</field>
+<field name='LOAD_START' fullname='cv.events:LoadEvent/LOAD_START' type='String' isStatic='true' isConst='true' defaultValue='loadStart' >
+<description><![CDATA[
+         Defines the value of the <code>type</code> property of an  
+   <code>loadStart</code> event object. 
+   
+   <p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+      <tr>
+              <th>Property</th>
+              <th>Value</th>
+            </tr>
+      <tr>
+              <td><code>bubbles</code></td>
+              <td><code>false</code></td></tr>
+      <tr><td><code>cancelable</code></td><td><code>false</code>; there is
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>time</code></td><td>The estimated duration of the media file.</td></tr>
+      <tr><td><code>url</code></td><td>TThe url of the item being loaded.</td></tr>
+      <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>index</code></td><td>The zero-based index in the DataProvider
+      that contains the renderer.</td></tr>
+      <tr><td><code>item</code></td><td>A reference to the data that belongs to the renderer.</td></tr>
+      <tr><td><code>mediaType</code></td><td>The type of media being loaded, either "audio" or "video".</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+          </table>
+                  ]]></description>
+<eventType><![CDATA[loadStart
+   ]]></eventType>
+</field>
+<field name='mediaType' fullname='cv.events:LoadEvent/mediaType' type='cv.interfaces:IMediaPlayer' isStatic='false' isConst='false' >
+<description><![CDATA[
+   Gets the media type of the item that is associated with this event.
+   ]]></description>
+</field>
+<field name='time' fullname='cv.events:LoadEvent/time' type='Number' isStatic='false' isConst='false' >
+<description><![CDATA[
+   Gets the duration of the item that is associated with this event.
+   ]]></description>
+</field>
+<field name='url' fullname='cv.events:LoadEvent/url' type='String' isStatic='false' isConst='false' >
+<description><![CDATA[
+   Gets the url of the item that is associated with this event.
+   ]]></description>
+</field>
+<packageRec name='cv.events.null' fullname='cv.events.null'>
+<description><![CDATA[
+TempoLite �2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='MetaDataEvent' fullname='cv.events:MetaDataEvent' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\events\MetaDataEvent.as' namespace='cv.events' access='public' baseclass='flash.events:Event' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The MetaDataEvent class defines events for media players. 
+  These events include the following:
+  <ul>
+  <li><code>MetaDataEvent.METADATA</code>: dispatched when the player has recieved metadata.</li>
+  <li><code>MetaDataEvent.BAND_WIDTH</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.CAPTION</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.CAPTION_INFO</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.CUE_POINT</code>: dispatched when the player has reached a cuepoint.</li>
+  <li><code>MetaDataEvent.FC_SUBSCRIBE</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.IMAGE_DATA</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.LAST_SECOND</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.PLAY_STATUS</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.TEXT_DATA</code>: dispatched when using FMS.</li>
+  <li><code>MetaDataEvent.RTMP_SAMPLE_ACCESS</code>: dispatched when using FMS.</li>
+  </ul>
+  ]]></description>
+</classRec>
+<method name='MetaDataEvent' fullname='cv.events:MetaDataEvent/MetaDataEvent' isStatic='false' isFinal='false' isOverride='false'  param_names='type;data;bubbles;cancelable' param_types='String;Object;Boolean;Boolean' param_defaults='undefined;null;false;false' result_type='*'>
+<description><![CDATA[
+   Creates a new MetaDataEvent object with the specified parameters. 
+   
+         ]]></description>
+<param><![CDATA[type The event type; this value identifies the action that caused the event.
+                  ]]></param>
+<param><![CDATA[bubbles Indicates whether the event can bubble up the display list hierarchy.
+                  ]]></param>
+<param><![CDATA[cancelable Indicates whether the behavior associated with the event can be
+          prevented. 
+   
+         ]]></param>
+<param><![CDATA[data The metadata object.
+   ]]></param>
+</method>
+<method name='clone' fullname='cv.events:MetaDataEvent/clone' isStatic='false' isFinal='false' isOverride='true'  result_type='flash.events:Event'>
+<description><![CDATA[
+   Creates a copy of the MetaDataEvent object and sets the value of each parameter to match
+   the original.
+            ]]></description>
+<return><![CDATA[A new MetaDataEvent object with parameter values that match those of the original.
+   ]]></return>
+</method>
+<method name='toString' fullname='cv.events:MetaDataEvent/toString' isStatic='false' isFinal='false' isOverride='true'  result_type='String'>
+<description><![CDATA[
+   Returns a string that contains all the properties of the MetaDataEvent object. The string
+   is in the following format:
+   
+   <p>[<code>MetaDataEvent type=<em>value</em> bubbles=<em>value</em>
+    cancelable=<em>value</em> data=<em>value</em></code>]</p>
+            ]]></description>
+<return><![CDATA[A string representation of the MetaDataEvent object.
+   ]]></return>
+</method>
+<field name='BAND_WIDTH' fullname='cv.events:MetaDataEvent/BAND_WIDTH' type='String' isStatic='true' isConst='true' defaultValue='bandwidth' >
+</field>
+<field name='CAPTION' fullname='cv.events:MetaDataEvent/CAPTION' type='String' isStatic='true' isConst='true' defaultValue='caption' >
+</field>
+<field name='CAPTION_INFO' fullname='cv.events:MetaDataEvent/CAPTION_INFO' type='String' isStatic='true' isConst='true' defaultValue='captionInfo' >
+</field>
+<field name='CUE_POINT' fullname='cv.events:MetaDataEvent/CUE_POINT' type='String' isStatic='true' isConst='true' defaultValue='cuePoint' >
+</field>
+<field name='FC_SUBSCRIBE' fullname='cv.events:MetaDataEvent/FC_SUBSCRIBE' type='String' isStatic='true' isConst='true' defaultValue='fcSubscribe' >
+</field>
+<field name='IMAGE_DATA' fullname='cv.events:MetaDataEvent/IMAGE_DATA' type='String' isStatic='true' isConst='true' defaultValue='imageData' >
+</field>
+<field name='LAST_SECOND' fullname='cv.events:MetaDataEvent/LAST_SECOND' type='String' isStatic='true' isConst='true' defaultValue='lastSecond' >
+</field>
+<field name='METADATA' fullname='cv.events:MetaDataEvent/METADATA' type='String' isStatic='true' isConst='true' defaultValue='metadata' >
+<description><![CDATA[
+         Defines the value of the <code>type</code> property of an <code>audioMetadata</code> 
+   event object. 
+   
+   <p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is 
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>data</code></td><td>The metadata object.</td></tr>
+       <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+                  ]]></description>
+<eventType><![CDATA[metadata
+   ]]></eventType>
+</field>
+<field name='PLAY_STATUS' fullname='cv.events:MetaDataEvent/PLAY_STATUS' type='String' isStatic='true' isConst='true' defaultValue='playStatus' >
+</field>
+<field name='RTMP_SAMPLE_ACCESS' fullname='cv.events:MetaDataEvent/RTMP_SAMPLE_ACCESS' type='String' isStatic='true' isConst='true' defaultValue='RTMPSampleAccess' >
+</field>
+<field name='TEXT_DATA' fullname='cv.events:MetaDataEvent/TEXT_DATA' type='String' isStatic='true' isConst='true' defaultValue='textData' >
+</field>
+<field name='data' fullname='cv.events:MetaDataEvent/data' type='Object' isStatic='false' isConst='false' >
+<description><![CDATA[
+         The reference to the data object.
+   ]]></description>
+</field>
+<packageRec name='cv.events.null' fullname='cv.events.null'>
+<description><![CDATA[
+TempoLite �2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='PlayProgressEvent' fullname='cv.events:PlayProgressEvent' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\events\PlayProgressEvent.as' namespace='cv.events' access='public' baseclass='flash.events:Event' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The PlayProgressEvent class defines events for media players. 
+  These events include the following:
+  <ul>
+  <li><code>PlayProgressEvent.PLAY_START</code>: dispatched when playback has begun.</li>
+  <li><code>PlayProgressEvent.PLAY_PROGRESS</code>: dispatched constantly during playback.</li>
+  <li><code>PlayProgressEvent.PLAY_COMPLETE</code>: dispatched when playback is complete.</li>
+  <li><code>PlayProgressEvent.STATUS</code>: dispatched whenever status has changed.</li>
+  <li><code>PlayProgressEvent.LOADING</code>: constant used to verify file is loading.</li>
+  <li><code>PlayProgressEvent.LOADED</code>: constant used to verify file is loaded but hasn't played once yet.</li>
+  <li><code>PlayProgressEvent.STARTED</code>: constant used to verify file has started playing atleast once.</li>
+  <li><code>PlayProgressEvent.UNLOADED</code>: constant used to verify file is unlaoded.</li>
+  </ul>
+  ]]></description>
+</classRec>
+<method name='PlayProgressEvent' fullname='cv.events:PlayProgressEvent/PlayProgressEvent' isStatic='false' isFinal='false' isOverride='false'  param_names='type;bubbles;cancelable;percent;elapsed;remain;total' param_types='String;Boolean;Boolean;uint;Number;Number;Number' param_defaults='undefined;false;false;0;0;0;0' result_type='*'>
+<description><![CDATA[
+   Creates a new PlayProgressEvent object with the specified parameters. 
+   
+         ]]></description>
+<param><![CDATA[type The event type; this value identifies the action that caused the event.
+                  ]]></param>
+<param><![CDATA[bubbles Indicates whether the event can bubble up the display list hierarchy.
+                  ]]></param>
+<param><![CDATA[cancelable Indicates whether the behavior associated with the event can be
+          prevented. 
+   
+         ]]></param>
+<param><![CDATA[percent The play progress in terms of percent.
+   
+         ]]></param>
+<param><![CDATA[elapsed The time elapsed in terms of milliseconds.
+   
+         ]]></param>
+<param><![CDATA[remain The time remaining in terms of milliseconds.
+   
+         ]]></param>
+<param><![CDATA[total The total time in terms of milliseconds.
+   ]]></param>
+</method>
+<method name='clone' fullname='cv.events:PlayProgressEvent/clone' isStatic='false' isFinal='false' isOverride='true'  result_type='flash.events:Event'>
+<description><![CDATA[
+   Creates a copy of the PlayProgressEvent object and sets the value of each parameter to match
+   the original.
+            ]]></description>
+<return><![CDATA[A new PlayProgressEvent object with parameter values that match those of the original.
+   ]]></return>
+</method>
+<method name='toString' fullname='cv.events:PlayProgressEvent/toString' isStatic='false' isFinal='false' isOverride='true'  result_type='String'>
+<description><![CDATA[
+   Returns a string that contains all the properties of the PlayProgressEvent object. The string
+   is in the following format:
+   
+   <p>[<code>PlayProgressEvent type=<em>value</em> bubbles=<em>value</em>
+    cancelable=<em>value</em> percent=<em>value</em> elapsed=<em>value</em> remain=<em>value</em> total=<em>value</em></code>]</p>
+            ]]></description>
+<return><![CDATA[A string representation of the PlayProgressEvent object.
+   ]]></return>
+</method>
+<field name='LOADED' fullname='cv.events:PlayProgressEvent/LOADED' type='String' isStatic='true' isConst='true' defaultValue='loaded' >
+</field>
+<field name='LOADING' fullname='cv.events:PlayProgressEvent/LOADING' type='String' isStatic='true' isConst='true' defaultValue='loading' >
+</field>
+<field name='PLAY_COMPLETE' fullname='cv.events:PlayProgressEvent/PLAY_COMPLETE' type='String' isStatic='true' isConst='true' defaultValue='playComplete' >
+</field>
+<field name='PLAY_PROGRESS' fullname='cv.events:PlayProgressEvent/PLAY_PROGRESS' type='String' isStatic='true' isConst='true' defaultValue='playProgress' >
+<description><![CDATA[
+         Defines the value of the <code>type</code> property of an <code>playProgress</code> 
+   event object. 
+   
+   <p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is 
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>percent</code></td><td>The percentage of progress for the media playing.</td></tr>
+      <tr><td><code>elapsed</code></td><td>The elapsed time of the media playing.</td></tr>
+      <tr><td><code>remain</code></td><td>The remaining time of the media playing.</td></tr>
+      <tr><td><code>total</code></td><td>The total time of the media playing.</td></tr>
+       <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+                  ]]></description>
+<eventType><![CDATA[playProgress
+   ]]></eventType>
+</field>
+<field name='PLAY_START' fullname='cv.events:PlayProgressEvent/PLAY_START' type='String' isStatic='true' isConst='true' defaultValue='playStart' >
+</field>
+<field name='STARTED' fullname='cv.events:PlayProgressEvent/STARTED' type='String' isStatic='true' isConst='true' defaultValue='started' >
+</field>
+<field name='STATUS' fullname='cv.events:PlayProgressEvent/STATUS' type='String' isStatic='true' isConst='true' defaultValue='status' >
+</field>
+<field name='UNLOADED' fullname='cv.events:PlayProgressEvent/UNLOADED' type='String' isStatic='true' isConst='true' defaultValue='unloaded' >
+</field>
+<field name='elapsed' fullname='cv.events:PlayProgressEvent/elapsed' type='Number' isStatic='false' isConst='false' >
+<description><![CDATA[
+         The reference to the elapsed time of the media playing.
+   ]]></description>
+</field>
+<field name='percent' fullname='cv.events:PlayProgressEvent/percent' type='uint' isStatic='false' isConst='false' >
+<description><![CDATA[
+         The reference to the percentage of progress for the media playing.
+   ]]></description>
+</field>
+<field name='remain' fullname='cv.events:PlayProgressEvent/remain' type='Number' isStatic='false' isConst='false' >
+<description><![CDATA[
+         The reference to the remaining time of the media playing.
+   ]]></description>
+</field>
+<field name='total' fullname='cv.events:PlayProgressEvent/total' type='Number' isStatic='false' isConst='false' >
+<description><![CDATA[
+         The reference to the total time of the media playing.
+   ]]></description>
+</field>
+<packageRec name='cv.interfaces.null' fullname='cv.interfaces.null'>
+<description><![CDATA[
+TempoLite �2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<interfaceRec name='IMediaPlayer' fullname='cv.interfaces:IMediaPlayer' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\interfaces\IMediaPlayer.as' namespace='cv.interfaces' access='public' baseClasses='flash.events:IEventDispatcher' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+   Implement the IMediaPlayer interface to create a custom media player. 
+   A media player handles audio or video playback.
+  ]]></description>
+</interfaceRec>
+<method name='isValid' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+<description><![CDATA[
+   Validates if the given filetype is compatible to be played with media player. 
+      ]]></description>
+<param><![CDATA[ext The file extension to be validated
+   ]]></param>
+<param><![CDATA[url The full file url if the extension is not enough
+   
+         ]]></param>
+<return><![CDATA[Boolean of whether the extension was valid or not.
+   ]]></return>
+</method>
+<method name='load' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:load' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a new file to be played.
+   
+   ]]></description>
+<param><![CDATA[s The url of the file to be loaded
+   
+   ]]></param>
+<see><![CDATA[cv.events.LoadEvent.LOAD_START
+   ]]></see>
+</method>
+<method name='pause' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:pause' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='true' result_type='void'>
+<description><![CDATA[
+   Controls the pause of the audio
+   
+   ]]></description>
+<default><![CDATA[true
+   
+   ]]></default>
+<param><![CDATA[b Whether to pause or not
+   ]]></param>
+</method>
+<method name='play' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:play' isStatic='false' isFinal='false' isOverride='false'  param_names='pos' param_types='int' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Plays the media file, starting at the given position.
+   
+   ]]></description>
+<default><![CDATA[0
+   
+   ]]></default>
+<param><![CDATA[pos Position to play from
+   ]]></param>
+</method>
+<method name='seek' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:seek' isStatic='false' isFinal='false' isOverride='false'  param_names='time' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to time given in the media file.
+   
+   ]]></description>
+<param><![CDATA[n Seconds into the file to seek to
+   ]]></param>
+</method>
+<method name='seekPercent' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:seekPercent' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to the given percent in the media file.
+   
+   ]]></description>
+<param><![CDATA[n Percent to seek to
+   ]]></param>
+</method>
+<method name='stop' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:stop' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the media file at the specified position. Sets the position given as the pause position.
+   ]]></description>
+</method>
+<method name='unload' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:unload' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the media, closes out any connections, and resets the metadata.
+   ]]></description>
+</method>
+<method name='autoStart' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:autoStart/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[
+    Whether media will play automatically once loaded.
+   ]]></description>
+</method>
+<method name='currentPercent' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:currentPercent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Gets the play progress percentage of the currently
+   playing media file.
+   ]]></description>
+</method>
+<method name='loadCurrent' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:loadCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+    Gets the number of bytes currently loaded.
+   ]]></description>
+</method>
+<method name='loadTotal' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:loadTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+    Gets the total number of bytes for a given file
+   being loaded.
+   ]]></description>
+</method>
+<method name='metaData' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:metaData/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+    Gets the meta data object of the current file if available.
+   ]]></description>
+</method>
+<method name='paused' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:paused/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[
+    Gets the pause status of the media player.
+   ]]></description>
+</method>
+<method name='status' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:status/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[
+    Gets the loading status of the media player.
+   ]]></description>
+</method>
+<method name='timeCurrent' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:timeCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+    Gets the elapsed play time of the current file.
+   ]]></description>
+</method>
+<method name='timeLeft' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:timeLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+    Gets the remaining play time of the current file.
+   ]]></description>
+</method>
+<method name='timeTotal' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:timeTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+    Gets the total play time of the current file.
+   ]]></description>
+</method>
+<method name='volume' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:volume/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+    Gets or sets the volume of the media player.
+   ]]></description>
+</method>
+<method name='autoStart' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:autoStart/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='volume' fullname='cv.interfaces:IMediaPlayer/cv.interfaces:IMediaPlayer:volume/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<packageRec name='cv.interfaces.null' fullname='cv.interfaces.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<interfaceRec name='IPlaylistParser' fullname='cv.interfaces:IPlaylistParser' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\interfaces\IPlaylistParser.as' namespace='cv.interfaces' access='public' baseClasses='Object' isFinal='false' isDynamic='false' >
+</interfaceRec>
+<method name='isValid' fullname='cv.interfaces:IPlaylistParser/cv.interfaces:IPlaylistParser:isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.interfaces:IPlaylistParser/cv.interfaces:IPlaylistParser:toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<packageRec name='cv.data.null' fullname='cv.data.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='PlayList' fullname='cv.data:PlayList' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\data\PlayList.as' namespace='cv.data' access='public' baseclass='Object' interfaces='flash.events:IEventDispatcher' isFinal='false' isDynamic='true' >
+<description><![CDATA[
+  The PlayList class extends the Array class and enables the management
+  of a list of items. This includes selecting next, previous, repeat, 
+  repeat all, and shuffling. Also allows for a current index, so the
+  selected item can be tracked.
+     ]]></description>
+<metadata>
+	<Event owner='cv.data:PlayList' name='startoflist' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched when the playlist has started playing the first item.
+    ]]></description>
+<eventType><![CDATA[cv.data.PlayList.START_OF_LIST
+  
+  ]]></eventType>
+<see><![CDATA[#previousIndex
+  ]]></see>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.data:PlayList' name='endoflist' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched when the playlist has reached the end of the playlist.
+    ]]></description>
+<eventType><![CDATA[cv.data.PlayList.END_OF_LIST
+    ]]></eventType>
+<see><![CDATA[#nextIndex
+  ]]></see>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.data:PlayList' name='change' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched when the index has changed or <code>getNext()</code> and <code>getPrevious()</code> were called.
+    ]]></description>
+<eventType><![CDATA[cv.data.PlayList.CHANGE
+  
+  ]]></eventType>
+<see><![CDATA[#getPrevious()
+  ]]></see>
+<see><![CDATA[#getNext()
+  ]]></see>
+<see><![CDATA[#index
+  ]]></see>
+	</Event>
+</metadata>
+</classRec>
+<method name='PlayList' fullname='cv.data:PlayList/PlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='dp' param_types='Object' param_defaults='null' result_type='void'>
+<description><![CDATA[
+   Creates a new PlayList object. You can pass it a DataProvider object
+   into the constructor and it will populate the PlayList.
+   
+   ]]></description>
+<param><![CDATA[dp The DataProvider object
+   ]]></param>
+</method>
+<method name='addEventListener' fullname='cv.data:PlayList/addEventListener' isStatic='false' isFinal='false' isOverride='false'  param_names='type;listener;useCapture;priority;useWeakReference' param_types='String;Function;Boolean;int;Boolean' param_defaults='undefined;undefined;false;0;false' result_type='void'>
+<description><![CDATA[
+   Registers an event listener object with an EventDispatcher object so that the listener
+    receives notification of an event. You can register event listeners on all nodes in the
+    display list for a specific type of event, phase, and priority.
+      ]]></description>
+<param><![CDATA[type              <String> The type of event.
+   ]]></param>
+<param><![CDATA[listener          <Function> The listener function that processes the event. This function must accept
+                              an Event object as its only parameter and must return nothing, as this example shows:
+                              function(evt:Event):void
+                              The function can have any name.
+   ]]></param>
+<param><![CDATA[useCapture        <Boolean (default = false)> Determines whether the listener works in the capture phase or the
+                              target and bubbling phases. If useCapture is set to true,
+                              the listener processes the event only during the capture phase and not in the
+                              target or bubbling phase. If useCapture is false, the
+                              listener processes the event only during the target or bubbling phase. To listen for
+                              the event in all three phases, call addEventListener twice, once with
+                              useCapture set to true, then again with
+                              useCapture set to false.
+   ]]></param>
+<param><![CDATA[priority          <int (default = 0)> The priority level of the event listener. The priority is designated by
+                              a signed 32-bit integer. The higher the number, the higher the priority. All listeners
+                              with priority n are processed before listeners of priority n-1. If two
+                              or more listeners share the same priority, they are processed in the order in which they
+                              were added. The default priority is 0.
+   ]]></param>
+<param><![CDATA[useWeakReference  <Boolean (default = false)> Determines whether the reference to the listener is strong or
+                              weak. A strong reference (the default) prevents your listener from being garbage-collected.
+                              A weak reference does not. Class-level member functions are not subject to garbage
+                              collection, so you can set useWeakReference to true for
+                              class-level member functions without subjecting them to garbage collection. If you set
+                              useWeakReference to true for a listener that is a nested inner
+                              function, the function will be garbage-collected and no longer persistent. If you create
+                              references to the inner function (save it in another variable) then it is not
+                              garbage-collected and stays persistent.
+   
+   ]]></param>
+</method>
+<method name='dispatchEvent' fullname='cv.data:PlayList/dispatchEvent' isStatic='false' isFinal='false' isOverride='false'  param_names='evt' param_types='flash.events:Event' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Dispatches an event into the event flow. The event target is the EventDispatcher
+    object upon which the dispatchEvent() method is called.
+      ]]></description>
+<param><![CDATA[event             <Event> The Event object that is dispatched into the event flow.
+                              If the event is being redispatched, a clone of the event is created automatically.
+                              After an event is dispatched, its target property cannot be changed, so you
+                              must create a new copy of the event for redispatching to work.
+   ]]></param>
+<return><![CDATA[                 <Boolean> A value of true if the event was successfully dispatched. A value of false indicates failure or that preventDefault() was called
+                              on the event.
+   
+   ]]></return>
+</method>
+<method name='getCurrent' fullname='cv.data:PlayList/getCurrent' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Returns the current item from the playlist
+   
+   ]]></description>
+<return><![CDATA[<Object> The current item
+   ]]></return>
+</method>
+<method name='getNext' fullname='cv.data:PlayList/getNext' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Returns the next item from the playlist.
+   
+   ]]></description>
+<return><![CDATA[<Object> The next item
+   
+   ]]></return>
+<see><![CDATA[#event:change
+   ]]></see>
+<see><![CDATA[#nextIndex
+   ]]></see>
+</method>
+<method name='getPrevious' fullname='cv.data:PlayList/getPrevious' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Returns the previous item from the playlist.
+   
+   ]]></description>
+<return><![CDATA[<Object> The previous item
+   
+   ]]></return>
+<see><![CDATA[#event:change
+   ]]></see>
+<see><![CDATA[#previousIndex
+   ]]></see>
+</method>
+<method name='getRandom' fullname='cv.data:PlayList/getRandom' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Returns a random item from the playlist.
+   
+   ]]></description>
+<return><![CDATA[<Object> The item selected at random
+   
+   ]]></return>
+<see><![CDATA[#getRandomIndex()
+   ]]></see>
+</method>
+<method name='getRandomIndex' fullname='cv.data:PlayList/getRandomIndex' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Returns a random index from the playlist.
+   
+   ]]></description>
+<return><![CDATA[<uint> The index randomly selected
+   
+   ]]></return>
+<see><![CDATA[#getRandom()
+   ]]></see>
+</method>
+<method name='hasEventListener' fullname='cv.data:PlayList/hasEventListener' isStatic='false' isFinal='false' isOverride='false'  param_names='type' param_types='String' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Checks whether the EventDispatcher object has any listeners registered for a specific type
+    of event. This allows you to determine where an EventDispatcher object has altered
+    handling of an event type in the event flow hierarchy. To determine whether a specific
+    event type actually triggers an event listener, use willTrigger().
+      ]]></description>
+<param><![CDATA[type              <String> The type of event.
+   ]]></param>
+<return><![CDATA[                 <Boolean> A value of true if a listener of the specified type is registered;
+                              false otherwise.
+   
+   ]]></return>
+</method>
+<method name='inPlayList' fullname='cv.data:PlayList/inPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='Object' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Searchs the playlist to determin if an item is listed.
+   
+   ]]></description>
+<param><![CDATA[item  <Object> The item to be checked for.
+   
+   ]]></param>
+<return><![CDATA[<Boolean> Whether the item is in the playlist or not.
+   ]]></return>
+</method>
+<method name='remove' fullname='cv.data:PlayList/remove' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='Object' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Removes the given item from the playlist.
+   
+   ]]></description>
+<param><![CDATA[item  <Object> The item object to be removed
+   
+   ]]></param>
+<return><![CDATA[<Boolean> Whether the removal was successful or not.
+   ]]></return>
+</method>
+<method name='removeAt' fullname='cv.data:PlayList/removeAt' isStatic='false' isFinal='false' isOverride='false'  param_names='idx' param_types='uint' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Removes an item at a given index.
+   
+   ]]></description>
+<param><![CDATA[idx <uint> The index of the item to be removed.
+   
+   ]]></param>
+<return><![CDATA[<Boolean> Whether the removal was successful or not.
+   ]]></return>
+</method>
+<method name='removeEventListener' fullname='cv.data:PlayList/removeEventListener' isStatic='false' isFinal='false' isOverride='false'  param_names='type;listener;useCapture' param_types='String;Function;Boolean' param_defaults='undefined;undefined;false' result_type='void'>
+<description><![CDATA[
+   Removes a listener from the EventDispatcher object. If there is no matching listener registered with the EventDispatcher object, a call to this method has no effect.
+      ]]></description>
+<param><![CDATA[type              <String> The type of event.
+   ]]></param>
+<param><![CDATA[listener          <Function> The listener object to remove.
+   ]]></param>
+<param><![CDATA[useCapture        <Boolean (default = false)> Specifies whether the listener was registered for the capture phase or the
+                              target and bubbling phases. If the listener was registered for both the capture phase and the
+                              target and bubbling phases, two calls to removeEventListener() are required
+                              to remove both, one call with useCapture() set to true, and another
+                              call with useCapture() set to false.
+   
+   ]]></param>
+</method>
+<method name='setMimes' fullname='cv.data:PlayList/protected:setMimes' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Sets the mimetypes allowed by PlayList.
+   ]]></description>
+</method>
+<method name='toDataProviderArray' fullname='cv.data:PlayList/toDataProviderArray' isStatic='false' isFinal='false' isOverride='false'  result_type='Array'>
+<description><![CDATA[
+   Converts the PlayList to an array for use with
+   DataProvider and AS3 components.
+   
+   ]]></description>
+<return><![CDATA[The array equivalent of the playlist.
+   ]]></return>
+</method>
+<method name='toSeconds' fullname='cv.data:PlayList/protected:toSeconds' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='int'>
+<description><![CDATA[
+   Converts a string version of a time format into the seconds equivalent.
+      ]]></description>
+<param><![CDATA[str              <String> The string to convert.
+   ]]></param>
+<return><![CDATA[                 <Int> The number of seconds for the given time.
+   ]]></return>
+</method>
+<method name='willTrigger' fullname='cv.data:PlayList/willTrigger' isStatic='false' isFinal='false' isOverride='false'  param_names='type' param_types='String' param_defaults='undefined' result_type='Boolean'>
+<description><![CDATA[
+   Checks whether an event listener is registered with this EventDispatcher object or any of
+    its ancestors for the specified event type. This method returns true if an
+    event listener is triggered during any phase of the event flow when an event of the
+    specified type is dispatched to this EventDispatcher object or any of its descendants.
+      ]]></description>
+<param><![CDATA[type              <String> The type of event.
+   ]]></param>
+<return><![CDATA[                 <Boolean> A value of true if a listener of the specified type will be triggered; false otherwise.
+   
+   ]]></return>
+</method>
+<method name='index' fullname='cv.data:PlayList/index/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets or sets the current selected item in the playlist.
+      ]]></description>
+<default><![CDATA[0
+   
+   ]]></default>
+<see><![CDATA[#event:change
+   ]]></see>
+</method>
+<method name='nextIndex' fullname='cv.data:PlayList/nextIndex/get' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+<description><![CDATA[ 
+   Gets the index of the next item in the playlist.
+      ]]></description>
+<see><![CDATA[#event:endoflist
+   ]]></see>
+</method>
+<method name='previousIndex' fullname='cv.data:PlayList/previousIndex/get' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+<description><![CDATA[ 
+   Gets the index of the previous item in the playlist.
+   
+   ]]></description>
+<see><![CDATA[#event:startoflist
+   ]]></see>
+</method>
+<method name='repeat' fullname='cv.data:PlayList/repeat/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Gets or sets whether an item is repeated after it's finished.
+      ]]></description>
+<default><![CDATA[false
+   ]]></default>
+</method>
+<method name='repeatAll' fullname='cv.data:PlayList/repeatAll/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Gets or sets whether the playlist repeats when it's finished.
+      ]]></description>
+<default><![CDATA[false
+   ]]></default>
+</method>
+<method name='shuffle' fullname='cv.data:PlayList/shuffle/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Gets or sets whether shuffle is enabled or not.
+      ]]></description>
+<default><![CDATA[false
+   ]]></default>
+</method>
+<method name='index' fullname='cv.data:PlayList/index/set' isStatic='false' isFinal='false' isOverride='false'  param_names='idx' param_types='uint' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='repeat' fullname='cv.data:PlayList/repeat/set' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='repeatAll' fullname='cv.data:PlayList/repeatAll/set' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='shuffle' fullname='cv.data:PlayList/shuffle/set' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='CHANGE' fullname='cv.data:PlayList/CHANGE' type='String' isStatic='true' isConst='true' defaultValue='change' >
+<description><![CDATA[
+         The <code>PlayList.CHANGE</code> constant defines the value of
+   the <code>type</code> property of the event object that is dispatched to indicate that
+   the playlist has changed in some way.
+   ]]></description>
+</field>
+<field name='END_OF_LIST' fullname='cv.data:PlayList/END_OF_LIST' type='String' isStatic='true' isConst='true' defaultValue='endoflist' >
+<description><![CDATA[
+         The <code>PlayList.END_OF_LIST</code> constant defines the value of
+   the <code>type</code> property of the event object that is dispatched to indicate that
+   the playlist has reached the end of the list.
+   ]]></description>
+</field>
+<field name='START_OF_LIST' fullname='cv.data:PlayList/START_OF_LIST' type='String' isStatic='true' isConst='true' defaultValue='startoflist' >
+<description><![CDATA[
+         The <code>PlayList.START_OF_LIST</code> constant defines the value of
+   the <code>type</code> property of the event object that is dispatched to indicate that
+   the playlist has reached the beginning of the list.
+   ]]></description>
+</field>
+<field name='_currentIndex' fullname='cv.data:PlayList/private:_currentIndex' type='int' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_isRepeat' fullname='cv.data:PlayList/private:_isRepeat' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_isRepeatAll' fullname='cv.data:PlayList/private:_isRepeatAll' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_isShuffle' fullname='cv.data:PlayList/private:_isShuffle' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='dispatcher' fullname='cv.data:PlayList/private:dispatcher' type='flash.events:EventDispatcher' isStatic='false' isConst='false' >
+</field>
+<field name='mimetypes' fullname='cv.data:PlayList/protected:mimetypes' type='Object' isStatic='false' isConst='false' defaultValue='' >
+<description><![CDATA[
+         ]]></description>
+<private><![CDATA[]]></private>
+</field>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='ATOM' fullname='cv.formats:ATOM' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\ATOM.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='true' >
+<description><![CDATA[
+  The ATOM class parses ATOM formatted playlist files and returns a PlayList.
+     ]]></description>
+</classRec>
+<method name='ATOM' fullname='cv.formats:ATOM/ATOM' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='isValid' fullname='cv.formats:ATOM/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.formats:ATOM/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<method name='toSeconds' fullname='cv.formats:ATOM/protected:toSeconds' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='int'>
+<description><![CDATA[
+   Converts a string version of a time format into the seconds equivalent.
+      ]]></description>
+<category><![CDATA[Protected
+   ]]></category>
+<langversion><![CDATA[3.0 
+   ]]></langversion>
+<param><![CDATA[str              <String> The string to convert.
+   ]]></param>
+<playerversion><![CDATA[Flash 9
+   ]]></playerversion>
+<return><![CDATA[                 <Int> The number of seconds for the given time.
+   
+   ]]></return>
+</method>
+<field name='mimetypes' fullname='cv.formats:ATOM/protected:mimetypes' type='Object' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='B4S' fullname='cv.formats:B4S' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\B4S.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The B4S class parses B4S formatted playlist files and returns a PlayList.
+  B4S is a proprietary XML-based format introduced in Winamp version 3.
+     ]]></description>
+</classRec>
+<method name='isValid' fullname='cv.formats:B4S/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.formats:B4S/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='XSPF' fullname='cv.formats:XSPF' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\XSPF.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='true' >
+<description><![CDATA[
+  The XSPF class parses XSPF formatted playlist files and returns a PlayList.
+  
+  Read XSPF PlayLists
+  
+  MIME Type: application/xspf+xml
+  ]]></description>
+</classRec>
+<method name='isValid' fullname='cv.formats:XSPF/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.formats:XSPF/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='ASX' fullname='cv.formats:ASX' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\ASX.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The ASX class parses ASX formatted playlist files and returns a PlayList.
+     ]]></description>
+</classRec>
+<method name='ASX' fullname='cv.formats:ASX/ASX' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='isValid' fullname='cv.formats:ASX/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.formats:ASX/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<method name='toSeconds' fullname='cv.formats:ASX/protected:toSeconds' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='int'>
+<description><![CDATA[
+   Converts a string version of a time format into the seconds equivalent.
+      ]]></description>
+<category><![CDATA[Protected
+   ]]></category>
+<langversion><![CDATA[3.0 
+   ]]></langversion>
+<param><![CDATA[str              <String> The string to convert.
+   ]]></param>
+<playerversion><![CDATA[Flash 9
+   ]]></playerversion>
+<return><![CDATA[                 <Int> The number of seconds for the given time.
+   
+   ]]></return>
+</method>
+<field name='mimetypes' fullname='cv.formats:ASX/protected:mimetypes' type='Object' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='PLS' fullname='cv.formats:PLS' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\PLS.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The PLS class parses PLS formatted playlist files and returns a PlayList.
+  A proprietary format used for playing Shoutcast and Icecast 
+  streams. The syntax of a PLS file is the same syntax as a Windows 
+  .ini file and was probably chosen because of support in the Windows API.
+     ]]></description>
+</classRec>
+<method name='isValid' fullname='cv.formats:PLS/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='regExec' fullname='cv.formats:PLS/protected:regExec' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='toPlayList' fullname='cv.formats:PLS/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<field name='file' fullname='cv.formats:PLS/protected:file' type='String' isStatic='false' isConst='false' >
+</field>
+<field name='regex' fullname='cv.formats:PLS/protected:regex' type='RegExp' isStatic='false' isConst='false' >
+</field>
+<packageRec name='cv.formats.null' fullname='cv.formats.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='M3U' fullname='cv.formats:M3U' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\formats\M3U.as' namespace='cv.formats' access='public' baseclass='Object' interfaces='cv.interfaces:IPlaylistParser' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  The M3U class parses M3U formatted playlist files and returns a PlayList.
+  M3U is by far the most popular playlist format, probably due 
+  to its simplicity. It is an ad-hoc standard with no formal definition, 
+  no canonical source, and no owner.
+     ]]></description>
+</classRec>
+<method name='isValid' fullname='cv.formats:M3U/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;data' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='toPlayList' fullname='cv.formats:M3U/toPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<packageRec name='cv.media.null' fullname='cv.media.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='SoundPlayer' fullname='cv.media:SoundPlayer' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\media\SoundPlayer.as' namespace='cv.media' access='public' baseclass='flash.events:EventDispatcher' interfaces='cv.interfaces:IMediaPlayer' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  <h3>Version:</h3> 3.0.3<br>
+  <h3>Date:</h3> 4/02/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The SoundPlayer class is a facade for controlling loading, and playing
+  of MP3 files within Flash. It intelligently handles pausing, and
+  loading.
+  <hr>
+  <ul>
+  <li>3.0.3
+  <ul>
+    <li>Tweaked how load complete reports</li>
+    <li>loadCurrent and loadTotal are now uints and more accurate</li>
+  </ul>
+  </li>
+  <li>3.0.2
+  <ul>
+    <li>Handles autostart and PLAY_START better. Also has a new status of STARTED to differentiate between when autoStart and the first play().</li>
+    <li>Added autoRewind prop. If set, it will rewind after PLAY_COMPLETE so the play button can be used to resume.</li>
+  </ul>
+  </li>
+  <li>3.0.1
+  <ul>
+    <li>Changed how PLAY_START and autoStart is handled. autoStart is no longer overwritten and will pause before any audio is heard.</li>
+  </ul>
+  </li>
+  <li>3.0.0
+  <ul>
+    <li>Refactored release</li>
+  </ul>
+  </li>
+  </ul>
+     ]]></description>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='status' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched when status has been updated.
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.STATUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='playStart' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched once as a media file first begins to play
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='playProgress' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='playComplete' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file finishes playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='metadata' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched as ID3 metadata is receieved from an MP3
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.METADATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='loadStart' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched as a media file begins loading
+    ]]></description>
+<eventType><![CDATA[cv.event.LoadEvent.LOAD_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='loadProgress' type='flash.events.ProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is loaded
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:SoundPlayer' name='loadComplete' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched when the media file has completed loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+</classRec>
+<method name='SoundPlayer' fullname='cv.media:SoundPlayer/SoundPlayer' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='errorHandler' fullname='cv.media:SoundPlayer/protected:errorHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:ErrorEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='getEstimatedLength' fullname='cv.media:SoundPlayer/protected:getEstimatedLength' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+</method>
+<method name='isValid' fullname='cv.media:SoundPlayer/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+<description><![CDATA[
+   Validates if the given filetype is compatible to be played with SoundPlayer.
+   The acceptable file types are :
+   <ul>
+   <li>mp3</li>
+   </ul>
+   
+   ]]></description>
+<param><![CDATA[ext The file extension to be validated
+   ]]></param>
+<param><![CDATA[url The full file url if the extension is not enough
+   
+   ]]></param>
+<return><![CDATA[Boolean of whether the extension was valid or not.
+   ]]></return>
+</method>
+<method name='load' fullname='cv.media:SoundPlayer/load' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a new file to be played.
+   
+   ]]></description>
+<param><![CDATA[s The url of the file to be loaded
+   
+   ]]></param>
+<see><![CDATA[cv.events.LoadEvent.LOAD_START
+   ]]></see>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='loadAsset' fullname='cv.media:SoundPlayer/loadAsset' isStatic='false' isFinal='false' isOverride='false'  param_names='sound' param_types='flash.media:Sound' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a sound from the library to be played. This cannot be used in 
+   conjunction with TempoLite since the location is not a url.
+   
+   ]]></description>
+<param><![CDATA[sound The sound object from the library
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='pause' fullname='cv.media:SoundPlayer/pause' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='true' result_type='void'>
+<description><![CDATA[
+   Controls the pause of the audio
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+<param><![CDATA[b Whether to pause or not
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='play' fullname='cv.media:SoundPlayer/play' isStatic='false' isFinal='false' isOverride='false'  param_names='pos' param_types='int' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Plays the audio, starting at the given position.
+   
+   ]]></description>
+<default><![CDATA[0
+   ]]></default>
+<param><![CDATA[pos Position to play from
+   ]]></param>
+</method>
+<method name='progressHandler' fullname='cv.media:SoundPlayer/protected:progressHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:ProgressEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='seek' fullname='cv.media:SoundPlayer/seek' isStatic='false' isFinal='false' isOverride='false'  param_names='time' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to time given in the audio.
+   
+   ]]></description>
+<param><![CDATA[n Seconds into playback to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='seekPercent' fullname='cv.media:SoundPlayer/seekPercent' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to the given percent in the audio
+   
+   ]]></description>
+<param><![CDATA[n Percent to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='setStatus' fullname='cv.media:SoundPlayer/protected:setStatus' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='void'>
+</method>
+<method name='soundHandler' fullname='cv.media:SoundPlayer/protected:soundHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='stop' fullname='cv.media:SoundPlayer/stop' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the audio at the specified position. Sets the position given 
+   as the pause position.
+   ]]></description>
+</method>
+<method name='trace2' fullname='cv.media:SoundPlayer/protected:trace2' isStatic='false' isFinal='false' isOverride='false'  param_names='arguements' param_types='restParam' param_defaults='undefined' result_type='void'>
+</method>
+<method name='unload' fullname='cv.media:SoundPlayer/unload' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the audio, closes the sound class, and resets the metadata.
+   
+   ]]></description>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='updateSoundTransform' fullname='cv.media:SoundPlayer/protected:updateSoundTransform' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='autoStart' fullname='cv.media:SoundPlayer/autoStart/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Whether media will play automatically once loaded.
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+</method>
+<method name='buffer' fullname='cv.media:SoundPlayer/buffer/get' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+<description><![CDATA[ 
+   Gets or sets how long SoundPlayer should buffer the audio before 
+   playing, in seconds.
+   ]]></description>
+</method>
+<method name='currentPercent' fullname='cv.media:SoundPlayer/currentPercent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current play progress in terms of percent
+   ]]></description>
+</method>
+<method name='leftToLeft' fullname='cv.media:SoundPlayer/leftToLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the left 
+   input is played in the left speaker.
+   ]]></description>
+</method>
+<method name='leftToRight' fullname='cv.media:SoundPlayer/leftToRight/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the left 
+   input is played in the right speaker.
+   ]]></description>
+</method>
+<method name='loadCurrent' fullname='cv.media:SoundPlayer/loadCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current load progress in terms of bytes
+   ]]></description>
+</method>
+<method name='loadTotal' fullname='cv.media:SoundPlayer/loadTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the total size to be loaded in terms of bytes
+   ]]></description>
+</method>
+<method name='metaData' fullname='cv.media:SoundPlayer/metaData/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[ 
+   Gets the metadata if available for the currently playing audio file
+   
+   -MetaData
+   Flash Player 9 and later supports ID3 2.0 tags, specifically 2.3 and 2.4
+   -IDE 2.0 tag
+   COMM Sound.id3.comment
+   TABL Sound.id3.album
+   TCON Sound.id3.genre
+   TIT2 Sound.id3.songName
+   TPE1 Sound.id3.artist
+   TRCK Sound.id3.track
+   TYER Sound.id3.year
+   
+   -ID3 Earlier
+   TFLT File type
+   TIME Time
+   TIT1 Content group description
+   TIT2 Title/song name/content description
+   TIT3 Subtitle/description refinement
+   TKEY Initial key
+   TLAN Languages
+   TLEN Length
+   TMED Media type
+   TOAL Original album/movie/show title
+   TOFN Original filename
+   TOLY Original lyricists/text writers
+   TOPE Original artists/performers
+   TORY Original release year
+   TOWN File owner/licensee
+   TPE1 Lead performers/soloists
+   TPE2 Band/orchestra/accompaniment
+   TPE3 Conductor/performer refinement
+   TPE4 Interpreted, remixed, or otherwise modified by
+   TPOS Part of a set
+   TPUB Publisher
+   TRCK Track number/position in set
+   TRDA Recording dates
+   TRSN Internet radio station name
+   TRSO Internet radio station owner
+   TSIZ Size
+   TSRC ISRC (international standard recording code)
+   TSSE Software/hardware and settings used for encoding
+   TYER Year
+   WXXX URL Link frame
+   ]]></description>
+</method>
+<method name='pan' fullname='cv.media:SoundPlayer/pan/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   The left-to-right panning of the sound, ranging from -1 (full pan 
+   left) to 1 (full pan right). A value of 0 represents no panning 
+   (balanced center between right and left). 
+   ]]></description>
+</method>
+<method name='paused' fullname='cv.media:SoundPlayer/paused/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[
+   Returns the pause status of the player.
+   ]]></description>
+</method>
+<method name='rightToLeft' fullname='cv.media:SoundPlayer/rightToLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the right 
+   input is played in the left speaker.
+   ]]></description>
+</method>
+<method name='rightToRight' fullname='cv.media:SoundPlayer/rightToRight/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the right 
+   input is played in the right speaker.
+   ]]></description>
+</method>
+<method name='status' fullname='cv.media:SoundPlayer/status/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[
+   Returns the load status of the player.
+   ]]></description>
+</method>
+<method name='timeCurrent' fullname='cv.media:SoundPlayer/timeCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the elapsed play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeLeft' fullname='cv.media:SoundPlayer/timeLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the remaining play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeTotal' fullname='cv.media:SoundPlayer/timeTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the total play time in milliseconds
+   ]]></description>
+</method>
+<method name='volume' fullname='cv.media:SoundPlayer/volume/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets or sets the current volume, from 0 - 1
+   ]]></description>
+</method>
+<method name='autoStart' fullname='cv.media:SoundPlayer/autoStart/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='buffer' fullname='cv.media:SoundPlayer/buffer/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='int' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='leftToLeft' fullname='cv.media:SoundPlayer/leftToLeft/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='leftToRight' fullname='cv.media:SoundPlayer/leftToRight/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='pan' fullname='cv.media:SoundPlayer/pan/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='rightToLeft' fullname='cv.media:SoundPlayer/rightToLeft/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='rightToRight' fullname='cv.media:SoundPlayer/rightToRight/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='volume' fullname='cv.media:SoundPlayer/volume/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='VERSION' fullname='cv.media:SoundPlayer/VERSION' type='String' isStatic='true' isConst='true' defaultValue='3.0.3' >
+<description><![CDATA[
+         The current version
+   ]]></description>
+</field>
+<field name='_autoStart' fullname='cv.media:SoundPlayer/protected:_autoStart' type='Boolean' isStatic='false' isConst='false' defaultValue='true' >
+</field>
+<field name='_buffer' fullname='cv.media:SoundPlayer/protected:_buffer' type='int' isStatic='false' isConst='false' defaultValue='1' >
+</field>
+<field name='_isReadyToPlay' fullname='cv.media:SoundPlayer/protected:_isReadyToPlay' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_leftToLeft' fullname='cv.media:SoundPlayer/protected:_leftToLeft' type='Number' isStatic='false' isConst='false' defaultValue='1' >
+</field>
+<field name='_leftToRight' fullname='cv.media:SoundPlayer/protected:_leftToRight' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_loadCurrent' fullname='cv.media:SoundPlayer/protected:_loadCurrent' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_loadTotal' fullname='cv.media:SoundPlayer/protected:_loadTotal' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_metaData' fullname='cv.media:SoundPlayer/protected:_metaData' type='Object' isStatic='false' isConst='false' >
+</field>
+<field name='_pan' fullname='cv.media:SoundPlayer/protected:_pan' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_paused' fullname='cv.media:SoundPlayer/protected:_paused' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_rightToLeft' fullname='cv.media:SoundPlayer/protected:_rightToLeft' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_rightToRight' fullname='cv.media:SoundPlayer/protected:_rightToRight' type='Number' isStatic='false' isConst='false' defaultValue='1' >
+</field>
+<field name='_status' fullname='cv.media:SoundPlayer/protected:_status' type='String' isStatic='false' isConst='false' defaultValue='unloaded' >
+</field>
+<field name='_volume' fullname='cv.media:SoundPlayer/protected:_volume' type='Number' isStatic='false' isConst='false' defaultValue='.5' >
+</field>
+<field name='autoRewind' fullname='cv.media:SoundPlayer/autoRewind' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Will automatically call stop (rewind) after playing complete. If disabled, this will pause
+   the player instead.
+   ]]></description>
+</field>
+<field name='debug' fullname='cv.media:SoundPlayer/debug' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Enables/Disables debug traces
+   ]]></description>
+</field>
+<field name='pausePosition' fullname='cv.media:SoundPlayer/protected:pausePosition' type='int' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='playTimer' fullname='cv.media:SoundPlayer/protected:playTimer' type='flash.utils:Timer' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='sc' fullname='cv.media:SoundPlayer/protected:sc' type='flash.media:SoundChannel' isStatic='false' isConst='false' >
+</field>
+<field name='sendOnce' fullname='cv.media:SoundPlayer/protected:sendOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='skipOnce' fullname='cv.media:SoundPlayer/protected:skipOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='snd' fullname='cv.media:SoundPlayer/protected:snd' type='flash.media:Sound' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='strURL' fullname='cv.media:SoundPlayer/protected:strURL' type='String' isStatic='false' isConst='false' >
+</field>
+<packageRec name='cv.media.null' fullname='cv.media.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='NetStreamPlayer' fullname='cv.media:NetStreamPlayer' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\media\NetStreamPlayer.as' namespace='cv.media' access='public' baseclass='flash.events:EventDispatcher' interfaces='cv.interfaces:IMediaPlayer' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  <h3>Version:</h3> 3.0.2<br>
+  <h3>Date:</h3> 4/02/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The NetStreamPlayer class is a facade for controlling loading, and playing
+  of video, streaming video and M4A files within Flash. It intelligently handles pausing, and
+  loading.
+  
+  Note: Sometimes playhead won't move on videos, this is because there is no 
+  metadata describing it's duration. If this occurs, there is no way to
+  calculate how long a video is, so it stops the playhead from moving.
+  <hr>
+  <ul>
+  <li>3.0.2
+  <ul>
+    <li>Tweaked how load complete reports</li>
+    <li>loadCurrent and loadTotal are now uints and more accurate</li>
+  </ul>
+  </li>
+  <li>3.0.1
+  <ul>
+    <li>Changed how PLAY_START and autoStart is handled. autoStart is no longer overwritten and will pause before any audio is heard.</li>
+    <li>Handles autostart and PLAY_START better. Also has a new status of STARTED to differentiate between when autoStart and the first play().</li>
+    <li>Added autoRewind prop. If set, it will rewind after PLAY_COMPLETE so the play button can be used to resume.</li>
+  </ul>
+  </li>
+  <li>3.0.0
+  <ul>
+    <li>Refactored release</li>
+  </ul>
+  </li>
+  </ul>
+     ]]></description>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='status' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched when isPause or isPlaying has updated.
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.STATUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='playStart' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched once as a media file first begins to play
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='playProgress' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='playComplete' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file finishes playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='metadata' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched as metadata is receieved from the media playing
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.METADATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='loadStart' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched as a media file begins loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='loadProgress' type='flash.events.ProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is loaded
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='loadComplete' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched when the media file has completed loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:NetStreamPlayer' name='cuePoint' type='cv.events.MetadataEvent' >
+<description><![CDATA[
+  Dispatched when a cue point is reached.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetadataEvent.CUE_POINT
+  ]]></eventType>
+	</Event>
+</metadata>
+</classRec>
+<method name='NetStreamPlayer' fullname='cv.media:NetStreamPlayer/NetStreamPlayer' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='createConnection' fullname='cv.media:NetStreamPlayer/protected:createConnection' isStatic='false' isFinal='false' isOverride='false'  param_names='command' param_types='String' param_defaults='null' result_type='void'>
+</method>
+<method name='createStream' fullname='cv.media:NetStreamPlayer/protected:createStream' isStatic='false' isFinal='false' isOverride='false'  param_names='netstream' param_types='flash.net:NetStream' param_defaults='null' result_type='void'>
+</method>
+<method name='errorHandler' fullname='cv.media:NetStreamPlayer/protected:errorHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:ErrorEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='getEstimatedLength' fullname='cv.media:NetStreamPlayer/protected:getEstimatedLength' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+</method>
+<method name='isValid' fullname='cv.media:NetStreamPlayer/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+<description><![CDATA[
+   Validates if the given filetype is compatible to be played with NetStreamPlayer. 
+   The acceptable file types are :
+   <ul>
+   <li>flv : video/x-flv Flash Video</li>
+   <li>f4v : video/mp4  Flash Video</li>
+   <li>f4p : video/mp4  Protected Flash Video</li>
+   <li>f4b : audio/mp4  Flash Audio Book</li>
+   <li>f4a : audio/mp4  Flash Audio</li>
+   <li>3gp : video/3gpp  audio/3gpp 3GPP for GSM-based Phones</li>
+   <li>3g2 : video/3gpp  audio/3gpp 3GPP2 for CDMA-based Phones</li>
+   <li>mov : video/quicktime QuickTime Movie</li>
+   <li>mp4 : video/mp4  H.264 MPEG-4 Video</li>
+   <li>m4v : video/mp4  H.264 MPEG-4 Video</li>
+   <li>m4a : audio/mp4  Audio-only MPEG-4</li>
+   <li>p4v : audio/mp4  Protected H.264 MPEG-4 Video</li>
+   </ul>
+   
+   ]]></description>
+<param><![CDATA[ext The file extension to be validated
+   ]]></param>
+<param><![CDATA[url The full file url if the extension is not enough
+   
+   ]]></param>
+<return><![CDATA[Boolean of whether the extension was valid or not.
+   ]]></return>
+</method>
+<method name='load' fullname='cv.media:NetStreamPlayer/load' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a new file to be played.
+   
+   ]]></description>
+<fparam><![CDATA[s The url of the file to be loaded
+   ]]></fparam>
+</method>
+<method name='loadTimerHandler' fullname='cv.media:NetStreamPlayer/protected:loadTimerHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='event' param_types='flash.events:TimerEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='netStatusHandler' fullname='cv.media:NetStreamPlayer/protected:netStatusHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:NetStatusEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onCuePoint' fullname='cv.media:NetStreamPlayer/protected:onCuePoint' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onMetaData' fullname='cv.media:NetStreamPlayer/protected:onMetaData' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Handles the metadata returned. Possible data sent:
+   <li>canSeekToEnd</li>
+   <li>cuePoints</li>
+   <li>audiocodecid</li>
+   <li>audiodelay</li>
+   <li>audiodatarate</li>
+   <li>videocodecid</li>
+   <li>framerate</li>
+   <li>videodatarate</li>
+   <li>height - Older version of encode</li>
+   <li>width - Older version of encode</li>
+   <li>duration - Older version of encode</li>
+   
+   ]]></description>
+<param><![CDATA[o
+   ]]></param>
+</method>
+<method name='pause' fullname='cv.media:NetStreamPlayer/pause' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='true' result_type='void'>
+<description><![CDATA[
+   Loads a netstream from the BulkLoader to be played. This cannot be used in 
+   conjunction with TempoLite since the location is not a url. Using
+   loadAsset will IGNORE any streamhosts set becuase you can only use this
+   if the video is progressively downloaded.
+   
+   ]]></description>
+<internal><![CDATA[    Not complete yet. BulkLoader seems to handle NetStreams kinda funky, staying
+   away til this is cleaned up.
+   
+   ]]></internal>
+<param><![CDATA[netstream The netstream object from the BulkLoader
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='play' fullname='cv.media:NetStreamPlayer/play' isStatic='false' isFinal='false' isOverride='false'  param_names='pos' param_types='int' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Plays the media, starting at the given position.
+   
+   ]]></description>
+<default><![CDATA[0
+   ]]></default>
+<param><![CDATA[pos Position to play from
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='playTimerHandler' fullname='cv.media:NetStreamPlayer/protected:playTimerHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='event' param_types='flash.events:TimerEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='seek' fullname='cv.media:NetStreamPlayer/seek' isStatic='false' isFinal='false' isOverride='false'  param_names='time' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to time given in the media.
+   
+   ]]></description>
+<param><![CDATA[n Seconds into the media to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='seekPercent' fullname='cv.media:NetStreamPlayer/seekPercent' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to the given percent in the media
+   
+   ]]></description>
+<param><![CDATA[n Percent to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='setStatus' fullname='cv.media:NetStreamPlayer/protected:setStatus' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='void'>
+</method>
+<method name='stop' fullname='cv.media:NetStreamPlayer/stop' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the media at the specified position. Sets the position given as the pause position.
+   ]]></description>
+</method>
+<method name='trace2' fullname='cv.media:NetStreamPlayer/protected:trace2' isStatic='false' isFinal='false' isOverride='false'  param_names='arguements' param_types='restParam' param_defaults='undefined' result_type='void'>
+</method>
+<method name='unload' fullname='cv.media:NetStreamPlayer/unload' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the media, closes the NetConnetion or NetStream, and resets the metadata.
+   
+   ]]></description>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='updateProgress' fullname='cv.media:NetStreamPlayer/protected:updateProgress' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='updateSoundTransform' fullname='cv.media:NetStreamPlayer/protected:updateSoundTransform' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='autoStart' fullname='cv.media:NetStreamPlayer/autoStart/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Whether media will play automatically once loaded.
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+</method>
+<method name='buffer' fullname='cv.media:NetStreamPlayer/buffer/get' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+<description><![CDATA[ 
+   Gets or sets how long the NetStreamPlayer should buffer the video before playing, in seconds.
+   ]]></description>
+</method>
+<method name='currentPercent' fullname='cv.media:NetStreamPlayer/currentPercent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current play progress in terms of percent
+   ]]></description>
+</method>
+<method name='leftToLeft' fullname='cv.media:NetStreamPlayer/leftToLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.
+   ]]></description>
+</method>
+<method name='leftToRight' fullname='cv.media:NetStreamPlayer/leftToRight/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.
+   ]]></description>
+</method>
+<method name='loadCurrent' fullname='cv.media:NetStreamPlayer/loadCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current load progress in terms of bytes
+   ]]></description>
+</method>
+<method name='loadTotal' fullname='cv.media:NetStreamPlayer/loadTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the total size to be loaded in terms of bytes
+   ]]></description>
+</method>
+<method name='metaData' fullname='cv.media:NetStreamPlayer/metaData/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[ 
+   Gets the metadata if available for the currently playing audio file
+   ]]></description>
+</method>
+<method name='pan' fullname='cv.media:NetStreamPlayer/pan/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right). 
+   A value of 0 represents no panning (balanced center between right and left). 
+   ]]></description>
+</method>
+<method name='paused' fullname='cv.media:NetStreamPlayer/paused/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[
+   Returns the pause status of the player.
+   ]]></description>
+</method>
+<method name='rightToLeft' fullname='cv.media:NetStreamPlayer/rightToLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.
+   ]]></description>
+</method>
+<method name='rightToRight' fullname='cv.media:NetStreamPlayer/rightToRight/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.
+   ]]></description>
+</method>
+<method name='status' fullname='cv.media:NetStreamPlayer/status/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[
+   Returns the load status of the player.
+   ]]></description>
+</method>
+<method name='timeCurrent' fullname='cv.media:NetStreamPlayer/timeCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the elapsed play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeLeft' fullname='cv.media:NetStreamPlayer/timeLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the remaining play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeTotal' fullname='cv.media:NetStreamPlayer/timeTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the total play time in milliseconds
+   ]]></description>
+</method>
+<method name='video' fullname='cv.media:NetStreamPlayer/video/get' isStatic='false' isFinal='false' isOverride='false'  result_type='flash.media:Video'>
+<description><![CDATA[ 
+   Gets or sets the reference to the display video object.
+   ]]></description>
+</method>
+<method name='volume' fullname='cv.media:NetStreamPlayer/volume/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets or sets the current volume, from 0 - 1
+   ]]></description>
+</method>
+<method name='autoStart' fullname='cv.media:NetStreamPlayer/autoStart/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='buffer' fullname='cv.media:NetStreamPlayer/buffer/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='int' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='leftToLeft' fullname='cv.media:NetStreamPlayer/leftToLeft/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='leftToRight' fullname='cv.media:NetStreamPlayer/leftToRight/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='pan' fullname='cv.media:NetStreamPlayer/pan/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='rightToLeft' fullname='cv.media:NetStreamPlayer/rightToLeft/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='rightToRight' fullname='cv.media:NetStreamPlayer/rightToRight/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='video' fullname='cv.media:NetStreamPlayer/video/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='flash.media:Video' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='volume' fullname='cv.media:NetStreamPlayer/volume/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='VERSION' fullname='cv.media:NetStreamPlayer/VERSION' type='String' isStatic='true' isConst='true' defaultValue='3.0.2' >
+<description><![CDATA[
+         The current version
+   ]]></description>
+</field>
+<field name='_autoStart' fullname='cv.media:NetStreamPlayer/protected:_autoStart' type='Boolean' isStatic='false' isConst='false' defaultValue='true' >
+</field>
+<field name='_buffer' fullname='cv.media:NetStreamPlayer/protected:_buffer' type='Number' isStatic='false' isConst='false' defaultValue='0.1' >
+</field>
+<field name='_encoding' fullname='cv.media:NetStreamPlayer/protected:_encoding' type='uint' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_leftToLeft' fullname='cv.media:NetStreamPlayer/protected:_leftToLeft' type='Number' isStatic='false' isConst='false' defaultValue='1' >
+</field>
+<field name='_leftToRight' fullname='cv.media:NetStreamPlayer/protected:_leftToRight' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_loadCurrent' fullname='cv.media:NetStreamPlayer/protected:_loadCurrent' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_loadTotal' fullname='cv.media:NetStreamPlayer/protected:_loadTotal' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_metaData' fullname='cv.media:NetStreamPlayer/protected:_metaData' type='Object' isStatic='false' isConst='false' >
+</field>
+<field name='_pan' fullname='cv.media:NetStreamPlayer/protected:_pan' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_paused' fullname='cv.media:NetStreamPlayer/protected:_paused' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_rightToLeft' fullname='cv.media:NetStreamPlayer/protected:_rightToLeft' type='Number' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_rightToRight' fullname='cv.media:NetStreamPlayer/protected:_rightToRight' type='Number' isStatic='false' isConst='false' defaultValue='1' >
+</field>
+<field name='_status' fullname='cv.media:NetStreamPlayer/protected:_status' type='String' isStatic='false' isConst='false' defaultValue='unloaded' >
+</field>
+<field name='_streamHost' fullname='cv.media:NetStreamPlayer/protected:_streamHost' type='String' isStatic='false' isConst='false' defaultValue='null' >
+</field>
+<field name='_volume' fullname='cv.media:NetStreamPlayer/protected:_volume' type='Number' isStatic='false' isConst='false' defaultValue='.5' >
+</field>
+<field name='arrFileTypes' fullname='cv.media:NetStreamPlayer/protected:arrFileTypes' type='Array' isStatic='false' isConst='false' defaultValue='unknown' >
+</field>
+<field name='autoRewind' fullname='cv.media:NetStreamPlayer/autoRewind' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Will automatically call stop (rewind) after playing complete. If disabled, this will pause
+   the player instead.
+   ]]></description>
+</field>
+<field name='autoScale' fullname='cv.media:NetStreamPlayer/autoScale' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[ 
+   Gets or sets whether the video object will be scaled to the metadata given
+   for video dimensions.
+   ]]></description>
+</field>
+<field name='client' fullname='cv.media:NetStreamPlayer/protected:client' type='Object' isStatic='false' isConst='false' >
+</field>
+<field name='debug' fullname='cv.media:NetStreamPlayer/debug' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='loadTimer' fullname='cv.media:NetStreamPlayer/protected:loadTimer' type='flash.utils:Timer' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='nc' fullname='cv.media:NetStreamPlayer/protected:nc' type='flash.net:NetConnection' isStatic='false' isConst='false' >
+</field>
+<field name='ns' fullname='cv.media:NetStreamPlayer/protected:ns' type='flash.net:NetStream' isStatic='false' isConst='false' >
+</field>
+<field name='playTimer' fullname='cv.media:NetStreamPlayer/protected:playTimer' type='flash.utils:Timer' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='sendOnce' fullname='cv.media:NetStreamPlayer/protected:sendOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='skipOnce' fullname='cv.media:NetStreamPlayer/protected:skipOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='strURL' fullname='cv.media:NetStreamPlayer/protected:strURL' type='String' isStatic='false' isConst='false' >
+</field>
+<field name='vid' fullname='cv.media:NetStreamPlayer/protected:vid' type='flash.media:Video' isStatic='false' isConst='false' >
+</field>
+<packageRec name='cv.media.null' fullname='cv.media.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='RTMPPlayer' fullname='cv.media:RTMPPlayer' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\media\RTMPPlayer.as' namespace='cv.media' access='public' baseclass='cv.media:NetStreamPlayer' interfaces='cv.interfaces:IMediaPlayer' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  <h3>Version:</h3> 1.0.0<br>
+  <h3>Date:</h3> 3/10/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The RTMPPlayer class extends the capabilities of the NetStreamPlayer.
+  Allowing it to stream media from a server.
+     ]]></description>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='RTMPSampleAccess' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when RTMPSampleAccess is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.RTMP_SAMPLE_ACCESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='textData' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onTextData is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.TEXT_DATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='playStatus' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onPlayStatus is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.PLAY_STATUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='lastSecond' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onLastSecond is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.LAST_SECOND
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='imageData' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onImageData is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.IMAGE_DATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='fcSubscribe' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onFCSubscribe is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.FC_SUBSCRIBE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='captionInfo' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onCaptionInfo is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.CAPTION_INFO
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='caption' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onCaption is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.CAPTION
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:RTMPPlayer' name='bandwidth' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched when onBWDone is called.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.BAND_WIDTH
+  ]]></eventType>
+	</Event>
+</metadata>
+</classRec>
+<method name='RTMPPlayer' fullname='cv.media:RTMPPlayer/RTMPPlayer' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='RtmpSampleAccess' fullname='cv.media:RTMPPlayer/protected:RtmpSampleAccess' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='addHeader' fullname='cv.media:RTMPPlayer/addHeader' isStatic='false' isFinal='false' isOverride='false'  param_names='operation;mustUnderstand;param' param_types='String;Boolean;Object' param_defaults='undefined;false;null' result_type='void'>
+<description><![CDATA[
+   Adds a context header to the Action Message Format (AMF) packet structure. 
+   This header is sent with every future AMF packet. If you call 
+   NetConnection.addHeader() using the same name, the new header replaces the 
+   existing header, and the new header persists for the duration of the 
+   NetConnection object. You can remove a header by calling 
+   NetConnection.addHeader() with the name of the header to remove an 
+   undefined object.
+   
+   ]]></description>
+<param><![CDATA[operation Identifies the header and the ActionScript object 
+   data associated with it.
+   ]]></param>
+<param><![CDATA[mustUnderstand A value of true indicates that the server must 
+   understand and process this header before it handles any of the 
+   following headers or messages. 
+   ]]></param>
+<param><![CDATA[param Any ActionScript object. 
+   ]]></param>
+</method>
+<method name='call' fullname='cv.media:RTMPPlayer/call' isStatic='false' isFinal='false' isOverride='false'  param_names='command;responder;rest' param_types='String;flash.net:Responder;restParam' param_defaults='undefined;undefined;undefined' result_type='void'>
+<description><![CDATA[
+   Invokes a command or method on Flash Media Server or on an 
+   application server running Flash Remoting.
+   
+   ]]></description>
+<param><![CDATA[command A method specified in the form [objectPath/]method. 
+   For example, the someObject/doSomething command tells the remote 
+   server to invoke the clientObject.someObject.doSomething() method, 
+   with all the optional ... arguments parameters. If the object path 
+   is missing, clientObject.doSomething() is invoked on the remote server.
+   ]]></param>
+<param><![CDATA[responder An optional object that is used to handle return 
+   values from the server. The Responder object can have two defined 
+   methods to handle the returned result: result and status. If an error 
+   is returned as the result, status is invoked; otherwise, result is 
+   invoked. The Responder object can process errors related to specific 
+   operations, while the NetConnection object responds to errors related 
+   to the connection status.
+   ]]></param>
+<param><![CDATA[... rest Optional arguments that can be of any ActionScript 
+   type, including a reference to another ActionScript object. These 
+   arguments are passed to the method specified in the command parameter 
+   when the method is executed on the remote application server. 
+   ]]></param>
+</method>
+<method name='isValid' fullname='cv.media:RTMPPlayer/isValid' isStatic='false' isFinal='false' isOverride='true'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='netStatusHandler' fullname='cv.media:RTMPPlayer/protected:netStatusHandler' isStatic='false' isFinal='false' isOverride='true'  param_names='e' param_types='flash.events:NetStatusEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onBWCheck' fullname='cv.media:RTMPPlayer/protected:onBWCheck' isStatic='false' isFinal='false' isOverride='false'  param_names='rest' param_types='restParam' param_defaults='undefined' result_type='Number'>
+<description><![CDATA[
+   This is required by native bandwidth detection. It takes an argument,
+   ...rest. The function must return a value, even if the value is 0, to 
+   indicate to the server that the client has received the data.
+   
+   ]]></description>
+<param><![CDATA[... rest
+   ]]></param>
+<return><![CDATA[   ]]></return>
+</method>
+<method name='onBWDone' fullname='cv.media:RTMPPlayer/protected:onBWDone' isStatic='false' isFinal='false' isOverride='false'  param_names='rest' param_types='restParam' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   The server calls the onBWDone() function when it finishes measuring 
+   the bandwidth. It takes four arguments. The first argument it returns 
+   is the bandwidth measured in Kbps. The second and third arguments are 
+   not used. The fourth argument is the latency in milliseconds.
+   
+   ]]></description>
+<param><![CDATA[... rest
+   ]]></param>
+</method>
+<method name='onCaption' fullname='cv.media:RTMPPlayer/protected:onCaption' isStatic='false' isFinal='false' isOverride='false'  param_names='cps;spk' param_types='String;Number' param_defaults='undefined;undefined' result_type='void'>
+</method>
+<method name='onCaptionInfo' fullname='cv.media:RTMPPlayer/protected:onCaptionInfo' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onFCSubscribe' fullname='cv.media:RTMPPlayer/protected:onFCSubscribe' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onImageData' fullname='cv.media:RTMPPlayer/protected:onImageData' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onLastSecond' fullname='cv.media:RTMPPlayer/protected:onLastSecond' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onPlayStatus' fullname='cv.media:RTMPPlayer/protected:onPlayStatus' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='onTextData' fullname='cv.media:RTMPPlayer/protected:onTextData' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='netConnection' fullname='cv.media:RTMPPlayer/netConnection/get' isStatic='false' isFinal='false' isOverride='false'  result_type='flash.net:NetConnection'>
+<description><![CDATA[
+   Returns a reference to the NetConnection if it exists. This is used
+   instead of having all the same properties in NetStreamPlayer.
+   
+   Note: addHeader() and call() are added to NetStreamPlayer for your
+   convenience.
+   
+   ]]></description>
+<see><![CDATA[RTMPPlayer#addHeader()
+   ]]></see>
+<see><![CDATA[RTMPPlayer#call()
+   ]]></see>
+</method>
+<method name='objectEncoding' fullname='cv.media:RTMPPlayer/objectEncoding/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets or sets the object encodeing for use with streaming servers.
+   ]]></description>
+</method>
+<method name='streamHost' fullname='cv.media:RTMPPlayer/streamHost/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[ 
+   Gets or sets the stream host url for use with streaming media.
+   ]]></description>
+</method>
+<method name='objectEncoding' fullname='cv.media:RTMPPlayer/objectEncoding/set' isStatic='false' isFinal='false' isOverride='false'  param_names='value' param_types='uint' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='streamHost' fullname='cv.media:RTMPPlayer/streamHost/set' isStatic='false' isFinal='false' isOverride='false'  param_names='value' param_types='String' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='VERSION' fullname='cv.media:RTMPPlayer/VERSION' type='String' isStatic='true' isConst='true' defaultValue='1.0.0' >
+<description><![CDATA[
+         The current version
+   ]]></description>
+</field>
+<packageRec name='cv.media.null' fullname='cv.media.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='ImagePlayer' fullname='cv.media:ImagePlayer' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\media\ImagePlayer.as' namespace='cv.media' access='public' baseclass='flash.display:Sprite' interfaces='cv.interfaces:IMediaPlayer' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  <h3>Version:</h3> 1.0.2<br>
+  <h3>Date:</h3> 4/02/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The ImagePlayer class is a facade for controlling loading, and playing
+  of images.
+  <hr>
+  <ul>
+  <li>1.0.2
+  <ul>
+    <li>Tweaked how load complete reports</li>
+    <li>loadCurrent and loadTotal are now uints and more accurate</li>
+  </ul>
+  </li>
+  <li>1.0.1
+  <ul>
+    <li>Changed how PLAY_START and autoStart is handled. autoStart is no longer overwritten and will pause before any audio is heard.</li>
+    <li>Handles autostart and PLAY_START better. Also has a new status of STARTED to differentiate between when autoStart and the first play().</li>
+    <li>Added autoRewind prop. If set, it will rewind after PLAY_COMPLETE so the play button can be used to resume.</li>
+  </ul>
+  </li>
+  <li>1.0.0
+  <ul>
+    <li>Refactored release</li>
+  </ul>
+  </li>
+  </ul>
+     ]]></description>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='status' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched when status has been updated.
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.STATUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='playStart' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched once as a media file first begins to play
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='playProgress' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='playComplete' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file finishes playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='metadata' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched after images loads. Contains height and width of image.
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.METADATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='loadStart' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched as a media file begins loading
+    ]]></description>
+<eventType><![CDATA[cv.event.LoadEvent.LOAD_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='loadProgress' type='flash.events.ProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is loaded
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv.media:ImagePlayer' name='loadComplete' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched when the media file has completed loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+</classRec>
+<method name='ImagePlayer' fullname='cv.media:ImagePlayer/ImagePlayer' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='errorHandler' fullname='cv.media:ImagePlayer/protected:errorHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:ErrorEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='imageHandler' fullname='cv.media:ImagePlayer/protected:imageHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='isValid' fullname='cv.media:ImagePlayer/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+<description><![CDATA[
+   Validates if the given filetype is compatible to be played with ImagePlayer.
+   The acceptable file types are :
+   <ul>
+   <li>png</li>
+   <li>jpg</li>
+   <li>gif</li>
+   </ul>
+   
+   ]]></description>
+<param><![CDATA[ext The file extension to be validated
+   ]]></param>
+<param><![CDATA[url The full file url if the extension is not enough
+   
+   ]]></param>
+<return><![CDATA[Boolean of whether the extension was valid or not.
+   ]]></return>
+</method>
+<method name='load' fullname='cv.media:ImagePlayer/load' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a new file to be played.
+   
+   ]]></description>
+<param><![CDATA[s The url of the file to be loaded
+   
+   ]]></param>
+<see><![CDATA[cv.events.LoadEvent.LOAD_START
+   ]]></see>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='pause' fullname='cv.media:ImagePlayer/pause' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='true' result_type='void'>
+<description><![CDATA[
+   Pauses the media
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+<param><![CDATA[b Whether to pause or toggle it off
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='play' fullname='cv.media:ImagePlayer/play' isStatic='false' isFinal='false' isOverride='false'  param_names='pos' param_types='int' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Starts playback at the given position.
+   
+   ]]></description>
+<default><![CDATA[0
+   ]]></default>
+<param><![CDATA[pos Position to play from
+   ]]></param>
+</method>
+<method name='progressHandler' fullname='cv.media:ImagePlayer/protected:progressHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:ProgressEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='seek' fullname='cv.media:ImagePlayer/seek' isStatic='false' isFinal='false' isOverride='false'  param_names='time' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to time given.
+   
+   ]]></description>
+<param><![CDATA[n Seconds into the audio to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='seekPercent' fullname='cv.media:ImagePlayer/seekPercent' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seeks to the given percent
+   
+   ]]></description>
+<param><![CDATA[n Percent to seek to
+   
+   ]]></param>
+<see><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+   ]]></see>
+</method>
+<method name='setStatus' fullname='cv.media:ImagePlayer/protected:setStatus' isStatic='false' isFinal='false' isOverride='false'  param_names='str' param_types='String' param_defaults='undefined' result_type='void'>
+</method>
+<method name='stop' fullname='cv.media:ImagePlayer/stop' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the image at the specified position. Sets the position given 
+   as the pause position.
+   ]]></description>
+</method>
+<method name='timeHandler' fullname='cv.media:ImagePlayer/protected:timeHandler' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='trace2' fullname='cv.media:ImagePlayer/protected:trace2' isStatic='false' isFinal='false' isOverride='false'  param_names='arguements' param_types='restParam' param_defaults='undefined' result_type='void'>
+</method>
+<method name='unload' fullname='cv.media:ImagePlayer/unload' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Unloads the image and resets the metadata.
+   
+   ]]></description>
+<see><![CDATA[cv.events.PlayProgressEvent.STATUS
+   ]]></see>
+</method>
+<method name='autoStart' fullname='cv.media:ImagePlayer/autoStart/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Whether media will play automatically once loaded.
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+</method>
+<method name='currentPercent' fullname='cv.media:ImagePlayer/currentPercent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current play progress in terms of percent
+   ]]></description>
+</method>
+<method name='loadCurrent' fullname='cv.media:ImagePlayer/loadCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the current load progress in terms of bytes
+   ]]></description>
+</method>
+<method name='loadTotal' fullname='cv.media:ImagePlayer/loadTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Gets the total size to be loaded in terms of bytes
+   ]]></description>
+</method>
+<method name='metaData' fullname='cv.media:ImagePlayer/metaData/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[ 
+   Gets the metadata if available for the currently playing audio file
+   ]]></description>
+</method>
+<method name='paused' fullname='cv.media:ImagePlayer/paused/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[
+   Returns the pause status of the player.
+   ]]></description>
+</method>
+<method name='status' fullname='cv.media:ImagePlayer/status/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[
+   Returns the load status of the player.
+   ]]></description>
+</method>
+<method name='timeCurrent' fullname='cv.media:ImagePlayer/timeCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the elapsed play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeLeft' fullname='cv.media:ImagePlayer/timeLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the remaining play time in milliseconds
+   ]]></description>
+</method>
+<method name='timeTotal' fullname='cv.media:ImagePlayer/timeTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets the total play time in milliseconds
+   ]]></description>
+</method>
+<method name='volume' fullname='cv.media:ImagePlayer/volume/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   Gets or sets the current volume, from 0 - 1
+   ]]></description>
+</method>
+<method name='autoStart' fullname='cv.media:ImagePlayer/autoStart/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='volume' fullname='cv.media:ImagePlayer/volume/set' isStatic='false' isFinal='false' isOverride='false'  param_names='n' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='VERSION' fullname='cv.media:ImagePlayer/VERSION' type='String' isStatic='true' isConst='true' defaultValue='1.0.2' >
+<description><![CDATA[
+         The current version
+   ]]></description>
+</field>
+<field name='_autoStart' fullname='cv.media:ImagePlayer/protected:_autoStart' type='Boolean' isStatic='false' isConst='false' defaultValue='true' >
+</field>
+<field name='_loadCurrent' fullname='cv.media:ImagePlayer/protected:_loadCurrent' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_loadTotal' fullname='cv.media:ImagePlayer/protected:_loadTotal' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='_metaData' fullname='cv.media:ImagePlayer/protected:_metaData' type='Object' isStatic='false' isConst='false' >
+</field>
+<field name='_paused' fullname='cv.media:ImagePlayer/protected:_paused' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_status' fullname='cv.media:ImagePlayer/protected:_status' type='String' isStatic='false' isConst='false' defaultValue='unloaded' >
+</field>
+<field name='_timeTotal' fullname='cv.media:ImagePlayer/protected:_timeTotal' type='Number' isStatic='false' isConst='false' >
+</field>
+<field name='_volume' fullname='cv.media:ImagePlayer/protected:_volume' type='Number' isStatic='false' isConst='false' >
+</field>
+<field name='arrFileTypes' fullname='cv.media:ImagePlayer/protected:arrFileTypes' type='Array' isStatic='false' isConst='false' defaultValue='unknown' >
+</field>
+<field name='autoRewind' fullname='cv.media:ImagePlayer/autoRewind' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Will automatically call stop (rewind) after playing complete. If disabled, this will pause
+   the player instead.
+   ]]></description>
+</field>
+<field name='debug' fullname='cv.media:ImagePlayer/debug' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Enables/Disables debug traces
+   ]]></description>
+</field>
+<field name='ldr' fullname='cv.media:ImagePlayer/protected:ldr' type='flash.display:Loader' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='pausePosition' fullname='cv.media:ImagePlayer/protected:pausePosition' type='int' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='playInterval' fullname='cv.media:ImagePlayer/protected:playInterval' type='uint' isStatic='false' isConst='false' >
+</field>
+<field name='position' fullname='cv.media:ImagePlayer/protected:position' type='int' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='sendOnce' fullname='cv.media:ImagePlayer/protected:sendOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='skipOnce' fullname='cv.media:ImagePlayer/protected:skipOnce' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='strURL' fullname='cv.media:ImagePlayer/protected:strURL' type='String' isStatic='false' isConst='false' >
+</field>
+<packageRec name='cv.null' fullname='cv.null'>
+<description><![CDATA[
+TempoLite ©2009 Gabriel Mariani. March 30th, 2009
+Visit http://blog.coursevector.com/tempolite for documentation, updates and more free code.
+Copyright (c) 2009 Gabriel Mariani
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+]]></description>
+</packageRec>
+<classRec name='TempoLite' fullname='cv:TempoLite' sourcefile='H:\SVN\CourseVector\projects\tempo\3.0\bin\releases\TempoLite-3-0-1\src\cv\TempoLite.as' namespace='cv' access='public' baseclass='flash.events:EventDispatcher' interfaces='cv.interfaces:IMediaPlayer' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+  <h3>Version:</h3> 3.0.1<br>
+  <h3>Date:</h3> 3/06/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  TempoLite is based off of its sister project Tempo this is a parsed down version that 
+  does not handle a UI. TempoLite is best compared with players like video.Maru, in 
+  the sense that it’s just a component that is dragged on stage and handles all of 
+  the media playback. This allows for a UI as complicated as you want to make it while 
+  the actually playback is handled by TempoLite.
+  <br>
+  <br>
+  <h3>Coded By:</h3> Gabriel Mariani, gabriel[at]coursevector.com<br>
+  Copyright 2009, Course Vector (This work is subject to the terms in http://blog.coursevector.com/terms.)<br>
+  <br>
+  <h3>Notes:</h3>
+  <ul>
+    <li>This class will add about 15kb to your Flash file.</li>
+  </ul>
+  <hr>
+  <ul>
+  <li>3.0.2
+  <ul>
+    <li>Changed loadCurrent and loadTotal to uint</li>
+  </ul>
+  </li>
+  <li>3.0.1
+  <ul>
+    <li>load() and seek() are now typed to  </li>
+  </ul>
+  </li>
+  <li>3.0.0
+  <ul>
+    <li>Changed unloadMedia() to just unload()</li>
+    <li>Changed bufferTime to just buffer</li>
+  </ul>
+  </li>
+  </ul>
+  
+  ]]></description>
+<example><![CDATA[This is the same code as in the TempoLiteDemo.fla
+  <br/><br/>
+  <listing version="3.0">
+  import cv.TempoLite;
+  import cv.media.SoundPlayer;
+  import cv.media.NetStreamPlayer;
+  import cv.media.RTMPPlayer;
+  import cv.media.ImagePlayer;
+  import flash.events.Event;
+  import cv.events.LoadEvent;
+  import cv.events.PlayProgressEvent;
+  import cv.events.MetaDataEvent;
+  import cv.formats.
+  
+  var tempo:TempoLite = new TempoLite(null, [ASX, ATOM, B4S, M3U, PLS, XSPF]);
+  tempo.debug = true;
+  
+  var nsP:NetStreamPlayer = new NetStreamPlayer();
+  nsP.video = vidScreen;
+  tempo.addPlayer(nsP);
+  nsP.debug = true;
+  
+  var sndP:SoundPlayer = new SoundPlayer();
+  sndP.debug = true;
+  tempo.addPlayer(sndP);
+  
+  var imgP:ImagePlayer = new ImagePlayer();
+  this.addChildAt(imgP, 0);
+  imgP.debug = true;
+  tempo.addPlayer(imgP);
+  
+  var rtP:RTMPPlayer = new RTMPPlayer();
+  rtP.streamHost = "rtmp://cp34534.edgefcs.net/ondemand";
+  //rtP.video = vidScreen;
+  //rtP.debug = true;
+  //tempo.addPlayer(rtP);
+  
+  //tempo.load("images/2_1600.jpg");
+  //tempo.load({url:"34548/PodcastIntro", extOverride:"flv"});
+  //tempo.load("music/01 Sunrise Projector.mp3");
+  //tempo.loadPlayList("playlists/xspf_example.xml");
+  //tempo.loadPlayList("playlists/pls_example.pls");
+  //tempo.loadPlayList("playlists/m3u_example.m3u");
+  //tempo.loadPlayList("playlists/b4s_example.b4s");
+  //tempo.loadPlayList("playlists/asx_example.xml");
+  tempo.loadPlayList("playlists/atom_example.xml");
+  </listing>
+     ]]></example>
+<metadata>
+	<Event owner='cv:TempoLite' name='metadata' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched as metadata is receieved from a player
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.METADATA
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='status' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched whenever the isPlaying, isReadyToPlay or isPause properties have changed.
+    ]]></description>
+<eventType><![CDATA[cv.TempoLite.STATUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='refreshPlaylist' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched from the PlayListManager when ever an item is removed, or updated, or the entire list is updated
+    ]]></description>
+<eventType><![CDATA[cv.TempoLite.REFRESH_PLAYLIST
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='previous' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched after Tempo has begun loading the previous item
+    ]]></description>
+<eventType><![CDATA[cv.TempoLite.PREVIOUS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='playStart' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched once as a media file first begins to play
+    ]]></description>
+<eventType><![CDATA[cv.TempoLite.PLAY_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='playProgress' type='cv.events.PlayProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is playing
+    ]]></description>
+<eventType><![CDATA[cv.events.PlayProgressEvent.PLAY_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='playComplete' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched as a media file finishes playing
+    ]]></description>
+<eventType><![CDATA[flash.events.ProgressEvent.PLAY_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='next' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched after Tempo has begun loading the next item, also at the end of an item playing
+    ]]></description>
+<eventType><![CDATA[cv.TempoLite.NEXT
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='loadStart' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched as a media file begins loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_START
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='loadProgress' type='flash.events.ProgressEvent' >
+<description><![CDATA[
+  Dispatched as a media file is loaded
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_PROGRESS
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='loadComplete' type='cv.events.LoadEvent' >
+<description><![CDATA[
+  Dispatched as a media file has completed loading
+    ]]></description>
+<eventType><![CDATA[cv.events.LoadEvent.LOAD_COMPLETE
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='cuePoint' type='cv.events.MetaDataEvent' >
+<description><![CDATA[
+  Dispatched everytime a cue point is encountered
+    ]]></description>
+<eventType><![CDATA[cv.events.MetaDataEvent.CUE_POINT
+  ]]></eventType>
+	</Event>
+</metadata>
+<metadata>
+	<Event owner='cv:TempoLite' name='change' type='flash.events.Event' >
+<description><![CDATA[
+  Dispatched from the PlayList when a change has occured
+    ]]></description>
+<eventType><![CDATA[flash.events.Event.CHANGE
+  ]]></eventType>
+	</Event>
+</metadata>
+</classRec>
+<method name='TempoLite' fullname='cv:TempoLite/TempoLite' isStatic='false' isFinal='false' isOverride='false'  param_names='players;formats' param_types='Array;Array' param_defaults='null;null' result_type='*'>
+<description><![CDATA[
+   Constructor. 
+   
+   This creates a new TempoLite instance.
+   
+   ]]></description>
+<param><![CDATA[players An array of players to use with TempoLite
+   ]]></param>
+</method>
+<method name='addItem' fullname='cv:TempoLite/addItem' isStatic='false' isFinal='false' isOverride='false'  param_names='item;index' param_types=';int' param_defaults='undefined;-1' result_type='uint'>
+<description><![CDATA[
+   Add an item to the playlist at the end, or at index specified.
+   
+   ]]></description>
+<default><![CDATA[-1
+   ]]></default>
+<param><![CDATA[item item to be added.
+   
+   ]]></param>
+<param><![CDATA[index where the item should be added in the playlist.
+   ]]></param>
+</method>
+<method name='addPlayer' fullname='cv:TempoLite/addPlayer' isStatic='false' isFinal='false' isOverride='false'  param_names='player' param_types='cv.interfaces:IMediaPlayer' param_defaults='undefined' result_type='uint'>
+<description><![CDATA[
+   Adds a player for use by TempoLite. Which can enable TempoLite to
+   handle more types of media.
+   
+   ]]></description>
+<param><![CDATA[player The player to add
+   ]]></param>
+</method>
+<method name='callPlayersMethod' fullname='cv:TempoLite/protected:callPlayersMethod' isStatic='false' isFinal='false' isOverride='false'  param_names='methodName;methodValue' param_types='String' param_defaults='undefined;null' result_type='void'>
+</method>
+<method name='clearItems' fullname='cv:TempoLite/clearItems' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Clears the current playlist.
+   ]]></description>
+</method>
+<method name='eventHandler' fullname='cv:TempoLite/protected:eventHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='getItemObject' fullname='cv:TempoLite/protected:getItemObject' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='Object'>
+</method>
+<method name='getType' fullname='cv:TempoLite/protected:getType' isStatic='false' isFinal='false' isOverride='false'  param_names='data' param_types='String' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<method name='isValid' fullname='cv:TempoLite/isValid' isStatic='false' isFinal='false' isOverride='false'  param_names='ext;url' param_types='String;String' param_defaults='undefined;undefined' result_type='Boolean'>
+</method>
+<method name='load' fullname='cv:TempoLite/load' isStatic='false' isFinal='false' isOverride='false'  param_names='item' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Create a playlist of a single item and load the item.
+   
+   ]]></description>
+<param><![CDATA[item The url or the item object to be played.
+   ]]></param>
+</method>
+<method name='loadItem' fullname='cv:TempoLite/protected:loadItem' isStatic='false' isFinal='false' isOverride='false'  param_names='o' param_types='Object' param_defaults='undefined' result_type='void'>
+</method>
+<method name='loadPlayList' fullname='cv:TempoLite/loadPlayList' isStatic='false' isFinal='false' isOverride='false'  param_names='url' param_types='String' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Loads a new playlist and clears any previous playlsit.
+   
+   ]]></description>
+<param><![CDATA[url The path to the playlist file.
+   ]]></param>
+</method>
+<method name='loadedHandler' fullname='cv:TempoLite/protected:loadedHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='metaDataHandler' fullname='cv:TempoLite/protected:metaDataHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='cv.events:MetaDataEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='next' fullname='cv:TempoLite/next' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Plays the next item in the playlist.
+   ]]></description>
+</method>
+<method name='onNewPlaylist' fullname='cv:TempoLite/protected:onNewPlaylist' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='pause' fullname='cv:TempoLite/pause' isStatic='false' isFinal='false' isOverride='false'  param_names='b' param_types='Boolean' param_defaults='true' result_type='void'>
+<description><![CDATA[
+   Pauses the current playback.
+   
+   ]]></description>
+<default><![CDATA[true
+   ]]></default>
+<param><![CDATA[b Value to set pause to
+   ]]></param>
+</method>
+<method name='play' fullname='cv:TempoLite/play' isStatic='false' isFinal='false' isOverride='false'  param_names='pos' param_types='int' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Plays starting at the given position.
+   
+   ]]></description>
+<default><![CDATA[0
+   ]]></default>
+<param><![CDATA[pos Position to play from
+   ]]></param>
+</method>
+<method name='playItem' fullname='cv:TempoLite/playItem' isStatic='false' isFinal='false' isOverride='false'  param_names='index' param_types='uint' param_defaults='0' result_type='void'>
+<description><![CDATA[
+   Plays the current item in the playlist, or at the 
+   specified index in the playlist.
+   
+   ]]></description>
+<default><![CDATA[0
+   ]]></default>
+<param><![CDATA[index The index of the item to be played
+   ]]></param>
+</method>
+<method name='playlistHandler' fullname='cv:TempoLite/protected:playlistHandler' isStatic='false' isFinal='false' isOverride='false'  param_names='e' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='previous' fullname='cv:TempoLite/previous' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Plays the previous item in the playlist.
+   
+   ]]></description>
+<see><![CDATA[#event:previous
+   ]]></see>
+</method>
+<method name='removeItem' fullname='cv:TempoLite/removeItem' isStatic='false' isFinal='false' isOverride='false'  param_names='index' param_types='int' param_defaults='-1' result_type='void'>
+<description><![CDATA[
+   Remove an item from the playlist from the end, or at index specified.
+   
+   ]]></description>
+<default><![CDATA[-1
+   ]]></default>
+<param><![CDATA[index The index of the item to be removed
+   
+   ]]></param>
+<see><![CDATA[#event:refreshPlaylist
+   ]]></see>
+</method>
+<method name='removePlayer' fullname='cv:TempoLite/removePlayer' isStatic='false' isFinal='false' isOverride='false'  param_names='player' param_types='cv.interfaces:IMediaPlayer' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Remove a player from TempoLite.
+   
+   ]]></description>
+<param><![CDATA[player The player to be removed.
+   ]]></param>
+</method>
+<method name='seek' fullname='cv:TempoLite/seek' isStatic='false' isFinal='false' isOverride='false'  param_names='time' param_types='' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seek to a specific time (in seconds) in the current item playing.
+   Pass a string of the time to seek relative to the current play time.
+   
+   ]]></description>
+<param><![CDATA[time Specific time to seek to, in seconds
+   ]]></param>
+</method>
+<method name='seekPercent' fullname='cv:TempoLite/seekPercent' isStatic='false' isFinal='false' isOverride='false'  param_names='percent' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[
+   Seek to a specific percent (0 - 1) in the current item playing.
+   
+   ]]></description>
+<param><![CDATA[percent Percentage to seek to
+   ]]></param>
+</method>
+<method name='setPlayersProp' fullname='cv:TempoLite/protected:setPlayersProp' isStatic='false' isFinal='false' isOverride='false'  param_names='propName;propValue' param_types='String' param_defaults='undefined;undefined' result_type='void'>
+</method>
+<method name='shuffleList' fullname='cv:TempoLite/protected:shuffleList' isStatic='false' isFinal='false' isOverride='false'  param_names='arr' param_types='cv.data:PlayList' param_defaults='undefined' result_type='cv.data:PlayList'>
+</method>
+<method name='stop' fullname='cv:TempoLite/stop' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Stops the audio at the specified position. Sets the position given as the pause position.
+   ]]></description>
+</method>
+<method name='stringToTime' fullname='cv:TempoLite/stringToTime' isStatic='true' isFinal='false' isOverride='false'  param_names='text' param_types='String' param_defaults='undefined' result_type='int'>
+<description><![CDATA[
+   Converts a time in 00:00:000 format and converts it back into a number.
+   
+   ]]></description>
+<param><![CDATA[text The string to convert
+   ]]></param>
+<return><![CDATA[The converted number
+   ]]></return>
+</method>
+<method name='timeToString' fullname='cv:TempoLite/timeToString' isStatic='true' isFinal='false' isOverride='false'  param_names='n' param_types='int' param_defaults='undefined' result_type='String'>
+<description><![CDATA[
+   Converts milliseconds to a 00:00:000 format.
+   
+   ]]></description>
+<param><![CDATA[n Milliseconds to convert
+   ]]></param>
+<return><![CDATA[The converted string
+   ]]></return>
+</method>
+<method name='trace2' fullname='cv:TempoLite/protected:trace2' isStatic='false' isFinal='false' isOverride='false'  param_names='args' param_types='restParam' param_defaults='undefined' result_type='void'>
+</method>
+<method name='unload' fullname='cv:TempoLite/unload' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+<description><![CDATA[
+   Unloads the current item playing. 
+   ]]></description>
+</method>
+<method name='updateItem' fullname='cv:TempoLite/updateItem' isStatic='false' isFinal='false' isOverride='false'  param_names='index;key;value' param_types='uint;String' param_defaults='undefined;undefined;undefined' result_type='void'>
+<description><![CDATA[
+   Updates a property of an Item in the playlist. This is used in 
+   situations where the metadata has been loaded, and the correct 
+   duration or title is updated for the playlist display. Dispatches 
+   the TempoLite.REFRESH_PLAYLIST event.
+   
+   ]]></description>
+<param><![CDATA[index  The index of the item to be updated
+   ]]></param>
+<param><![CDATA[key  The property name (length, title, etc)
+   ]]></param>
+<param><![CDATA[value The value to update the prop to.
+   ]]></param>
+</method>
+<method name='updateList' fullname='cv:TempoLite/protected:updateList' isStatic='false' isFinal='false' isOverride='false'  result_type='void'>
+</method>
+<method name='zero' fullname='cv:TempoLite/protected:zero' isStatic='true' isFinal='false' isOverride='false'  param_names='n;isMS' param_types='int;Boolean' param_defaults='undefined;false' result_type='String'>
+</method>
+<method name='autoStart' fullname='cv:TempoLite/autoStart/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Whether a video will play immediately when a playlist is loaded.
+   ]]></description>
+</method>
+<method name='autoStartIndex' fullname='cv:TempoLite/autoStartIndex/get' isStatic='false' isFinal='false' isOverride='false'  result_type='int'>
+<description><![CDATA[ 
+   If autoStart is true, the index of the item in the playlist to play first.
+   ]]></description>
+</method>
+<method name='currentIndex' fullname='cv:TempoLite/currentIndex/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Retrieve the current index in the playlist.
+   ]]></description>
+</method>
+<method name='currentItem' fullname='cv:TempoLite/currentItem/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Retrieve the current item playing.
+   ]]></description>
+</method>
+<method name='currentPercent' fullname='cv:TempoLite/currentPercent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Retrieve the current play progress as a percent.
+   ]]></description>
+</method>
+<method name='length' fullname='cv:TempoLite/length/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[ 
+   Retrieves the number of items in the playlist.
+   ]]></description>
+</method>
+<method name='list' fullname='cv:TempoLite/list/get' isStatic='false' isFinal='false' isOverride='false'  result_type='cv.data:PlayList'>
+<description><![CDATA[
+   Retrieve the current playlist in <code>PlayList</code> format (enhanced array).
+   ]]></description>
+</method>
+<method name='loadCurrent' fullname='cv:TempoLite/loadCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Retrieve the current bytes loaded of the current item.
+   ]]></description>
+</method>
+<method name='loadTotal' fullname='cv:TempoLite/loadTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='uint'>
+<description><![CDATA[
+   Retrieve the total bytes to load of the current item.
+   ]]></description>
+</method>
+<method name='metaData' fullname='cv:TempoLite/metaData/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Object'>
+<description><![CDATA[
+   Retrieve the metadata from the current item playing if available.
+   ]]></description>
+</method>
+<method name='paused' fullname='cv:TempoLite/paused/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   If TempoLite is currently paused.
+   ]]></description>
+</method>
+<method name='repeat' fullname='cv:TempoLite/repeat/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[ 
+   Sets whether repeat is enabled, or which type of repeat is enabled.
+   Accepted values are:
+   <li>TempoLite.REPEAT_ALL</li>
+   <li>TempoLite.REPEAT_TRACK</li>
+   <li>TempoLite.REPEAT_NONE</li>
+   
+   ]]></description>
+<default><![CDATA[TempoLite.REPEAT_NONE
+   ]]></default>
+</method>
+<method name='shuffle' fullname='cv:TempoLite/shuffle/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Boolean'>
+<description><![CDATA[ 
+   Whether to shuffle the playlist or not.
+      ]]></description>
+<default><![CDATA[false
+   ]]></default>
+</method>
+<method name='status' fullname='cv:TempoLite/status/get' isStatic='false' isFinal='false' isOverride='false'  result_type='String'>
+<description><![CDATA[ 
+   Current status of media
+   ]]></description>
+</method>
+<method name='timeCurrent' fullname='cv:TempoLite/timeCurrent/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+   Retrieve the current play time of the current item playing.
+   
+   ]]></description>
+<return><![CDATA[the current play time of the item playing.
+   ]]></return>
+</method>
+<method name='timeLeft' fullname='cv:TempoLite/timeLeft/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+   Retrieve the play time remaining of the current item playing.
+   
+   ]]></description>
+<return><![CDATA[the play time remaining of the item playing.
+   ]]></return>
+</method>
+<method name='timeTotal' fullname='cv:TempoLite/timeTotal/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[
+   Retrieve the total play time of the current item playing.
+   
+   ]]></description>
+<return><![CDATA[the total play time of the item playing.
+   ]]></return>
+</method>
+<method name='volume' fullname='cv:TempoLite/volume/get' isStatic='false' isFinal='false' isOverride='false'  result_type='Number'>
+<description><![CDATA[ 
+   A number from 0 to 1 determines volume.
+      ]]></description>
+<default><![CDATA[0.5
+   ]]></default>
+</method>
+<method name='autoStart' fullname='cv:TempoLite/autoStart/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='autoStartIndex' fullname='cv:TempoLite/autoStartIndex/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='int' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='repeat' fullname='cv:TempoLite/repeat/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='String' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='shuffle' fullname='cv:TempoLite/shuffle/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Boolean' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<method name='volume' fullname='cv:TempoLite/volume/set' isStatic='false' isFinal='false' isOverride='false'  param_names='v' param_types='Number' param_defaults='undefined' result_type='void'>
+<description><![CDATA[ ]]></description>
+<private><![CDATA[]]></private>
+</method>
+<field name='NEW_PLAYLIST' fullname='cv:TempoLite/NEW_PLAYLIST' type='String' isStatic='true' isConst='true' defaultValue='newPlaylist' >
+</field>
+<field name='NEXT' fullname='cv:TempoLite/NEXT' type='String' isStatic='true' isConst='true' defaultValue='next' >
+</field>
+<field name='PREVIOUS' fullname='cv:TempoLite/PREVIOUS' type='String' isStatic='true' isConst='true' defaultValue='prev' >
+</field>
+<field name='REFRESH_PLAYLIST' fullname='cv:TempoLite/REFRESH_PLAYLIST' type='String' isStatic='true' isConst='true' defaultValue='refreshPlaylist' >
+</field>
+<field name='REPEAT_ALL' fullname='cv:TempoLite/REPEAT_ALL' type='String' isStatic='true' isConst='true' defaultValue='all' >
+</field>
+<field name='REPEAT_NONE' fullname='cv:TempoLite/REPEAT_NONE' type='String' isStatic='true' isConst='true' defaultValue='none' >
+</field>
+<field name='REPEAT_TRACK' fullname='cv:TempoLite/REPEAT_TRACK' type='String' isStatic='true' isConst='true' defaultValue='track' >
+</field>
+<field name='VERSION' fullname='cv:TempoLite/VERSION' type='String' isStatic='true' isConst='true' defaultValue='3.0.2' >
+<description><![CDATA[
+         The current version of TempoLite in use.
+   ]]></description>
+</field>
+<field name='_autoStart' fullname='cv:TempoLite/protected:_autoStart' type='Boolean' isStatic='false' isConst='false' defaultValue='true' >
+</field>
+<field name='_autoStartIndex' fullname='cv:TempoLite/protected:_autoStartIndex' type='int' isStatic='false' isConst='false' defaultValue='0' >
+</field>
+<field name='_cM' fullname='cv:TempoLite/protected:_cM' type='cv.interfaces:IMediaPlayer' isStatic='false' isConst='false' >
+</field>
+<field name='_ext' fullname='cv:TempoLite/protected:_ext' type='String' isStatic='false' isConst='false' >
+</field>
+<field name='_list' fullname='cv:TempoLite/protected:_list' type='cv.data:PlayList' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='_listShuffled' fullname='cv:TempoLite/protected:_listShuffled' type='cv.data:PlayList' isStatic='false' isConst='false' >
+</field>
+<field name='_parsers' fullname='cv:TempoLite/protected:_parsers' type='Array' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='_pause' fullname='cv:TempoLite/protected:_pause' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_players' fullname='cv:TempoLite/protected:_players' type='Array' isStatic='false' isConst='false' defaultValue='' >
+</field>
+<field name='_repeat' fullname='cv:TempoLite/protected:_repeat' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_repeatAll' fullname='cv:TempoLite/protected:_repeatAll' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_shuffle' fullname='cv:TempoLite/protected:_shuffle' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+</field>
+<field name='_volume' fullname='cv:TempoLite/protected:_volume' type='Number' isStatic='false' isConst='false' defaultValue='0.5' >
+</field>
+<field name='debug' fullname='cv:TempoLite/debug' type='Boolean' isStatic='false' isConst='false' defaultValue='false' >
+<description><![CDATA[
+   Enables/Disables debug traces
+   ]]></description>
+</field>
+<field name='strRepeat' fullname='cv:TempoLite/protected:strRepeat' type='String' isStatic='false' isConst='false' >
+</field>
+</asdoc>

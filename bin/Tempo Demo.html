@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<title>Flash Video</title>
+		<script src="script.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<p id="ua"></p>
+		<div>
+			<!--flashvars="width=640&height=380&poster=http://staff.boroughs.org/psab.jpg&autoPlay=true&streamHost=rtmp://swspreblyl5qq.cloudfront.net:80/cfx/st&src=mp4:ComplyingWithTheAffordableHealthCareLaw.mp4" -->
+			<embed src="Tempo.swf"
+				id="_video"
+				name="_video"
+				type="application/x-shockwave-flash"
+				width="480" height="320" 
+				bgcolor="#00ff00"
+				flashvars="width=480&height=320&poster=https://dl.dropbox.com/u/340823/test/mario-poster.jpg&autoPlay=true&streamHost=rtmp://s363x1hj28w6fs.cloudfront.net:80/cfx/st&src=mp4:MarioBrothersMix/PrincessToadstoolForPresident.mp4" 
+				allowscriptaccess="always" allowfullscreen="true">
+			</embed>
+			<div id='buttons'>
+				<button onclick="document._video.load()">load()</button>
+				<button onclick="document._video.play()">play()</button>
+				<button onclick="document._video.pause()">pause()</button>
+				<button onclick="document._video.currentTime+=10">currentTime+=10</button>
+				<button onclick="document._video.currentTime-=10">currentTime-=10</button>
+				<button onclick="document._video.currentTime=50">currentTime=50</button><br>
+				<button onclick="document._video.setVolume(document._video.getVolume() + 0.1)">volume+=0.1</button>
+				<button onclick="document._video.setVolume(document._video.getVolume() - 0.1)">volume-=0.1</button>
+				<button onclick="document._video.setMuted(true)">muted=true</button>
+				<button onclick="document._video.setMuted(false)">muted=false</button><br>
+				<button onclick="switchVideo(0);">Sintel teaser</button>
+				<button onclick="switchVideo(1);">Bunny trailer</button>
+				<button onclick="switchVideo(2);">Bunny movie</button>
+				<button onclick="switchVideo(3);">Test movie</button>
+			</div>
+
+			<table summary='The Media Events table contains the number of times each media event has been received'>
+				<caption>Media Events</caption>
+				<tbody id='events'>
+				</tbody>
+			</table>
+
+			<table summary='The Media Properties table contains the value of the media properties'>
+				<caption>Media Properties</caption>
+				<tbody id='properties'>
+				</tbody>
+			</table>
+
+			<table id='canPlayType' summary='The Media Types table indicates what media types are supported'>
+				<caption>canPlayType</caption>
+				<tbody id='m_video'>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

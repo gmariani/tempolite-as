@@ -1,0 +1,69 @@
+﻿<smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+	<head>
+		<meta name="title" content="Example SMIL playlist"/>
+	</head>
+	<body>
+		<seq>
+			
+			<par>
+				<video
+					title="Black 180"
+					src="video/Black 180.flv"
+					author="Unknown"
+					alt="Black 180 drifting"
+				/>
+				<anchor href="http://www.bigbuckbunny.org/" />
+			</par>
+			
+			<par>
+				<audio
+					title="Sunrise Projector"
+					src="music/01 Sunrise Projector.mp3"
+					alt="Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation."
+					author="Tycho"
+				/>
+				<img src="files/bunny.jpg"/>
+				<anchor href="http://www.tychomusic.com/"/>
+			</par>
+			
+			<par>
+				<img
+					title="Wall Paper"
+					src="images/2_1600.jpg"
+					alt="Random Venture Brothers wall paper"
+					dur="5"
+				/>
+				<anchor href="http://www.bigbuckbunny.org/" />
+			</par>
+			
+			<!-- <par>
+				<video
+					title="Youtube video with start"
+					src="http://youtube.com/watch?v=IBTE-RoMsvw"
+					author="the Peach Open Movie Project"
+					alt="Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation."
+					begin="10"
+				/>
+				<anchor href="http://www.bigbuckbunny.org/" />
+			</par> -->
+			
+		</seq>
+	</body>
+</smil>
+
+<smil>
+	<head>
+		<meta base="rtmp://myserver/myapp/myinst" >
+		<layout>
+			<root-layout width="240" height="180" >
+		</layout>
+	</head>
+	
+	<body>
+		<switch>
+			<video src="myvideo_mdm.flv" system-bitrate="56000"  dur="3:00.1">
+			<video src="myvideo_isdn.flv" system-bitrate="128000" dur="3:00.1">
+			<ref src="myvideo_cable.flv" dur="3:00.1"/>
+		</switch>
+	</body>
+</smil>

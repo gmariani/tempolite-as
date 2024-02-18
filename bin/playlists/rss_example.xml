@@ -1,0 +1,39 @@
+﻿<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss">
+	<channel>
+		<title>RSS Example Playlist</title>
+		<link>http://cyber.law.harvard.edu/rss/rss.html</link>
+		
+		<item>
+			<title>Black 180</title>
+			<enclosure url="video/Black 180.flv" type="video/x-flv" />
+		</item>
+		
+		<item>
+			<title>Sunrise Projector</title>
+			<author>Tycho</author>
+			<link>http://www.tychomusic.com/</link>
+			<media:content url="music/01 Sunrise Projector.mp3" type="audio/mpeg"/>
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/peterjones.jpg" />
+		</item>
+		
+		<item>
+			<title>Wall Paper</title>
+			<author>Adult Swim</author>
+			<link>http://www.jeroenwijering.com/?item=Aggressive_Wallpaper</link>
+			<description>
+				Random Venture Brothers wall paper
+			</description>
+			<media:content url="images/2_1600.jpg" type="image/jpeg" duration="5"/>
+		</item>
+		
+		<!-- <item>
+			<title>Black 180</title>
+			<link>http://www.jeroenwijering.com/?item=Making_Video_Accessible</link>
+			<description>
+				Black 180 drifting
+			</description>
+			<media:content url="video/Black 180.flv" type="video/x-flv" duration="00:00:45"/>
+			<!-<media:thumbnail url="http://www.jeroenwijering.com/upload/corrie.jpg"/>->
+		</item> -->
+	</channel>
+</rss>

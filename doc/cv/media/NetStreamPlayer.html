@@ -1,0 +1,1732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="NetStreamPlayer,cv.media.NetStreamPlayer,VERSION,_autoStart,_buffer,_encoding,_leftToLeft,_leftToRight,_loadCurrent,_loadTotal,_metaData,_pan,_paused,_rightToLeft,_rightToRight,_status,_streamHost,_volume,arrFileTypes,autoRewind,autoScale,client,debug,loadTimer,nc,ns,playTimer,sendOnce,skipOnce,strURL,vid,autoStart,buffer,currentPercent,leftToLeft,leftToRight,loadCurrent,loadTotal,metaData,pan,paused,rightToLeft,rightToRight,status,timeCurrent,timeLeft,timeTotal,video,volume,createConnection,createStream,errorHandler,getEstimatedLength,isValid,load,loadTimerHandler,netStatusHandler,onCuePoint,onMetaData,pause,play,playTimerHandler,seek,seekPercent,setStatus,stop,trace2,unload,updateProgress,updateSoundTransform" name="keywords">
+<title>cv.media.NetStreamPlayer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'NetStreamPlayer - TempoLite API Documentation';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">TempoLite API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?cv/media/NetStreamPlayer.html&amp;cv/media/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;NetStreamPlayer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class NetStreamPlayer"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">cv.media</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class NetStreamPlayer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">NetStreamPlayer <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../interfaces/IMediaPlayer.html">IMediaPlayer</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../media/RTMPPlayer.html">RTMPPlayer</a></td>
+</tr>
+</table>
+<p></p>
+  <h3>Version:</h3> 3.0.2<br>
+  <h3>Date:</h3> 4/02/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The NetStreamPlayer class is a facade for controlling loading, and playing
+  of video, streaming video and M4A files within Flash. It intelligently handles pausing, and
+  loading.
+  
+  Note: Sometimes playhead won't move on videos, this is because there is no 
+  metadata describing it's duration. If this occurs, there is no way to
+  calculate how long a video is, so it stops the playhead from moving.
+  <hr>
+  <ul>
+  <li>3.0.2
+  <ul>
+    <li>Tweaked how load complete reports</li>
+    <li>loadCurrent and loadTotal are now uints and more accurate</li>
+  </ul>
+  </li>
+  <li>3.0.1
+  <ul>
+    <li>Changed how PLAY_START and autoStart is handled. autoStart is no longer overwritten and will pause before any audio is heard.</li>
+    <li>Handles autostart and PLAY_START better. Also has a new status of STARTED to differentiate between when autoStart and the first play().</li>
+    <li>Added autoRewind prop. If set, it will rewind after PLAY_COMPLETE so the play button can be used to resume.</li>
+  </ul>
+  </li>
+  <li>3.0.0
+  <ul>
+    <li>Refactored release</li>
+  </ul>
+  </li>
+  </ul>
+     <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoRewind">autoRewind</a> : Boolean = false<div class="summaryTableDescription">
+   Will automatically call stop (rewind) after playing complete.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoScale">autoScale</a> : Boolean = false<div class="summaryTableDescription"> 
+   Gets or sets whether the video object will be scaled to the metadata given
+   for video dimensions.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoStart">autoStart</a> : Boolean<div class="summaryTableDescription"> 
+   Whether media will play automatically once loaded.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#buffer">buffer</a> : int<div class="summaryTableDescription"> 
+   Gets or sets how long the NetStreamPlayer should buffer the video before playing, in seconds.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentPercent">currentPercent</a> : uint<div class="summaryTableDescription">[read-only] 
+   Gets the current play progress in terms of percent
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#debug">debug</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#leftToLeft">leftToLeft</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#leftToRight">leftToRight</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#loadCurrent">loadCurrent</a> : uint<div class="summaryTableDescription">[read-only] 
+   Gets the current load progress in terms of bytes
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#loadTotal">loadTotal</a> : uint<div class="summaryTableDescription">[read-only] 
+   Gets the total size to be loaded in terms of bytes
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#metaData">metaData</a> : Object<div class="summaryTableDescription">[read-only] 
+   Gets the metadata if available for the currently playing audio file
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pan">pan</a> : Number<div class="summaryTableDescription"> 
+   The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right).</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#paused">paused</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Returns the pause status of the player.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rightToLeft">rightToLeft</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rightToRight">rightToRight</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#status">status</a> : String<div class="summaryTableDescription">[read-only]
+   Returns the load status of the player.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeCurrent">timeCurrent</a> : Number<div class="summaryTableDescription">[read-only] 
+   Gets the elapsed play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeLeft">timeLeft</a> : Number<div class="summaryTableDescription">[read-only] 
+   Gets the remaining play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#timeTotal">timeTotal</a> : Number<div class="summaryTableDescription">[read-only] 
+   Gets the total play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#video">video</a> : Video<div class="summaryTableDescription"> 
+   Gets or sets the reference to the display video object.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#volume">volume</a> : Number<div class="summaryTableDescription"> 
+   Gets or sets the current volume, from 0 - 1
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#arrFileTypes">arrFileTypes</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_autoStart">_autoStart</a> : Boolean = true<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_buffer">_buffer</a> : Number = 0.1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#client">client</a> : Object<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_encoding">_encoding</a> : uint = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_leftToLeft">_leftToLeft</a> : Number = 1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_leftToRight">_leftToRight</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_loadCurrent">_loadCurrent</a> : uint<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#loadTimer">loadTimer</a> : Timer<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_loadTotal">_loadTotal</a> : uint<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_metaData">_metaData</a> : Object<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nc">nc</a> : NetConnection<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ns">ns</a> : NetStream<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_pan">_pan</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#playTimer">playTimer</a> : Timer<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_rightToLeft">_rightToLeft</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_rightToRight">_rightToRight</a> : Number = 1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sendOnce">sendOnce</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#skipOnce">skipOnce</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_status">_status</a> : String = "unloaded"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_streamHost">_streamHost</a> : String = "null"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#strURL">strURL</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#vid">vid</a> : Video<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_volume">_volume</a> : Number = .5<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#NetStreamPlayer()">NetStreamPlayer</a>()</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isValid()">isValid</a>(ext:String, url:String):Boolean</div>
+<div class="summaryTableDescription">
+   Validates if the given filetype is compatible to be played with NetStreamPlayer.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#load()">load</a>(item:*):void</div>
+<div class="summaryTableDescription">
+   Loads a new file to be played.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pause()">pause</a>(b:Boolean = true):void</div>
+<div class="summaryTableDescription">
+   Loads a netstream from the BulkLoader to be played.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#play()">play</a>(pos:int = 0):void</div>
+<div class="summaryTableDescription">
+   Plays the media, starting at the given position.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#seek()">seek</a>(time:*):void</div>
+<div class="summaryTableDescription">
+   Seeks to time given in the media.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#seekPercent()">seekPercent</a>(n:Number):void</div>
+<div class="summaryTableDescription">
+   Seeks to the given percent in the media
+   
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#stop()">stop</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the media at the specified position.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unload()">unload</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the media, closes the NetConnetion or NetStream, and resets the metadata.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createConnection()">createConnection</a>(command:String = null):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createStream()">createStream</a>(netstream:NetStream = null):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#errorHandler()">errorHandler</a>(e:ErrorEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getEstimatedLength()">getEstimatedLength</a>():int</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#loadTimerHandler()">loadTimerHandler</a>(event:TimerEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#netStatusHandler()">netStatusHandler</a>(e:NetStatusEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onCuePoint()">onCuePoint</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onMetaData()">onMetaData</a>(o:Object):void</div>
+<div class="summaryTableDescription">
+   Handles the metadata returned.</div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#playTimerHandler()">playTimerHandler</a>(event:TimerEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setStatus()">setStatus</a>(str:String):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#trace2()">trace2</a>(... arguements):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateProgress()">updateProgress</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateSoundTransform()">updateSoundTransform</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:cuePoint">cuePoint</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a cue point is reached.</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:loadComplete">loadComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the media file has completed loading
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:loadProgress">loadProgress</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file is loaded
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:loadStart">loadStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file begins loading
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:metadata">metadata</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as metadata is receieved from the media playing
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:playComplete">playComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file finishes playing
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:playProgress">playProgress</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file is playing
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:playStart">playStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched once as a media file first begins to play
+    </td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:status">status</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when isPause or isPlaying has updated.</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VERSION">VERSION</a> : String = "3.0.2"<div class="summaryTableDescription">[static]
+         The current version
+   </div>
+</td><td class="summaryTableOwnerCol">NetStreamPlayer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="arrFileTypes"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">arrFileTypes</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var arrFileTypes:Array</code>
+</div>
+<a name="autoRewind"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">autoRewind</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var autoRewind:Boolean = false</code><p>
+   Will automatically call stop (rewind) after playing complete. If disabled, this will pause
+   the player instead.
+   </p></div>
+<a name="autoScale"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">autoScale</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var autoScale:Boolean = false</code><p> 
+   Gets or sets whether the video object will be scaled to the metadata given
+   for video dimensions.
+   </p></div>
+<a name="_autoStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_autoStart</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _autoStart:Boolean = true</code>
+</div>
+<a name="autoStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">autoStart</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>autoStart:Boolean</code>&nbsp;&nbsp;[read-write]<p> 
+   Whether media will play automatically once loaded.
+   
+   </p><p>The default value is <code>true</code>.</p>
+<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get autoStart():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set autoStart(value:Boolean):void</code>
+<br>
+</div>
+<a name="_buffer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_buffer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _buffer:Number = 0.1</code>
+</div>
+<a name="buffer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">buffer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>buffer:int</code>&nbsp;&nbsp;[read-write]<p> 
+   Gets or sets how long the NetStreamPlayer should buffer the video before playing, in seconds.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get buffer():int</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set buffer(value:int):void</code>
+<br>
+</div>
+<a name="client"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">client</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var client:Object</code>
+</div>
+<a name="currentPercent"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">currentPercent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>currentPercent:uint</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the current play progress in terms of percent
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPercent():uint</code>
+<br>
+</div>
+<a name="debug"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">debug</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var debug:Boolean = false</code>
+</div>
+<a name="_encoding"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_encoding</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _encoding:uint = 0</code>
+</div>
+<a name="_leftToLeft"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_leftToLeft</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _leftToLeft:Number = 1</code>
+</div>
+<a name="leftToLeft"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">leftToLeft</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>leftToLeft:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get leftToLeft():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set leftToLeft(value:Number):void</code>
+<br>
+</div>
+<a name="_leftToRight"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_leftToRight</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _leftToRight:Number = 0</code>
+</div>
+<a name="leftToRight"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">leftToRight</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>leftToRight:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get leftToRight():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set leftToRight(value:Number):void</code>
+<br>
+</div>
+<a name="_loadCurrent"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_loadCurrent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _loadCurrent:uint</code>
+</div>
+<a name="loadCurrent"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadCurrent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>loadCurrent:uint</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the current load progress in terms of bytes
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get loadCurrent():uint</code>
+<br>
+</div>
+<a name="loadTimer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadTimer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var loadTimer:Timer</code>
+</div>
+<a name="_loadTotal"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_loadTotal</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _loadTotal:uint</code>
+</div>
+<a name="loadTotal"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadTotal</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>loadTotal:uint</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the total size to be loaded in terms of bytes
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get loadTotal():uint</code>
+<br>
+</div>
+<a name="_metaData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_metaData</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _metaData:Object</code>
+</div>
+<a name="metaData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">metaData</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>metaData:Object</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the metadata if available for the currently playing audio file
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get metaData():Object</code>
+<br>
+</div>
+<a name="nc"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nc</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var nc:NetConnection</code>
+</div>
+<a name="ns"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ns</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var ns:NetStream</code>
+</div>
+<a name="_pan"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_pan</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _pan:Number = 0</code>
+</div>
+<a name="pan"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pan</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pan:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right). 
+   A value of 0 represents no panning (balanced center between right and left). 
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pan():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set pan(value:Number):void</code>
+<br>
+</div>
+<a name="_paused"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_paused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _paused:Boolean = false</code>
+</div>
+<a name="paused"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">paused</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>paused:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Returns the pause status of the player.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get paused():Boolean</code>
+<br>
+</div>
+<a name="playTimer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playTimer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var playTimer:Timer</code>
+</div>
+<a name="_rightToLeft"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_rightToLeft</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _rightToLeft:Number = 0</code>
+</div>
+<a name="rightToLeft"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rightToLeft</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>rightToLeft:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rightToLeft():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rightToLeft(value:Number):void</code>
+<br>
+</div>
+<a name="_rightToRight"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_rightToRight</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _rightToRight:Number = 1</code>
+</div>
+<a name="rightToRight"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rightToRight</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>rightToRight:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rightToRight():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rightToRight(value:Number):void</code>
+<br>
+</div>
+<a name="sendOnce"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sendOnce</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var sendOnce:Boolean = false</code>
+</div>
+<a name="skipOnce"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">skipOnce</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var skipOnce:Boolean = false</code>
+</div>
+<a name="_status"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_status</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _status:String = "unloaded"</code>
+</div>
+<a name="status"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">status</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>status:String</code>&nbsp;&nbsp;[read-only]<p>
+   Returns the load status of the player.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get status():String</code>
+<br>
+</div>
+<a name="_streamHost"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_streamHost</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _streamHost:String = "null"</code>
+</div>
+<a name="strURL"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">strURL</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var strURL:String</code>
+</div>
+<a name="timeCurrent"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeCurrent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeCurrent:Number</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the elapsed play time in milliseconds
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeCurrent():Number</code>
+<br>
+</div>
+<a name="timeLeft"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeLeft</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeLeft:Number</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the remaining play time in milliseconds
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeLeft():Number</code>
+<br>
+</div>
+<a name="timeTotal"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">timeTotal</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>timeTotal:Number</code>&nbsp;&nbsp;[read-only]<p> 
+   Gets the total play time in milliseconds
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get timeTotal():Number</code>
+<br>
+</div>
+<a name="vid"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">vid</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var vid:Video</code>
+</div>
+<a name="video"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">video</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>video:Video</code>&nbsp;&nbsp;[read-write]<p> 
+   Gets or sets the reference to the display video object.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get video():Video</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set video(value:Video):void</code>
+<br>
+</div>
+<a name="_volume"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_volume</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _volume:Number = .5</code>
+</div>
+<a name="volume"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">volume</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>volume:Number</code>&nbsp;&nbsp;[read-write]<p> 
+   Gets or sets the current volume, from 0 - 1
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get volume():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set volume(value:Number):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="NetStreamPlayer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NetStreamPlayer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function NetStreamPlayer()</code>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="createConnection()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createConnection</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function createConnection(command:String = null):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">command</span>:String</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="createStream()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createStream</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function createStream(netstream:NetStream = null):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">netstream</span>:NetStream</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="errorHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">errorHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function errorHandler(e:ErrorEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:ErrorEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="getEstimatedLength()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getEstimatedLength</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function getEstimatedLength():int</code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code></td>
+</tr>
+</table>
+</div>
+<a name="isValid()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isValid</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isValid(ext:String, url:String):Boolean</code><p>
+   Validates if the given filetype is compatible to be played with NetStreamPlayer. 
+   The acceptable file types are :
+   <ul>
+   <li>flv : video/x-flv Flash Video</li>
+   <li>f4v : video/mp4  Flash Video</li>
+   <li>f4p : video/mp4  Protected Flash Video</li>
+   <li>f4b : audio/mp4  Flash Audio Book</li>
+   <li>f4a : audio/mp4  Flash Audio</li>
+   <li>3gp : video/3gpp  audio/3gpp 3GPP for GSM-based Phones</li>
+   <li>3g2 : video/3gpp  audio/3gpp 3GPP2 for CDMA-based Phones</li>
+   <li>mov : video/quicktime QuickTime Movie</li>
+   <li>mp4 : video/mp4  H.264 MPEG-4 Video</li>
+   <li>m4v : video/mp4  H.264 MPEG-4 Video</li>
+   <li>m4a : audio/mp4  Audio-only MPEG-4</li>
+   <li>p4v : audio/mp4  Protected H.264 MPEG-4 Video</li>
+   </ul>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ext</span>:String</code> &mdash; The file extension to be validated
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">url</span>:String</code> &mdash; The full file url if the extension is not enough
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; Boolean of whether the extension was valid or not.
+   </td>
+</tr>
+</table>
+</div>
+<a name="load()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">load</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function load(item:*):void</code><p>
+   Loads a new file to be played.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:*</code></td>
+</tr>
+</table>
+</div>
+<a name="loadTimerHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadTimerHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function loadTimerHandler(event:TimerEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:TimerEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="netStatusHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">netStatusHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function netStatusHandler(e:NetStatusEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:NetStatusEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="onCuePoint()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onCuePoint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onCuePoint(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onMetaData()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onMetaData</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onMetaData(o:Object):void</code><p>
+   Handles the metadata returned. Possible data sent:
+   <li>canSeekToEnd</li>
+   <li>cuePoints</li>
+   <li>audiocodecid</li>
+   <li>audiodelay</li>
+   <li>audiodatarate</li>
+   <li>videocodecid</li>
+   <li>framerate</li>
+   <li>videodatarate</li>
+   <li>height - Older version of encode</li>
+   <li>width - Older version of encode</li>
+   <li>duration - Older version of encode</li>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="pause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pause(b:Boolean = true):void</code><p>
+   Loads a netstream from the BulkLoader to be played. This cannot be used in 
+   conjunction with TempoLite since the location is not a url. Using
+   loadAsset will IGNORE any streamhosts set becuase you can only use this
+   if the video is progressively downloaded.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">b</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; The netstream object from the BulkLoader
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">cv.events.PlayProgressEvent.STATUS</div>
+</div>
+<a name="play()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">play</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function play(pos:int = 0):void</code><p>
+   Plays the media, starting at the given position.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">pos</span>:int</code> (default = <code>0</code>)<code></code> &mdash; Position to play from
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">cv.events.PlayProgressEvent.PLAY_PROGRESS</div>
+</div>
+<a name="playTimerHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playTimerHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function playTimerHandler(event:TimerEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:TimerEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="seek()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">seek</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function seek(time:*):void</code><p>
+   Seeks to time given in the media.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:*</code> &mdash; Seconds into the media to seek to
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">cv.events.PlayProgressEvent.PLAY_PROGRESS</div>
+</div>
+<a name="seekPercent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">seekPercent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function seekPercent(n:Number):void</code><p>
+   Seeks to the given percent in the media
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">n</span>:Number</code> &mdash; Percent to seek to
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">cv.events.PlayProgressEvent.PLAY_PROGRESS</div>
+</div>
+<a name="setStatus()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setStatus</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function setStatus(str:String):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">str</span>:String</code></td>
+</tr>
+</table>
+</div>
+<a name="stop()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function stop():void</code><p>
+   Stops the media at the specified position. Sets the position given as the pause position.
+   </p></div>
+<a name="trace2()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">trace2</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function trace2(... arguements):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code>... <span class="label">arguements</span></code></td>
+</tr>
+</table>
+</div>
+<a name="unload()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unload</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unload():void</code><p>
+   Stops the media, closes the NetConnetion or NetStream, and resets the metadata.
+   
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">cv.events.PlayProgressEvent.STATUS</div>
+</div>
+<a name="updateProgress()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateProgress</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function updateProgress():void</code>
+</div>
+<a name="updateSoundTransform()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateSoundTransform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function updateSoundTransform():void</code>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:cuePoint"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">cuePoint</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>cv.events.MetadataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when a cue point is reached.
+    </p></div>
+<a name="event:loadComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadComplete</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/LoadEvent.html"><code>cv.events.LoadEvent</code></a>
+<br>
+<span class="label">LoadEvent.type property = </span><a href="../events/LoadEvent.html#LOAD_COMPLETE"><code>cv.events.LoadEvent.LOAD_COMPLETE</code></a>
+<br><p>
+  Dispatched when the media file has completed loading
+    </p><p>
+         Defines the value of the <code>type</code> property of an  
+   <code>loadComplete</code> event object. 
+                  </p></div>
+<a name="event:loadProgress"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadProgress</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href=""><code>flash.events.ProgressEvent</code></a>
+<br>
+<span class="label">ProgressEvent.type property = </span><a href="../events/LoadEvent.html#LOAD_PROGRESS"><code>cv.events.LoadEvent.LOAD_PROGRESS</code></a>
+<br><p>
+  Dispatched as a media file is loaded
+    </p><p>
+         Defines the value of the <code>type</code> property of an  
+   <code>loadProgress</code> event object. 
+                  </p></div>
+<a name="event:loadStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadStart</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/LoadEvent.html"><code>cv.events.LoadEvent</code></a>
+<br>
+<span class="label">LoadEvent.type property = </span><a href="../events/LoadEvent.html#LOAD_START"><code>cv.events.LoadEvent.LOAD_START</code></a>
+<br><p>
+  Dispatched as a media file begins loading
+    </p><p>
+         Defines the value of the <code>type</code> property of an  
+   <code>loadStart</code> event object. 
+   
+   </p><p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+      <tr>
+              <th>Property</th>
+              <th>Value</th>
+            </tr>
+      <tr>
+              <td><code>bubbles</code></td>
+              <td><code>false</code></td></tr>
+      <tr><td><code>cancelable</code></td><td><code>false</code>; there is
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>time</code></td><td>The estimated duration of the media file.</td></tr>
+      <tr><td><code>url</code></td><td>TThe url of the item being loaded.</td></tr>
+      <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>index</code></td><td>The zero-based index in the DataProvider
+      that contains the renderer.</td></tr>
+      <tr><td><code>item</code></td><td>A reference to the data that belongs to the renderer.</td></tr>
+      <tr><td><code>mediaType</code></td><td>The type of media being loaded, either "audio" or "video".</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+          </table>
+                  </div>
+<a name="event:metadata"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">metadata</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<span class="label">MetaDataEvent.type property = </span><a href="../events/MetaDataEvent.html#METADATA"><code>cv.events.MetaDataEvent.METADATA</code></a>
+<br><p>
+  Dispatched as metadata is receieved from the media playing
+    </p><p>
+         Defines the value of the <code>type</code> property of an <code>audioMetadata</code> 
+   event object. 
+   
+   </p><p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is 
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>data</code></td><td>The metadata object.</td></tr>
+       <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+                  </div>
+<a name="event:playComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playComplete</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/PlayProgressEvent.html"><code>cv.events.PlayProgressEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched as a media file finishes playing
+    </p></div>
+<a name="event:playProgress"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playProgress</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/PlayProgressEvent.html"><code>cv.events.PlayProgressEvent</code></a>
+<br>
+<span class="label">PlayProgressEvent.type property = </span><a href="../events/PlayProgressEvent.html#PLAY_PROGRESS"><code>cv.events.PlayProgressEvent.PLAY_PROGRESS</code></a>
+<br><p>
+  Dispatched as a media file is playing
+    </p><p>
+         Defines the value of the <code>type</code> property of an <code>playProgress</code> 
+   event object. 
+   
+   </p><p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is 
+            no default behavior to cancel.</td></tr> 
+      <tr><td><code>percent</code></td><td>The percentage of progress for the media playing.</td></tr>
+      <tr><td><code>elapsed</code></td><td>The elapsed time of the media playing.</td></tr>
+      <tr><td><code>remain</code></td><td>The remaining time of the media playing.</td></tr>
+      <tr><td><code>total</code></td><td>The total time of the media playing.</td></tr>
+       <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+                  the event object with an event listener.</td></tr>
+      <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+                  </div>
+<a name="event:playStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playStart</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/PlayProgressEvent.html"><code>cv.events.PlayProgressEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched once as a media file first begins to play
+    </p></div>
+<a name="event:status"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">status</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/PlayProgressEvent.html"><code>cv.events.PlayProgressEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when isPause or isPlaying has updated.
+    </p></div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="VERSION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">VERSION</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const VERSION:String = "3.0.2"</code><p>
+         The current version
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">Copyright 2009 Gabriel Mariani (http://blog.coursevector.com/tempolite)</center>
+</div>
+</body>
+</html>
+<!--Copyright 2009 Gabriel Mariani (http://blog.coursevector.com/tempolite)-->

@@ -1,0 +1,1294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="RTMPPlayer,cv.media.RTMPPlayer,VERSION,netConnection,objectEncoding,streamHost,RtmpSampleAccess,addHeader,call,isValid,netStatusHandler,onBWCheck,onBWDone,onCaption,onCaptionInfo,onFCSubscribe,onImageData,onLastSecond,onPlayStatus,onTextData" name="keywords">
+<title>cv.media.RTMPPlayer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'RTMPPlayer - TempoLite API Documentation';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">TempoLite API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?cv/media/RTMPPlayer.html&amp;cv/media/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;RTMPPlayer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class RTMPPlayer"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">cv.media</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class RTMPPlayer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">RTMPPlayer <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="NetStreamPlayer.html">NetStreamPlayer</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../interfaces/IMediaPlayer.html">IMediaPlayer</a></td>
+</tr>
+</table>
+<p></p>
+  <h3>Version:</h3> 1.0.0<br>
+  <h3>Date:</h3> 3/10/2009<br>
+  <h3>Updates At:</h3> http://blog.coursevector.com/tempolite<br>
+  <br>
+  The RTMPPlayer class extends the capabilities of the NetStreamPlayer.
+  Allowing it to stream media from a server.
+     <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#autoRewind">autoRewind</a> : Boolean = false<div class="summaryTableDescription">
+   Will automatically call stop (rewind) after playing complete.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#autoScale">autoScale</a> : Boolean = false<div class="summaryTableDescription"> 
+   Gets or sets whether the video object will be scaled to the metadata given
+   for video dimensions.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#autoStart">autoStart</a> : Boolean<div class="summaryTableDescription"> 
+   Whether media will play automatically once loaded.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#buffer">buffer</a> : int<div class="summaryTableDescription"> 
+   Gets or sets how long the NetStreamPlayer should buffer the video before playing, in seconds.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#currentPercent">currentPercent</a> : uint<div class="summaryTableDescription"> 
+   Gets the current play progress in terms of percent
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#debug">debug</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#leftToLeft">leftToLeft</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the left speaker.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#leftToRight">leftToRight</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the left input is played in the right speaker.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#loadCurrent">loadCurrent</a> : uint<div class="summaryTableDescription"> 
+   Gets the current load progress in terms of bytes
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#loadTotal">loadTotal</a> : uint<div class="summaryTableDescription"> 
+   Gets the total size to be loaded in terms of bytes
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#metaData">metaData</a> : Object<div class="summaryTableDescription"> 
+   Gets the metadata if available for the currently playing audio file
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#netConnection">netConnection</a> : NetConnection<div class="summaryTableDescription">[read-only]
+   Returns a reference to the NetConnection if it exists.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#objectEncoding">objectEncoding</a> : uint<div class="summaryTableDescription"> 
+   Gets or sets the object encodeing for use with streaming servers.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#pan">pan</a> : Number<div class="summaryTableDescription"> 
+   The left-to-right panning of the sound, ranging from -1 (full pan left) to 1 (full pan right).</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#paused">paused</a> : Boolean<div class="summaryTableDescription">
+   Returns the pause status of the player.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#rightToLeft">rightToLeft</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the left speaker.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#rightToRight">rightToRight</a> : Number<div class="summaryTableDescription"> 
+   A value, from 0 (none) to 1 (all), specifying how much of the right input is played in the right speaker.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#status">status</a> : String<div class="summaryTableDescription">
+   Returns the load status of the player.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#streamHost">streamHost</a> : String<div class="summaryTableDescription"> 
+   Gets or sets the stream host url for use with streaming media.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#timeCurrent">timeCurrent</a> : Number<div class="summaryTableDescription"> 
+   Gets the elapsed play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#timeLeft">timeLeft</a> : Number<div class="summaryTableDescription"> 
+   Gets the remaining play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#timeTotal">timeTotal</a> : Number<div class="summaryTableDescription"> 
+   Gets the total play time in milliseconds
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#video">video</a> : Video<div class="summaryTableDescription"> 
+   Gets or sets the reference to the display video object.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#volume">volume</a> : Number<div class="summaryTableDescription"> 
+   Gets or sets the current volume, from 0 - 1
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#arrFileTypes">arrFileTypes</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_autoStart">_autoStart</a> : Boolean = true<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_buffer">_buffer</a> : Number = 0.1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#client">client</a> : Object<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_encoding">_encoding</a> : uint = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_leftToLeft">_leftToLeft</a> : Number = 1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_leftToRight">_leftToRight</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_loadCurrent">_loadCurrent</a> : uint<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#loadTimer">loadTimer</a> : Timer<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_loadTotal">_loadTotal</a> : uint<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_metaData">_metaData</a> : Object<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#nc">nc</a> : NetConnection<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#ns">ns</a> : NetStream<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_pan">_pan</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_paused">_paused</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#playTimer">playTimer</a> : Timer<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_rightToLeft">_rightToLeft</a> : Number = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_rightToRight">_rightToRight</a> : Number = 1<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#sendOnce">sendOnce</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#skipOnce">skipOnce</a> : Boolean = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_status">_status</a> : String = "unloaded"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_streamHost">_streamHost</a> : String = "null"<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#strURL">strURL</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#vid">vid</a> : Video<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="NetStreamPlayer.html#_volume">_volume</a> : Number = .5<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#RTMPPlayer()">RTMPPlayer</a>()</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addHeader()">addHeader</a>(operation:String, mustUnderstand:Boolean = false, param:Object = null):void</div>
+<div class="summaryTableDescription">
+   Adds a context header to the Action Message Format (AMF) packet structure.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#call()">call</a>(command:String, responder:Responder, ... rest):void</div>
+<div class="summaryTableDescription">
+   Invokes a command or method on Flash Media Server or on an 
+   application server running Flash Remoting.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isValid()">isValid</a>(ext:String, url:String):Boolean</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#load()">load</a>(item:*):void</div>
+<div class="summaryTableDescription">
+   Loads a new file to be played.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#pause()">pause</a>(b:Boolean = true):void</div>
+<div class="summaryTableDescription">
+   Loads a netstream from the BulkLoader to be played.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#play()">play</a>(pos:int = 0):void</div>
+<div class="summaryTableDescription">
+   Plays the media, starting at the given position.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#seek()">seek</a>(time:*):void</div>
+<div class="summaryTableDescription">
+   Seeks to time given in the media.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#seekPercent()">seekPercent</a>(n:Number):void</div>
+<div class="summaryTableDescription">
+   Seeks to the given percent in the media
+   
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#stop()">stop</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the media at the specified position.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#unload()">unload</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the media, closes the NetConnetion or NetStream, and resets the metadata.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#createConnection()">createConnection</a>(command:String = null):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#createStream()">createStream</a>(netstream:NetStream = null):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#errorHandler()">errorHandler</a>(e:ErrorEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#getEstimatedLength()">getEstimatedLength</a>():int</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#loadTimerHandler()">loadTimerHandler</a>(event:TimerEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#netStatusHandler()">netStatusHandler</a>(e:NetStatusEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onBWCheck()">onBWCheck</a>(... rest):Number</div>
+<div class="summaryTableDescription">
+   This is required by native bandwidth detection.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onBWDone()">onBWDone</a>(... rest):void</div>
+<div class="summaryTableDescription">
+   The server calls the onBWDone() function when it finishes measuring 
+   the bandwidth.</div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onCaption()">onCaption</a>(cps:String, spk:Number):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onCaptionInfo()">onCaptionInfo</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#onCuePoint()">onCuePoint</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onFCSubscribe()">onFCSubscribe</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onImageData()">onImageData</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onLastSecond()">onLastSecond</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#onMetaData()">onMetaData</a>(o:Object):void</div>
+<div class="summaryTableDescription">
+   Handles the metadata returned.</div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onPlayStatus()">onPlayStatus</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onTextData()">onTextData</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#playTimerHandler()">playTimerHandler</a>(event:TimerEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#RtmpSampleAccess()">RtmpSampleAccess</a>(o:Object):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#setStatus()">setStatus</a>(str:String):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#trace2()">trace2</a>(... arguements):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#updateProgress()">updateProgress</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#updateSoundTransform()">updateSoundTransform</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:bandwidth">bandwidth</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onBWDone is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:caption">caption</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onCaption is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:captionInfo">captionInfo</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onCaptionInfo is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:cuePoint">cuePoint</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a cue point is reached.</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:fcSubscribe">fcSubscribe</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onFCSubscribe is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:imageData">imageData</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onImageData is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:lastSecond">lastSecond</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onLastSecond is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:loadComplete">loadComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the media file has completed loading
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:loadProgress">loadProgress</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file is loaded
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:loadStart">loadStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file begins loading
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:metadata">metadata</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as metadata is receieved from the media playing
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:playComplete">playComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file finishes playing
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:playProgress">playProgress</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched as a media file is playing
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:playStart">playStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched once as a media file first begins to play
+    </td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:playStatus">playStatus</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onPlayStatus is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:RTMPSampleAccess">RTMPSampleAccess</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when RTMPSampleAccess is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="NetStreamPlayer.html#event:status">status</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when isPause or isPlaying has updated.</td><td class="summaryTableOwnerCol"><a href="NetStreamPlayer.html">NetStreamPlayer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:textData">textData</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when onTextData is called.</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#VERSION">VERSION</a> : String = "1.0.0"<div class="summaryTableDescription">[static]
+         The current version
+   </div>
+</td><td class="summaryTableOwnerCol">RTMPPlayer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="netConnection"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">netConnection</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>netConnection:NetConnection</code>&nbsp;&nbsp;[read-only]<p>
+   Returns a reference to the NetConnection if it exists. This is used
+   instead of having all the same properties in NetStreamPlayer.
+   
+   Note: addHeader() and call() are added to NetStreamPlayer for your
+   convenience.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get netConnection():NetConnection</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="RTMPPlayer.html#addHeader()" target="">RTMPPlayer.addHeader()</a>
+<br>
+<a href="RTMPPlayer.html#call()" target="">RTMPPlayer.call()</a>
+</div>
+</div>
+<a name="objectEncoding"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">objectEncoding</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>objectEncoding:uint</code>&nbsp;&nbsp;[read-write]<p> 
+   Gets or sets the object encodeing for use with streaming servers.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get objectEncoding():uint</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set objectEncoding(value:uint):void</code>
+<br>
+</div>
+<a name="streamHost"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">streamHost</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>streamHost:String</code>&nbsp;&nbsp;[read-write]<p> 
+   Gets or sets the stream host url for use with streaming media.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get streamHost():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set streamHost(value:String):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="RTMPPlayer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RTMPPlayer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function RTMPPlayer()</code>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addHeader()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addHeader</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addHeader(operation:String, mustUnderstand:Boolean = false, param:Object = null):void</code><p>
+   Adds a context header to the Action Message Format (AMF) packet structure. 
+   This header is sent with every future AMF packet. If you call 
+   NetConnection.addHeader() using the same name, the new header replaces the 
+   existing header, and the new header persists for the duration of the 
+   NetConnection object. You can remove a header by calling 
+   NetConnection.addHeader() with the name of the header to remove an 
+   undefined object.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">operation</span>:String</code> &mdash; Identifies the header and the ActionScript object 
+   data associated with it.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mustUnderstand</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; A value of true indicates that the server must 
+   understand and process this header before it handles any of the 
+   following headers or messages. 
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">param</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; Any ActionScript object. 
+   </td>
+</tr>
+</table>
+</div>
+<a name="call()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">call</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function call(command:String, responder:Responder, ... rest):void</code><p>
+   Invokes a command or method on Flash Media Server or on an 
+   application server running Flash Remoting.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">command</span>:String</code> &mdash; A method specified in the form [objectPath/]method. 
+   For example, the someObject/doSomething command tells the remote 
+   server to invoke the clientObject.someObject.doSomething() method, 
+   with all the optional ... arguments parameters. If the object path 
+   is missing, clientObject.doSomething() is invoked on the remote server.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">responder</span>:Responder</code> &mdash; An optional object that is used to handle return 
+   values from the server. The Responder object can have two defined 
+   methods to handle the returned result: result and status. If an error 
+   is returned as the result, status is invoked; otherwise, result is 
+   invoked. The Responder object can process errors related to specific 
+   operations, while the NetConnection object responds to errors related 
+   to the connection status.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code>... <span class="label">rest</span></code> &mdash; rest Optional arguments that can be of any ActionScript 
+   type, including a reference to another ActionScript object. These 
+   arguments are passed to the method specified in the command parameter 
+   when the method is executed on the remote application server. 
+   </td>
+</tr>
+</table>
+</div>
+<a name="isValid()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isValid</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function isValid(ext:String, url:String):Boolean</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ext</span>:String</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">url</span>:String</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="netStatusHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">netStatusHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function netStatusHandler(e:NetStatusEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:NetStatusEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="onBWCheck()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onBWCheck</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onBWCheck(... rest):Number</code><p>
+   This is required by native bandwidth detection. It takes an argument,
+   ...rest. The function must return a value, even if the value is 0, to 
+   indicate to the server that the client has received the data.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code>... <span class="label">rest</span></code> &mdash; rest
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code></td>
+</tr>
+</table>
+</div>
+<a name="onBWDone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onBWDone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onBWDone(... rest):void</code><p>
+   The server calls the onBWDone() function when it finishes measuring 
+   the bandwidth. It takes four arguments. The first argument it returns 
+   is the bandwidth measured in Kbps. The second and third arguments are 
+   not used. The fourth argument is the latency in milliseconds.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code>... <span class="label">rest</span></code> &mdash; rest
+   </td>
+</tr>
+</table>
+</div>
+<a name="onCaption()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onCaption</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onCaption(cps:String, spk:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">cps</span>:String</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">spk</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="onCaptionInfo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onCaptionInfo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onCaptionInfo(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onFCSubscribe()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onFCSubscribe</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onFCSubscribe(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onImageData()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onImageData</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onImageData(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onLastSecond()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onLastSecond</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onLastSecond(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onPlayStatus()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onPlayStatus</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onPlayStatus(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="onTextData()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onTextData</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onTextData(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<a name="RtmpSampleAccess()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RtmpSampleAccess</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function RtmpSampleAccess(o:Object):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">o</span>:Object</code></td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:bandwidth"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bandwidth</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onBWDone is called.
+    </p></div>
+<a name="event:caption"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">caption</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onCaption is called.
+    </p></div>
+<a name="event:captionInfo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">captionInfo</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onCaptionInfo is called.
+    </p></div>
+<a name="event:fcSubscribe"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">fcSubscribe</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onFCSubscribe is called.
+    </p></div>
+<a name="event:imageData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">imageData</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onImageData is called.
+    </p></div>
+<a name="event:lastSecond"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">lastSecond</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onLastSecond is called.
+    </p></div>
+<a name="event:playStatus"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playStatus</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onPlayStatus is called.
+    </p></div>
+<a name="event:RTMPSampleAccess"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RTMPSampleAccess</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when RTMPSampleAccess is called.
+    </p></div>
+<a name="event:textData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">textData</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/MetaDataEvent.html"><code>cv.events.MetaDataEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when onTextData is called.
+    </p></div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="VERSION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">VERSION</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const VERSION:String = "1.0.0"</code><p>
+         The current version
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">Copyright 2009 Gabriel Mariani (http://blog.coursevector.com/tempolite)</center>
+</div>
+</body>
+</html>
+<!--Copyright 2009 Gabriel Mariani (http://blog.coursevector.com/tempolite)-->
