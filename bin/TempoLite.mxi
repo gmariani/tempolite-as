@@ -1,96 +1,71 @@
-<macromedia-extension name="Tempo Lite" version="1.1.0" requires-restart="false" type="actionscript">
+<macromedia-extension name="TempoLite" version="2.1.0" requires-restart="false" type="actionscript">
 	<author name="Gabriel Mariani - coursevector.com" />
 	<products>
 		<product name="Flash CS3" version="9" primary="true" />
 	</products>
-	<description><![CDATA[
-
-	Tempo Lite<br>
-
+	<description><![CDATA[	TempoLite<br>
 	<br>
-
 	Revisions:<br>
-
-	v1.1.0:<br>
-	Added file extension override<br>
-	Fixed pause bug<br>
-	Updated to PureMVC AS3 Multicore 1.0.5<br>
-
-	v1.0.3:<br>
-	Forgot to add PlayListProxy as a listener for metadata<br>
-
-	v1.0.2:<br>
-	Fixed addItem bug introduced in 1.0.1<br>
-
-	v1.0.1:<br>
-	Fixed issue of adding/removing item from playlist at index '0'<br>
-	Added events to TempoLite for NEXT and PREVIOUS<br>
-	Playlist will automatically update with metadata as it's recieved<br>
-	loadMedia method allows for autoStart to be set<br>
-
-	v1.0.0:<br>
-	Updated to Tempo 1.0.0<br>
-	Changed how the repeat property is handled. Instead of a boolean, it now passes a string. Accepted values are TempoLite.REPEAT_TRACK, TempoLite.REPEAT_ALL, and TempoLite.REPEAT_NONE.
-
-	v0.9.5:<br>
-	Updated to Tempo 0.9.5<br>
-	Added PLAY_START event<br>
-	Added version property<br>
-
-	v0.9.4:<br>
-	Updated to Tempo 0.9.4<br>
-	Added isPause property<br>
-	Added boolean as a possible arguement for pause()<br>
-	
-	v0.9.3:<br>
-	Updated to Tempo 0.9.3<br>
-	New api added to Tempo<br>
-
-	v0.9.1:<br>
-	Upgraded to PureMVC 2 (MultiCore Beta 1.0.1)<br>
-	Tighter integration with Tempo<br>
-	Can run concurrently with Tempo without breaking<br>
-	Standardized API<br>
-	Cleaned up source code<br>
-
-	v0.9.0: Initial port of Tempo<br>
+	v2.1.0:<br>
+	Re-organized class structure. AudioManager and VideoManager are now SoundPlayer and NetStreamPlayer
+	Re-organized class structure. IMediaManager is now IMediaPlayer
+	Re-organized class structure. PlayListManager is now under the managers package
+	Fixed autoStart, items would load paused but think they were playing. This time with the SoundPlayer
+	v2.0.7:<br>
+	Added PLAY_PROGRESS event dispatch after seek<br>
+	Removed traces<br>
+	Added STATUS event, dispatched whenever the isPause, isPlaying, isReadyToPlay properties change.<br>
+	Fixed autoStart, items would load paused but think they were playing.<br>
+	v2.0.6:<br>
+	Added leftToLeft property<br>
+	Added leftToRight property<br>
+	Added rightToLeft property<br>
+	Added rightToRight property<br>
+	Added pan property<br>
+	Changed stringToTime and timeToString into static methods<br>
+	v2.0.5:<br>
+	Fixed autoStart, pause now dispatches a Progress and Change event<br>
+	v2.0.4:<br>
+	Added CUE_POINT contstant<br>
+	v2.0.3:<br>
+	Fixed getTimeCurrent, getTimeTotal, getTimeLeft to return time as milliseconds and not a decimal number.<br>
 	<br>
-
-	Full media player that can play mp3, m4a, flv, mp4, mov and every other format Flash 9 can load at runtime. Does not include an interface, but an API that can be leveraged. That way any interface can be used with it.<br>
-
+	v2.0.2:<br>
+	Changed how time is retrieved. Time is returned in milliseconds, must use conversion functions to get strings.<br>
+	Added stringToTime()<br>
+	Updated timeToString()<br>
 	<br>
-
+	v2.0.1:<br>
+	Fixed Video MetaData handler<br>
+	Fixed video scaling issue on initial play<br>
+	Fix playlist file type handling<br>
+	Fixed null playlist handling<br>
 	<br>
-
+	v2.0.0:<br>
+	Removed PureMVC framework<br>
+	Dropped compiled size by almost 10Kb<br>
+	Added ATOM as a playlist type<br>
+	Added streaming video capability<br>
+	Removed B4S as a playlist type<br>
+	Removed PLS as a playlist type<br>
+	<br>
+	Full media player that can play mp3, m4a, flv, mp4, mov and every other format Flash 9 can load at runtime. Does not include an UI, but an API that can be leveraged. That way any interface can be used with it.<br>
+	<br>
+	<br>
 	Usage:<br>
-
 	In the components window, drag the component onto the stage, give it a name, and control it by that name. Or if you are using classes, import com.coursevector.tempo.TempoLite, and create a new instance of TempoLite and use it the same way.<br>
-
 	<br>
-
 	Gabriel Mariani
-
-	http://labs.coursevector.com
-
+	http://blog.coursevector.com/tempolite
 	<br>
-
-	Copyright (c) 2008 Course Vector.  All Rights Reserved.
-
-	]]></description>
+	Copyright (c) 2009 Course Vector.  All Rights Reserved.]]></description>
 	<ui-access><![CDATA[
-
-	Course Vector components are available in the Component Panel (Window > Components > Component Panel) under the CourseVector category.
-
-	]]></ui-access>
+	
+	
+	Course Vector components are available in the Component Panel (Window > Components > Component Panel) under the CourseVector category.]]></ui-access>
 	<license-agreement><![CDATA[
-
-	Course Vector provides this extension 'as is' without any warranty of any kind as to
-
-	the suitability of the extension for the licensees intended purpose. All risk as to the
-
-	performance of the extension and it's contents are the sole responsibility of you, the licensee.
-
-	]]></license-agreement>
+		
+		Course Vector provides this extension 'as is' without any warranty of any kind as to the suitability of the extension for the licensees intended purpose. All risk as to the performance of the extension and it's contents are the sole responsibility of you, the licensee.]]></license-agreement>
 	<files>
 		<file source="TempoLite.swc" destination="$flash/Components/Course Vector" />
 	</files>

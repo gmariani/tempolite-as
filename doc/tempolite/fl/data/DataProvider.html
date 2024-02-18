@@ -1025,11 +1025,30 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<span class="label">Event object type: </span><a href=""><code>fl.events.DataChangeEvent</code></a>
+<span class="label">Event object type: </span><a href="../events/DataChangeEvent.html"><code>fl.events.DataChangeEvent</code></a>
 <br>
-<p></p><p>
+<span class="label">DataChangeEvent.type property = </span><a href="../events/DataChangeEvent.html#DATA_CHANGE"><code>fl.events.DataChangeEvent.DATA_CHANGE</code></a>
+<br><p>
   Dispatched after the data is changed.
           </p><p>
+         Defines the value of the <code>type</code> property of a <code>dataChange</code>
+   event object. 
+      </p><p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td></tr>
+       <tr><td><code>changeType</code></td><td>Identifies the type of change that was made.</td></tr>
+      <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+      the event object with an event listener.</td></tr>
+       <tr><td><code>endIndex</code></td><td>Identifies the index of the last changed item.</td></tr>
+       <tr><td><code>items</code></td><td>An array that lists the items that were changed.</td></tr>
+       <tr><td><code>startIndex</code></td><td>Identifies the index of the first changed item.</td></tr>
+          <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                   not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+                  <p>
 <span class="label">See also</span>
 </p>
 <div class="seeAlso">
@@ -1043,11 +1062,33 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<span class="label">Event object type: </span><a href=""><code>fl.events.DataChangeEvent</code></a>
+<span class="label">Event object type: </span><a href="../events/DataChangeEvent.html"><code>fl.events.DataChangeEvent</code></a>
 <br>
-<p></p><p>
+<span class="label">DataChangeEvent.type property = </span><a href="../events/DataChangeEvent.html#PRE_DATA_CHANGE"><code>fl.events.DataChangeEvent.PRE_DATA_CHANGE</code></a>
+<br><p>
   Dispatched before the data is changed.
        </p><p>
+   Defines the value of the <code>type</code> property of a <code>preDataChange</code>
+   event object. This event object is dispatched before a change is made to component data.
+      </p><p>This event has the following properties:</p>
+    <table class="innertable" width="100%">
+       <tr><th>Property</th><th>Value</th></tr>
+       <tr><td><code>bubbles</code></td><td><code>false</code></td></tr>
+       <tr><td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td></tr>
+       <tr><td><code>changeType</code></td><td>Identifies the type of change to be made.</td></tr>
+      <tr><td><code>currentTarget</code></td><td>The object that is actively processing 
+      the event object with an event listener.</td></tr>
+       <tr><td><code>endIndex</code></td><td>Identifies the index of the last item to be
+      changed.</td></tr>
+       <tr><td><code>items</code></td><td>An array that lists the items to be changed.</td></tr>
+       <tr><td><code>startIndex</code></td><td>Identifies the index of the first item to be
+           changed.</td></tr>
+          <tr><td><code>target</code></td><td>The object that dispatched the event. The target is 
+                  not always the object listening for the event. Use the <code>currentTarget</code>
+      property to access the object that is listening for the event.</td></tr>
+    </table>
+   
+         <p>
 <span class="label">See also</span>
 </p>
 <div class="seeAlso">
