@@ -62,3 +62,6 @@ You can pass the following play list file types to Tempo. For each file type (if
   - `<media:group><media:content url="value">` = URL
   - `<duration>` = Length
   - [Spec](https://developers.google.com/youtube/2.0/developers_guide_protocol?csw=1#Understanding_Video_Entries)
+
+# Documentation
+[View ASDocs](https://mariani.life/projects/tempolite/docs/v3/)
